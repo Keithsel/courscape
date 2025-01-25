@@ -117,10 +117,6 @@ class CourseraLogin:
 
     def login(self):
         """Log into Coursera with existing cookies or credentials"""
-        if not COURSERA_EMAIL or not COURSERA_PASSWORD:
-            logger.error("Coursera credentials not found in environment variables")
-            return False
-
         try:
             # Navigate to homepage once before trying cookies
             self.driver.get("https://www.coursera.org")
@@ -131,8 +127,25 @@ class CourseraLogin:
                 logger.success("Login successful using cookies")
                 return True
             
-            # Normal login flow
-            logger.info("Proceeding with normal login")
+            # Check if credentials exist
+            if not COURSERA_EMAIL or not COURSERA_PASSWORD:
+                logger.warning("Credentials not found. Waiting for manual login...")
+                self.driver.get("https://www.coursera.org/login")
+                
+                # Wait up to 300 seconds (5 minutes) for manual login
+                try:
+                    WebDriverWait(self.driver, 300).until(
+                        EC.presence_of_element_located((By.ID, "authenticated-info-menu"))
+                    )
+                    logger.success("Manual login successful")
+                    self.save_cookies()
+                    return True
+                except TimeoutException:
+                    logger.error("Manual login timeout - no login detected after 5 minutes")
+                    return False
+                
+            # Normal login flow with credentials
+            logger.info("Proceeding with automated login")
             self.driver.get("https://www.coursera.org/login")
             self.random_delay(1, 2)
 
