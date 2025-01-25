@@ -14,7 +14,7 @@ class CourseraLogin:
     def __init__(self):
         self.driver_manager = WebDriverManager(headless=False)
         self.driver = self.driver_manager.get_driver()
-        self.wait_time = 15
+        self.wait_time = 60
         self.cookie_file = Path("cookies.json")
         self.wait = WebDriverWait(self.driver, self.wait_time)
 
