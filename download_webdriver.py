@@ -6,11 +6,13 @@ from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.core.os_manager import ChromeType
 from loguru import logger
 from config import DEFAULT_BROWSER
+import logging
 
 class WebDriverManager:
     def __init__(self, browser=DEFAULT_BROWSER, headless=True):
         self.browser = browser
         self.headless = headless
+        logging.getLogger('WDM').disabled = True
         logger.debug(f"Initializing WebDriverManager with browser={browser}, headless={headless}")
 
     def get_driver(self):
