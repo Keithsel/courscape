@@ -1,26 +1,192 @@
 import argparse
 from loguru import logger
 from login_coursera import CourseraLogin
+from course_processor import CourseProcessor
 import sys
+from log_config import setup_logging
 
-def main():
-    parser = argparse.ArgumentParser(description='Coursera Login Tool')
-    args = parser.parse_args()
+
+def get_login_session(force_manual=False):
+    """Get a valid login session using cookies or credentials"""
     login = CourseraLogin()
 
+    if not force_manual and login.login():
+        cookies = login.get_cookies()
+        login.close()
+        return cookies
+
+    # If force_manual or automatic login failed, try manual login
+    logger.info("Waiting for manual login...")
+    if login.manual_login():
+        cookies = login.get_cookies()
+        login.close()
+        return cookies
+
+    logger.error(
+        "Login failed. Please:\n"
+        "1. Make sure you can log in manually at https://www.coursera.org/login\n."
+        "2. Try again with --manual-login or -m flag if needed."
+    )
+    return None
+
+
+def process_course(processor, course_slug):
+    """Process a single course with all its materials"""
+    logger.info(f"Processing course: {course_slug}")
+    return processor.process_content(course_slug=course_slug)
+
+
+def process_specialization(processor, spec_slug):
+    """Process all courses in a specialization"""
+    logger.info(f"Processing specialization: {spec_slug}")
+    return processor.process_content(spec_slug=spec_slug)
+
+
+def parse_arguments():
+    """Parse command line arguments"""
+    parser = argparse.ArgumentParser(description="Coursera content automation")
+    # Required arguments (at least one)
+    parser.add_argument("--course", "-c", 
+                       help="Course slug(s) to process, comma-separated")
+    parser.add_argument("--spec", "-s", 
+                       help="Specialization slug(s) to process, comma-separated")
+
+    # Optional flags
+    parser.add_argument(
+        "--manual-login",
+        "-m",
+        action="store_true",
+        help="Force manual login (ignore cookies and credentials)",
+    )
+    parser.add_argument(
+        "--from-config",
+        "-f",
+        action="store_true",
+        help="Read course/specialization from config file",
+    )
+    return parser.parse_args()
+
+
+def validate_args(args):
+    """Validate command line arguments"""
+    if args.from_config:
+        return True
+    if not (args.course or args.spec):
+        logger.error("Please provide at least one: --course and/or --spec argument")
+        return False
+    return True
+
+
+def load_config():
+    """Load configuration from .env file"""
+    from config import SKIP_COURSES, SKIP_SPECIALIZATIONS
+
+    return {"courses": SKIP_COURSES, "specializations": SKIP_SPECIALIZATIONS}
+
+
+def main():
+    setup_logging()
+
+    args = parse_arguments()
+    if not validate_args(args):
+        sys.exit(1)
+
+    login = CourseraLogin()
     try:
+        logger.info("Attempting login...")
         if not login.login():
-            logger.error("Login failed. Please:\n"
-                            "1. Check your credentials in the .env file\n"
-                            "2. Make sure you can log in manually at https://www.coursera.org/login\n"
-                            "3. Remove the cookies.json file if exists and delete the credentials in your .env file, and try again to log in manually.")
+            logger.error("Login failed")
             sys.exit(1)
-            
+
+        cookies = login.get_cookies()
+        login.close()  # Close browser after getting cookies
+
+        logger.info("Initializing content processor...")
+        processor = CourseProcessor(cookies)
+        if not processor.setup():
+            sys.exit(1)
+
+        logger.info("Processing content...")
+        if args.from_config:
+            _process_from_config(processor)
+        else:
+            _process_from_args(processor, args)
+
+        logger.success("Content processing completed")
+
     except Exception as e:
-        logger.error(f"Error during login process: {str(e)}")
+        logger.error(f"Error during processing: {str(e)}")
         sys.exit(1)
     finally:
-        login.close()
+        processor.close()
 
-if __name__ == '__main__':
+
+def process_content(consumer, args):
+    """Process content based on input source"""
+    try:
+        if args.from_config:
+            _process_from_config(consumer)
+        else:
+            _process_from_args(consumer, args)
+        logger.success("Content processing completed")
+    except Exception as e:
+        logger.error(f"Content processing failed: {e}")
+        return False
+    return True
+
+
+def _process_from_config(consumer):
+    """Process content from config file"""
+    config = load_config()
+    total_processed = 0
+    total_failed = 0
+
+    specs = [s.strip() for s in config["specializations"] if s.strip()]
+    if specs:
+        logger.info(f"Processing {len(specs)} specializations from config")
+        for i, spec in enumerate(specs, 1):
+            logger.info(f"Specialization {i}/{len(specs)}: {spec}")
+            if process_specialization(consumer, spec):
+                total_processed += 1
+            else:
+                total_failed += 1
+
+    courses = [c.strip() for c in config["courses"] if c.strip()]
+    if courses:
+        logger.info(f"Processing {len(courses)} courses from config")
+        for i, course in enumerate(courses, 1):
+            logger.info(f"Course {i}/{len(courses)}: {course}")
+            if process_course(consumer, course):
+                total_processed += 1
+            else:
+                total_failed += 1
+
+    logger.info(f"Processed {total_processed} items successfully, {total_failed} failed")
+
+
+def _process_from_args(consumer, args):
+    """Process content from command line arguments"""
+    total_processed = 0
+    total_failed = 0
+
+    if args.spec:
+        specs = [s.strip() for s in args.spec.split(',') if s.strip()]
+        for spec in specs:
+            if process_specialization(consumer, spec):
+                total_processed += 1
+            else:
+                total_failed += 1
+
+    if args.course:
+        courses = [c.strip() for c in args.course.split(',') if c.strip()]
+        for course in courses:
+            if process_course(consumer, course):
+                total_processed += 1
+            else:
+                total_failed += 1
+
+    logger.info(f"Processed {total_processed} items successfully, {total_failed} failed")
+
+
+if __name__ == "__main__":
     main()
