@@ -9,6 +9,8 @@ import time
 import random
 import json
 from pathlib import Path
+import requests
+
 
 class CourseraLogin:
     def __init__(self):
@@ -18,7 +20,7 @@ class CourseraLogin:
         self.cookie_file = Path("cookies.json")
         self.wait = WebDriverWait(self.driver, self.wait_time)
 
-    def random_delay(self, min_delay=0.5, max_delay=1.5):
+    def random_delay(self, min_delay=0.2, max_delay=0.5):
         """Add a random delay between actions"""
         time.sleep(random.uniform(min_delay, max_delay))
 
@@ -33,7 +35,9 @@ class CourseraLogin:
         """Check if CAPTCHA is present by looking for multiple possible indicators"""
         try:
             # Check for invisible reCAPTCHA
-            invisible_captcha = self.driver.find_element(By.ID, "recaptcha-login-redesign")
+            invisible_captcha = self.driver.find_element(
+                By.ID, "recaptcha-login-redesign"
+            )
             if invisible_captcha:
                 return True
 
@@ -48,24 +52,41 @@ class CourseraLogin:
                 return True
 
             return False
-            
+
         except NoSuchElementException:
             return False
 
-    def check_login_success(self):
-        """Verify if login was successful by checking multiple indicators"""
+    def _verify_login_api(self, driver=None):
+        """Internal method to verify login status via API"""
         try:
-            # Check if still on login page (failed login)
-            if "coursera.org/login" in self.driver.current_url:
+            # Use provided driver or instance driver
+            driver = driver or self.driver
+            cauth = driver.get_cookie("CAUTH")
+            if not cauth:
+                logger.debug("CAUTH cookie not found")
                 return False
 
-            # Check for authenticated menu by ID
-            try:
-                menu = self.driver.find_element(By.ID, "authenticated-info-menu")
-                return menu.is_displayed()
-            except NoSuchElementException:
+            response = requests.get(
+                "https://www.coursera.org/api/adminUserPermissions.v1",
+                params={"q": "my"},
+                cookies={"CAUTH": cauth["value"]},
+            )
+
+            if response.status_code != 200:
+                logger.debug(f"API request failed with status {response.status_code}")
                 return False
 
+            data = response.json()
+            return bool(data.get("elements", []))
+
+        except Exception as e:
+            logger.debug(f"Login verification failed: {str(e)}")
+            return False
+
+    def check_login_success(self):
+        """Verify if login was successful"""
+        try:
+            return self._verify_login_api()
         except Exception as e:
             logger.error(f"Error checking login status: {str(e)}")
             return False
@@ -74,7 +95,7 @@ class CourseraLogin:
         """Save cookies to file"""
         try:
             cookies = self.get_cookies()
-            with open(self.cookie_file, 'w') as f:
+            with open(self.cookie_file, "w") as f:
                 json.dump(cookies, f)
             logger.success(f"Cookies saved to {self.cookie_file}")
         except Exception as e:
@@ -84,22 +105,20 @@ class CourseraLogin:
         """Load cookies from file if they exist"""
         try:
             if self.cookie_file.exists():
-                with open(self.cookie_file, 'r') as f:
+                with open(self.cookie_file, "r") as f:
                     return json.load(f)
         except Exception as e:
             logger.error(f"Error loading cookies: {str(e)}")
-        return None
+            return None
 
     def apply_cookies(self, cookies):
         """Apply cookies to current session and verify login"""
         if not cookies:
             return False
-        
+
         try:
-            # Apply cookies before navigating to homepage
             for cookie in cookies:
                 self.driver.add_cookie(cookie)
-            # Navigate once and check login status
             self.driver.get("https://www.coursera.org")
             return self.is_logged_in()
         except Exception as e:
@@ -108,46 +127,66 @@ class CourseraLogin:
 
     def is_logged_in(self):
         """Check if current session is logged in"""
+        return self._verify_login_api()
+
+    def _is_cauth_cookie_set(self, driver):
+        """Check if CAUTH cookie is present"""
+        cookies = driver.get_cookies()
+        for cookie in cookies:
+            if cookie["name"] == "CAUTH":
+                return True
+        return False
+
+    def _wait_for_login(self, timeout=300):
+        """Wait for login to complete"""
         try:
-            return self.wait.until(
-                EC.presence_of_element_located((By.ID, "authenticated-info-menu"))
-            ).is_displayed()
+            # Need to wrap method to match expected signature
+            WebDriverWait(self.driver, timeout).until(
+                lambda d: self._verify_login_api(d)
+            )
+            logger.success("Login successful")
+            self.save_cookies()
+            return True
         except TimeoutException:
+            logger.error(f"Login timeout after {timeout} seconds")
             return False
+
+    def manual_login(self):
+        """Handle manual login process"""
+        logger.info("Opening login page for manual login...")
+        self.driver.get("https://www.coursera.org/login")
+        logger.info("You have 5 minutes to complete the login process")
+        return self._wait_for_login()
 
     def login(self):
         """Log into Coursera with existing cookies or credentials"""
         try:
             # Navigate to homepage once before trying cookies
             self.driver.get("https://www.coursera.org")
-            
+
             # Try cookies first
             cookies = self.load_cookies()
             if cookies and self.apply_cookies(cookies):
                 logger.success("Login successful using cookies")
                 return True
-            
-            # Check if credentials exist
-            if not COURSERA_EMAIL or not COURSERA_PASSWORD:
-                logger.warning("Credentials not found. Waiting for manual login...")
-                self.driver.get("https://www.coursera.org/login")
-                
-                # Wait up to 300 seconds (5 minutes) for manual login
-                try:
-                    WebDriverWait(self.driver, 300).until(
-                        EC.presence_of_element_located((By.ID, "authenticated-info-menu"))
-                    )
-                    logger.success("Manual login successful")
-                    self.save_cookies()
-                    return True
-                except TimeoutException:
-                    logger.error("Manual login timeout - no login detected after 5 minutes")
-                    return False
-                
-            # Normal login flow with credentials
-            logger.info("Proceeding with automated login")
+
+            # Try credentials if available
+            if COURSERA_EMAIL and COURSERA_PASSWORD:
+                return self._login_with_credentials()
+
+            # If no credentials, fallback to manual
+            return self.manual_login()
+
+        except Exception as e:
+            logger.error(f"Error during login: {str(e)}")
+            return False
+
+    def _login_with_credentials(self):
+        """Login using email/password"""
+        try:
+            logger.info("Attempting login with credentials...")
             self.driver.get("https://www.coursera.org/login")
-            self.random_delay(1, 2)
+            self.random_delay(0.3, 0.7)
 
             # Normal login flow
             email_field = self.wait_for_element(By.CSS_SELECTOR, "input[type='email']")
@@ -155,31 +194,25 @@ class CourseraLogin:
             email_field.send_keys(COURSERA_EMAIL)
             self.random_delay()
 
-            password_field = self.wait_for_element(By.CSS_SELECTOR, "input[type='password']")
+            password_field = self.wait_for_element(
+                By.CSS_SELECTOR, "input[type='password']"
+            )
             password_field.clear()
             password_field.send_keys(COURSERA_PASSWORD)
             self.random_delay()
 
-            submit_button = self.wait_for_element(By.CSS_SELECTOR, "button[type='submit']")
+            submit_button = self.wait_for_element(
+                By.CSS_SELECTOR, "button[type='submit']"
+            )
             submit_button.click()
-            self.random_delay(1, 2)
+            self.random_delay(0.3, 0.7)
 
             if self.check_for_captcha():
                 logger.info("CAPTCHA detected! Waiting for completion...")
-                self.random_delay(1, 2)
+                return self._wait_for_login()
 
-            # Verify login success
-            if self.is_logged_in():
-                logger.success("Login successful")
-                self.save_cookies()
-                return True
-            
-            logger.error("Login verification failed")
-            return False
+            return self._wait_for_login(timeout=10)
 
-        except TimeoutException:
-            logger.error("Login timeout - please try again")
-            return False
         except Exception as e:
             logger.error(f"Error during login: {str(e)}")
             return False
@@ -193,3 +226,10 @@ class CourseraLogin:
         if self.driver:
             self.driver.quit()
             self.driver = None
+
+    @property
+    def request(self):
+        """Get the session with cookies from selenium"""
+        if not self.driver:
+            return None
+        return self.driver.request
