@@ -70,7 +70,11 @@ def parse_arguments():
 def validate_args(args):
     """Validate command line arguments"""
     if args.from_config:
+        if args.course or args.spec:
+            logger.error("Cannot use --course or --spec with --from-config. Choose either command line arguments or config file.")
+            return False
         return True
+    
     if not (args.course or args.spec):
         logger.error("Please provide at least one: --course and/or --spec argument")
         return False
@@ -80,8 +84,15 @@ def validate_args(args):
 def load_config():
     """Load configuration from .env file"""
     from config import SKIP_COURSES, SKIP_SPECIALIZATIONS
-
-    return {"courses": SKIP_COURSES, "specializations": SKIP_SPECIALIZATIONS}
+    
+    if not any([SKIP_COURSES, SKIP_SPECIALIZATIONS]):
+        logger.error("No courses or specializations found in .env file")
+        sys.exit(1)
+    
+    return {
+        "courses": [c.strip() for c in SKIP_COURSES if c.strip()],
+        "specializations": [s.strip() for s in SKIP_SPECIALIZATIONS if s.strip()]
+    }
 
 
 def main():
@@ -165,12 +176,13 @@ def _process_from_config(consumer):
 
 
 def _process_from_args(consumer, args):
-    """Process content from command line arguments"""
+    """Process content from command line arguments only"""
     total_processed = 0
     total_failed = 0
 
     if args.spec:
         specs = [s.strip() for s in args.spec.split(',') if s.strip()]
+        logger.info(f"Processing {len(specs)} specializations from arguments")
         for spec in specs:
             if process_specialization(consumer, spec):
                 total_processed += 1
@@ -179,6 +191,7 @@ def _process_from_args(consumer, args):
 
     if args.course:
         courses = [c.strip() for c in args.course.split(',') if c.strip()]
+        logger.info(f"Processing {len(courses)} courses from arguments")
         for course in courses:
             if process_course(consumer, course):
                 total_processed += 1
