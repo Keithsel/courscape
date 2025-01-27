@@ -1,0 +1,691 @@
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/Content/css?v=5SsskdAh3ChL4quPJSdTqyWDt4Uye5HAhSRdbwb5Vwg1" rel="stylesheet">
+<link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet"><link href="../../../Content/font-face.css" rel="stylesheet"><link href="../../../Content/bootstrap.min.css" rel="stylesheet"><link href="../../../Content/common.css" rel="stylesheet"><link href="../../../bundles/customcss" rel="stylesheet"><link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet"><link href="../../../fonts/css/Bootstrap-select-v1.13.14.css" rel="stylesheet"><link href="../../../Content/toastr.min.css" rel="stylesheet">
+    <style>
+        h1 {
+            font-size: 2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        * {
+            font-family: 'Roboto';
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5em;
+        }
+
+        body {
+            background: #fafafa;
+            padding: 0;
+        }
+
+        nav-bar {
+            position: fixed;
+            width: 100%
+        }
+
+        #sidebar a,
+        #sidebar a:hover,
+        #sidebar a:focus {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        /* Side Bar*/
+
+
+
+        #sidebar.sb-active {
+            margin-left: -300px;
+        }
+
+        .wrapper {
+            display: flex;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+
+        input, select {
+            font-size: inherit !important;
+            /*height: 33.5px !important;*/
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0 0.8em;
+        }
+
+        .tbl-data {
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+            .tbl-data th {
+                font-weight: bold;
+                background-color: #F2994A !important;
+                color: white;
+            }
+
+            .tbl-data input[type=checkbox] {
+                width: 20px;
+            }
+
+        .tbl-detail tr td {
+            padding: 4px 5px 4px 5px;
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+        .tbl-checkbox label {
+            position: relative;
+            top: -11px;
+            left: 2px;
+        }
+
+        .max-with-fit {
+            max-width: fit-content;
+        }
+
+        textarea {
+            font-size: inherit !important;
+        }
+
+        #sidebar {
+            min-width: 300px;
+            max-width: 300px;
+            margin-top: 10px;
+            margin-left: 10px;
+            color: #fff;
+            transition: all 0.3s;
+            overflow-y: scroll;
+            height: 800px;
+            border-radius: 5px;
+            background-color: #F2994A;
+        }
+
+            #sidebar::-webkit-scrollbar {
+                width: 0;
+            }
+
+            #sidebar p {
+                padding: 15px;
+                background: #F2994A;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            #sidebar ul.components {
+                padding: 20px 0;
+            }
+
+
+            #sidebar ul li a {
+                padding: 10px;
+                font-size: 1em;
+                display: block;
+                background-color: #f4a158;
+            }
+
+                #sidebar ul li a:hover {
+                    background: #d06e17;
+                }
+
+            #sidebar ul li.sb-active > a,
+            a[aria-expanded="true"] {
+                color: #fff;
+            }
+
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+
+        #navbarSupportedContent .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: -15%;
+            transform: translateY(-50%);
+        }
+
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 7%;
+            transform: translateY(-50%);
+        }
+
+        #sidebar ul ul a {
+            font-size: 0.9em !important;
+            padding-left: 30px !important;
+            background: #d29a68;
+        }
+
+        #content {
+            height: calc(100vh - 97px);
+            width: 100%;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        #ui-datepicker-div {
+            width: fit-content;
+        }
+
+        .menu-btn {
+            border: none;
+            background-color: #F2994A;
+        }
+
+            .menu-btn:focus {
+                outline: none;
+                box-shadow: none;
+            }
+
+        .btn-green:hover {
+            background-color: #009900;
+        }
+
+        .btn-success {
+            width: 70px;
+            height: 40px;
+            font-weight: bold;
+        }
+
+        #btn-home {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+        }
+
+            #btn-home:hover {
+                color: white;
+            }
+
+            #btn-home span {
+                position: relative;
+                top: 2px;
+                font-size: 15px;
+            }
+
+            #btn-home i {
+                position: relative;
+                top: 2px;
+            }
+
+        .btn-light {
+            border: 1px solid #d9cfcf;
+        }
+
+        #showModelNeed {
+            height: 33.5px;
+        }
+    </style>
+<title>
+	FPT University Learning Materials
+</title></head>
+
+<body style="">
+    <form method="post" action="./CurriculumDetails?curid=10" id="form2">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form2'];
+if (!theForm) {
+    theForm = document.form2;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZMrpL97guh2x_lfUiu-1_hlzlbl--S7Vc8swdj3bZMABH4j1Fn0pmI18V554x5p3Bw2&amp;t=638562813717896622" type="text/javascript"></script>
+
+
+<script src="../../../Scripts/WebForms/MsAjax/MicrosoftAjax.js" type="text/javascript"></script>
+<script src="../../../Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/popper.js" type="text/javascript"></script>
+<script src="../../../Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/Bootstrap-select-v1.13.14.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/custom.js" type="text/javascript"></script>
+<script src="../../../Scripts/toastr.min.js" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7E46DEE6">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="5IBKwFAeh87YFp275Das4X7qeBG7ZE5zUTdqOd25tl0lGN3Devh9/myiOcsr29RdlQDff1OicUvp40U+kotPWc43iBQKehTpUnoia/b2qWNyfEcNrI693n8p5y+P0yz0">
+</div>
+        <nav class="navbar navbar-expand-lg px-0 pb-2 m-0" style="background-color: #F2994A; color: white;">
+            <div class="container-fluid p-0">
+                
+                
+                <a id="btn-home" class="btn btn-lg ml-3" href="/gui/Home.aspx">
+                    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                    <span style="font-weight: bold;">Home</span>
+                </a>
+                
+                <h1 class="text-center" style="position: absolute; left: 24%">FPT University Learning Materials</h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-right-style" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item sb-active">
+                            <span class="sr-only">(current)</span>
+                        </li>
+                    </ul>
+                    <select id="language" style="z-index: 1; width: 130px" class="form-control">
+                        <option value="en">English</option>
+                        <option value="vi">Vietnamese</option>
+                    </select>
+                    <div class="mt-2">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img id="ProfileImage" class="rounded-circle" src="https://lh3.googleusercontent.com/a/ACg8ocKNDpazWZLozszDFrXiDYK9kq_gpCt6Nq8V_-B2kKcQ0waB4dY=s96-c" style="height:50px;width:50px;">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <div id="pnlProfile">
+	
+                                            <span class="dropdown-item">Name:
+                                                <span id="lblName" style="font-weight:bold;">NHU QUANG ANH (K18 QN)</span>
+                                            </span>
+                                            <span class="dropdown-item">
+                                                <div id="pnlEmail">
+		
+                                                    Email:
+                                                        <span id="lblEmail" style="font-weight:bold;">anhnqqe180005@fpt.edu.vn</span>
+                                                
+	</div>
+                                            </span>
+                                            <span class="dropdown-item">User's role:
+                                                   <span id="lblRole" style="font-weight:bold;">Student</span>
+                                            </span>
+                                            <span class="dropdown-item">Education level:
+                                                <span id="lblEduLevel" style="font-weight:bold;">FPTU</span>
+                                            </span>
+                                            <div class="dropdown-item">
+                                                
+                                            </div>
+                                          
+                                            <div class="dropdown-item ">
+                                                <a id="lbtnSignOut" href="javascript:__doPostBack('ctl00$lbtnSignOut','')" style="display:inline-block;width:100%;">Sign out FLM</a>
+                                            </div>
+                                        
+</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="wrapper">
+            
+            <div id="content" class="p-4">
+
+                <div class="mx-3 ">
+                    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'form2', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+                    
+    <link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../Content/font-face.css" rel="stylesheet">
+    <link href="../../../Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../Content/common.css" rel="stylesheet">
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+
+        .auto-style2 {
+            height: 24px;
+        }
+
+        .auto-style3 {
+            height: 24px;
+            width: 155px;
+        }
+
+        .auto-style4 {
+            width: 155px;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        /*Table*/
+        #gvSubs,
+        #gvPLO,
+        #table-detail {
+            border: 1px solid rgba(0, 0, 0, .05);
+        }
+
+            #gvSubs th {
+                font-weight: bold;
+                background-color: #F2994A;
+                color: white;
+            }
+
+            #gvPLO th {
+                font-weight: bold;
+                background-color: #F2994A;
+                color: white;
+            }
+
+        .table-detail tr td {
+            padding: 6px 10px 6px 10px;
+        }
+
+        .plo,
+        table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            .plo td,
+            #customers th {
+                border: 1px solid rgba(0, 0, 0, .05);
+                padding: 8px;
+            }
+
+            .plo tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .plo tr:hover {
+                background-color: #ddd;
+            }
+
+            .plo th {
+                border: 1px solid rgba(0, 0, 0, .05);
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 6px;
+                padding-right: 6px;
+                text-align: center;
+                background-color: #F2994A;
+                color: white;
+                font-weight: bold;
+            }
+
+            .plo td {
+                text-align: center;
+            }
+
+        .textRedBold {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+
+    <h1 class="mb-4">
+        Curriculum Details
+    </h1>
+    
+    <table id="table-detail" class="table-detail" cellspacing="0" rules="all" border="1" style="border-collapse: collapse; width: 100%;">
+        
+        <tbody><tr>
+            <td class="auto-style3 text-right">CurriculumCode:</td>
+            <td>
+                <span id="txtCurriculumCode">BMC</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style3 text-right">Name:</td>
+            <td>
+                <span id="lblName">Multimedia Communication-Truyền thông đa phương tiện</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style3 text-right">English Name:</td>
+            <td>
+                <span id="lblEnglishName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6 text-right">Description:</td>
+            <td class="auto-style7">
+                <span id="lblDescription">Kiến thức ngành tự chọn nhóm 1 (chọn 2/4) 
+<br>WED201 Thiết kế website cơ bản  Web Design
+<br>DTG302 Thiết kế hình ảnh và âm thanh trong làm phim (Visual Effects  - Principles of Compositing)  
+<br>TPG20x Nghệ thuật đồ họa chữ 1 (Typography 1)
+<br>MID201 Thiết kế tương tác đa phương tiện (Multimedia Interactive Design) 
+<br>
+<br>Kiến thức ngành tự chọn nhóm 2 (chọn 2/3)  
+<br>MKT304 Truyền thông tiếp thị tích hợp (Integrated Marketing Communication)
+<br>CMC201 Văn hóa và truyền thông (Communication and Culture)
+<br>CAA201 Nguyên lý truyền thông và quảng cáo (Principles of Advertising and Communication) 
+<br></span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="auto-style6 text-right">DecisionNo MM/dd/yyyy:</td>
+            <td class="auto-style7">
+                <span id="lblDecisionNo"></span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="auto-style6"></td>
+            <td class="auto-style7">
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/PO/Index?id=10">View PO</a>
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/Compo/ViewComBo?cur_id=10">View Combo</a>
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/Elective/ViewElective?cur_id=10">View
+                                                        Elective</a>
+            </td>
+        </tr>
+    </tbody></table>
+    <br>
+    <span id="lblMessagePLO" style="color:#23AC68;">0 PLO(s) found</span>
+
+    <div>
+
+</div>
+    <br>
+    <!-- 
+        </tbody>
+    </table> -->
+    <br>
+    <span id="lblTotalCredit" style="color:#23AC68;">50 subjects, 137 credits</span>
+    <div>
+	<table class="table table-striped" cellspacing="0" rules="all" border="1" id="gvSubs" style="border-collapse:collapse;">
+		<tbody><tr>
+			<th scope="col">SubjectCode</th><th scope="col">Subject Name</th><th scope="col">Semester</th><th scope="col">NoCredit</th><th scope="col">PreRequisite</th>
+		</tr><tr>
+			<td style="width:10%;">GDQP</td><td><a href="Syllabuses.aspx?subCode=GDQP&amp;curriculumID=10">Military training</a></td><td style="width:7%;">Preperation Time</td><td style="width:7%;">0</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">VOV114</td><td><a href="Syllabuses.aspx?subCode=VOV114&amp;curriculumID=10">Vovinam 1</a></td><td style="width:7%;">Preperation Time</td><td style="width:7%;">2</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">VOV124</td><td><a href="Syllabuses.aspx?subCode=VOV124&amp;curriculumID=10">Vovinam 2</a></td><td style="width:7%;">Preperation Time</td><td style="width:7%;">2</td><td style="width:51%;">Passed VOV114 or VOV113</td>
+		</tr><tr>
+			<td style="width:10%;">VOV134</td><td><a href="Syllabuses.aspx?subCode=VOV134&amp;curriculumID=10">Vovinam 3</a></td><td style="width:7%;">Preperation Time</td><td style="width:7%;">2</td><td style="width:51%;">Passed VOV124 or VOV123</td>
+		</tr><tr>
+			<td style="width:10%;">ENT104</td><td><a href="Syllabuses.aspx?subCode=ENT104&amp;curriculumID=10">English 2 (Top Notch 1)_Tiếng Anh 2</a></td><td style="width:7%;">-2</td><td style="width:7%;">0</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">ENT203</td><td><a href="Syllabuses.aspx?subCode=ENT203&amp;curriculumID=10">English 3 (Top Notch 2)_Tiếng Anh 3</a></td><td style="width:7%;">-2</td><td style="width:7%;">0</td><td style="width:51%;">Passed ENT10x or equivalent</td>
+		</tr><tr>
+			<td style="width:10%;">ENT303</td><td><a href="Syllabuses.aspx?subCode=ENT303&amp;curriculumID=10">English 4 (Top Notch 3)_Tiếng Anh 4</a></td><td style="width:7%;">-1</td><td style="width:7%;">0</td><td style="width:51%;">Passed ENT203 or equivalent</td>
+		</tr><tr>
+			<td style="width:10%;">ENT403</td><td><a href="Syllabuses.aspx?subCode=ENT403&amp;curriculumID=10">English 5 (Summit 1)_Tiếng Anh 5</a></td><td style="width:7%;">-1</td><td style="width:7%;">0</td><td style="width:51%;">Passed ENT303 or equivalent</td>
+		</tr><tr>
+			<td style="width:10%;">ENT503</td><td><a href="Syllabuses.aspx?subCode=ENT503&amp;curriculumID=10">English 6 (Summit 2)_Tiếng Anh 6</a></td><td style="width:7%;">0</td><td style="width:7%;">0</td><td style="width:51%;">Passed ENT403 or equivalent</td>
+		</tr><tr>
+			<td style="width:10%;">CSI102</td><td><a href="Syllabuses.aspx?subCode=CSI102&amp;curriculumID=10">Introduction to Informatics</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">ENM201</td><td><a href="Syllabuses.aspx?subCode=ENM201&amp;curriculumID=10">Pre-intermediate Business English</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">ENT503</td>
+		</tr><tr>
+			<td style="width:10%;">FMM101</td><td><a href="Syllabuses.aspx?subCode=FMM101&amp;curriculumID=10">Fundamentals of Multimedia</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MAC102</td><td><a href="Syllabuses.aspx?subCode=MAC102&amp;curriculumID=10">Advanced Mathematics for Business</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">(Students completed MAC101 can be waived)</td>
+		</tr><tr>
+			<td style="width:10%;">SSG101</td><td><a href="Syllabuses.aspx?subCode=SSG101&amp;curriculumID=10">Working in Group Skills</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">AET101</td><td><a href="Syllabuses.aspx?subCode=AET101&amp;curriculumID=10">Aesthetic</a></td><td style="width:7%;">2</td><td style="width:7%;">2</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">DTG102</td><td><a href="Syllabuses.aspx?subCode=DTG102&amp;curriculumID=10">Visual Design Tools_Công cụ thiết kế trực quan</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">ENM301</td><td><a href="Syllabuses.aspx?subCode=ENM301&amp;curriculumID=10">BUSINESS ENGLISH -  Level: Intermediate_Tiếng Anh thương mại</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">MKT101</td><td><a href="Syllabuses.aspx?subCode=MKT101&amp;curriculumID=10">Marketing Principles_Nguyên lý Marketing</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">SSC101</td><td><a href="Syllabuses.aspx?subCode=SSC101&amp;curriculumID=10">Business Communication</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">VNC101</td><td><a href="Syllabuses.aspx?subCode=VNC101&amp;curriculumID=10">Vietnamese Cultural</a></td><td style="width:7%;">2</td><td style="width:7%;">2</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">CAA201</td><td><a href="Syllabuses.aspx?subCode=CAA201&amp;curriculumID=10">Communications and advertising_Nguyên lý truyền thông và quảng cáo</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">CHN111</td><td><a href="Syllabuses.aspx?subCode=CHN111&amp;curriculumID=10">Elementary Chinese 1_Hán ngữ sơ cấp 1</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">ENM401</td><td><a href="Syllabuses.aspx?subCode=ENM401&amp;curriculumID=10">BUSINESS ENGLISH - Level: Upper- Intermediate_Tiếng anh thương mại</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">ENM301</td>
+		</tr><tr>
+			<td style="width:10%;">GDF102</td><td><a href="Syllabuses.aspx?subCode=GDF102&amp;curriculumID=10">Fundamental of Graphic Design</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MMP101</td><td><a href="Syllabuses.aspx?subCode=MMP101&amp;curriculumID=10">Media Psychology</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">Nil</td>
+		</tr><tr>
+			<td style="width:10%;">CHN122</td><td><a href="Syllabuses.aspx?subCode=CHN122&amp;curriculumID=10">Elementary Chinese  2_Hán ngữ sơ cấp 2</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">CHN111</td>
+		</tr><tr>
+			<td style="width:10%;">MC-000005</td><td><a href="Syllabuses.aspx?subCode=MC-000005&amp;curriculumID=10">Major Elective Group 1</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">PFD20x</td><td><a href="Syllabuses.aspx?subCode=PFD20x&amp;curriculumID=10">Photography</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">TEMP009</td><td><a href="Syllabuses.aspx?subCode=TEMP009&amp;curriculumID=10">Concentration 1</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">WMC201</td><td><a href="Syllabuses.aspx?subCode=WMC201&amp;curriculumID=10">Media Writing_Viết cho truyền thông đa phương tiện</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">ADP201</td><td><a href="Syllabuses.aspx?subCode=ADP201&amp;curriculumID=10">Audio Production</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">CHN132</td><td><a href="Syllabuses.aspx?subCode=CHN132&amp;curriculumID=10">Elementary Chinese  3</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;"> CHN122 (Hán ngữ sơ cấp 2) </td>
+		</tr><tr>
+			<td style="width:10%;">MED201</td><td><a href="Syllabuses.aspx?subCode=MED201&amp;curriculumID=10">New Media Technology_Các loại hình Truyền thông đương đại</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">TEMP010</td><td><a href="Syllabuses.aspx?subCode=TEMP010&amp;curriculumID=10">Concentration 2</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">VDP201</td><td><a href="Syllabuses.aspx?subCode=VDP201&amp;curriculumID=10">Video Production_Sản xuất Video</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">OJB211</td><td><a href="Syllabuses.aspx?subCode=OJB211&amp;curriculumID=10">On the job training</a></td><td style="width:7%;">6</td><td style="width:7%;">10</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">COM201</td><td><a href="Syllabuses.aspx?subCode=COM201&amp;curriculumID=10">Communication Management</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MC-000001</td><td><a href="Syllabuses.aspx?subCode=MC-000001&amp;curriculumID=10">Concentration Elective 1</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MC-000006</td><td><a href="Syllabuses.aspx?subCode=MC-000006&amp;curriculumID=10">Major Elective Group 2</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MC-000007</td><td><a href="Syllabuses.aspx?subCode=MC-000007&amp;curriculumID=10">Major Elective Group 3</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">TEMP011</td><td><a href="Syllabuses.aspx?subCode=TEMP011&amp;curriculumID=10">Concentration 3</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">LAW201</td><td><a href="Syllabuses.aspx?subCode=LAW201&amp;curriculumID=10">Media Law and Ethics</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MC-000002</td><td><a href="Syllabuses.aspx?subCode=MC-000002&amp;curriculumID=10">Concentration Elective 2</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MC-000003</td><td><a href="Syllabuses.aspx?subCode=MC-000003&amp;curriculumID=10">Concentration Elective 3</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MLN101</td><td><a href="Syllabuses.aspx?subCode=MLN101&amp;curriculumID=10">Principles of Marxism - Leninism</a></td><td style="width:7%;">8</td><td style="width:7%;">5</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">SSN301</td><td><a href="Syllabuses.aspx?subCode=SSN301&amp;curriculumID=10">Negociation / Kỹ năng đàm phán</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">GRA494</td><td><a href="Syllabuses.aspx?subCode=GRA494&amp;curriculumID=10">Graduation Thesis</a></td><td style="width:7%;">9</td><td style="width:7%;">5</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">HCM201</td><td><a href="Syllabuses.aspx?subCode=HCM201&amp;curriculumID=10">Ho Chi Minh Ideology</a></td><td style="width:7%;">9</td><td style="width:7%;">2</td><td style="width:51%;">MLN101</td>
+		</tr><tr>
+			<td style="width:10%;">MC-000004</td><td><a href="Syllabuses.aspx?subCode=MC-000004&amp;curriculumID=10">Concentration Elective 4</a></td><td style="width:7%;">9</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">VNR201</td><td><a href="Syllabuses.aspx?subCode=VNR201&amp;curriculumID=10">Revolutionary line of CPV</a></td><td style="width:7%;">9</td><td style="width:7%;">3</td><td style="width:51%;">MLN101 và studied HCM201 (attend at least 80% of sessions)</td>
+		</tr>
+	</tbody></table>
+</div>
+    <div style="padding: 24px;">
+        <a href="/PLOMapping/View?curriculumID=10" target="_blank">View mapping subjects of the Curriculum
+                                BMC to program learning
+                                    outcomes
+        </a>
+    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('sb-active');
+            });
+            var lang = 'en';
+            $('#language').val(lang);
+            $('#language').change(function () {
+                $.ajax({
+
+                    url: '/Language', // comma here instead of semicolon  
+                    data: { language: $(this).val() },
+                    success: function () {
+                        window.location.reload();
+                    }
+
+                });
+            })
+
+            toastr.options = {
+                "closeButton": true,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            if (window.localStorage.getItem('typeToast') == 1) {
+                toastr.success(window.localStorage.getItem('messToast'));
+                window.localStorage.setItem('typeToast', 0);
+            }
+            if (window.localStorage.getItem('typeToast') == 2) {
+                toastr.error(window.localStorage.getItem('messToast'));
+                window.localStorage.setItem('typeToast', 0);
+            }
+        });
+        function showToastRedirectPage(type, mess) {
+            window.localStorage.setItem('typeToast', type);
+            window.localStorage.setItem('messToast', mess);
+        }
+    </script>
+
+
+
+</body></html>

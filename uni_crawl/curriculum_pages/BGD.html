@@ -1,0 +1,693 @@
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/Content/css?v=5SsskdAh3ChL4quPJSdTqyWDt4Uye5HAhSRdbwb5Vwg1" rel="stylesheet">
+<link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet"><link href="../../../Content/font-face.css" rel="stylesheet"><link href="../../../Content/bootstrap.min.css" rel="stylesheet"><link href="../../../Content/common.css" rel="stylesheet"><link href="../../../bundles/customcss" rel="stylesheet"><link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet"><link href="../../../fonts/css/Bootstrap-select-v1.13.14.css" rel="stylesheet"><link href="../../../Content/toastr.min.css" rel="stylesheet">
+    <style>
+        h1 {
+            font-size: 2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        * {
+            font-family: 'Roboto';
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5em;
+        }
+
+        body {
+            background: #fafafa;
+            padding: 0;
+        }
+
+        nav-bar {
+            position: fixed;
+            width: 100%
+        }
+
+        #sidebar a,
+        #sidebar a:hover,
+        #sidebar a:focus {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        /* Side Bar*/
+
+
+
+        #sidebar.sb-active {
+            margin-left: -300px;
+        }
+
+        .wrapper {
+            display: flex;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+
+        input, select {
+            font-size: inherit !important;
+            /*height: 33.5px !important;*/
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0 0.8em;
+        }
+
+        .tbl-data {
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+            .tbl-data th {
+                font-weight: bold;
+                background-color: #F2994A !important;
+                color: white;
+            }
+
+            .tbl-data input[type=checkbox] {
+                width: 20px;
+            }
+
+        .tbl-detail tr td {
+            padding: 4px 5px 4px 5px;
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+        .tbl-checkbox label {
+            position: relative;
+            top: -11px;
+            left: 2px;
+        }
+
+        .max-with-fit {
+            max-width: fit-content;
+        }
+
+        textarea {
+            font-size: inherit !important;
+        }
+
+        #sidebar {
+            min-width: 300px;
+            max-width: 300px;
+            margin-top: 10px;
+            margin-left: 10px;
+            color: #fff;
+            transition: all 0.3s;
+            overflow-y: scroll;
+            height: 800px;
+            border-radius: 5px;
+            background-color: #F2994A;
+        }
+
+            #sidebar::-webkit-scrollbar {
+                width: 0;
+            }
+
+            #sidebar p {
+                padding: 15px;
+                background: #F2994A;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            #sidebar ul.components {
+                padding: 20px 0;
+            }
+
+
+            #sidebar ul li a {
+                padding: 10px;
+                font-size: 1em;
+                display: block;
+                background-color: #f4a158;
+            }
+
+                #sidebar ul li a:hover {
+                    background: #d06e17;
+                }
+
+            #sidebar ul li.sb-active > a,
+            a[aria-expanded="true"] {
+                color: #fff;
+            }
+
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+
+        #navbarSupportedContent .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: -15%;
+            transform: translateY(-50%);
+        }
+
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 7%;
+            transform: translateY(-50%);
+        }
+
+        #sidebar ul ul a {
+            font-size: 0.9em !important;
+            padding-left: 30px !important;
+            background: #d29a68;
+        }
+
+        #content {
+            height: calc(100vh - 97px);
+            width: 100%;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        #ui-datepicker-div {
+            width: fit-content;
+        }
+
+        .menu-btn {
+            border: none;
+            background-color: #F2994A;
+        }
+
+            .menu-btn:focus {
+                outline: none;
+                box-shadow: none;
+            }
+
+        .btn-green:hover {
+            background-color: #009900;
+        }
+
+        .btn-success {
+            width: 70px;
+            height: 40px;
+            font-weight: bold;
+        }
+
+        #btn-home {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+        }
+
+            #btn-home:hover {
+                color: white;
+            }
+
+            #btn-home span {
+                position: relative;
+                top: 2px;
+                font-size: 15px;
+            }
+
+            #btn-home i {
+                position: relative;
+                top: 2px;
+            }
+
+        .btn-light {
+            border: 1px solid #d9cfcf;
+        }
+
+        #showModelNeed {
+            height: 33.5px;
+        }
+    </style>
+<title>
+	FPT University Learning Materials
+</title></head>
+
+<body style="">
+    <form method="post" action="./CurriculumDetails?curid=6" id="form2">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form2'];
+if (!theForm) {
+    theForm = document.form2;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZMrpL97guh2x_lfUiu-1_hlzlbl--S7Vc8swdj3bZMABH4j1Fn0pmI18V554x5p3Bw2&amp;t=638562813717896622" type="text/javascript"></script>
+
+
+<script src="../../../Scripts/WebForms/MsAjax/MicrosoftAjax.js" type="text/javascript"></script>
+<script src="../../../Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/popper.js" type="text/javascript"></script>
+<script src="../../../Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/Bootstrap-select-v1.13.14.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/custom.js" type="text/javascript"></script>
+<script src="../../../Scripts/toastr.min.js" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7E46DEE6">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="QGp+crbFimyoMk+qRzitoU+/oV3S3Bk+rBU1S0dxGf9dr+GCcdmenVwMF8eamJs3QpwDlxjz5PyJhOP3ITKDafm1Qfbf7PpWm3WfWwz/r9uDNXN+tra0nIatRD99ZML1">
+</div>
+        <nav class="navbar navbar-expand-lg px-0 pb-2 m-0" style="background-color: #F2994A; color: white;">
+            <div class="container-fluid p-0">
+                
+                
+                <a id="btn-home" class="btn btn-lg ml-3" href="/gui/Home.aspx">
+                    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                    <span style="font-weight: bold;">Home</span>
+                </a>
+                
+                <h1 class="text-center" style="position: absolute; left: 24%">FPT University Learning Materials</h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-right-style" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item sb-active">
+                            <span class="sr-only">(current)</span>
+                        </li>
+                    </ul>
+                    <select id="language" style="z-index: 1; width: 130px" class="form-control">
+                        <option value="en">English</option>
+                        <option value="vi">Vietnamese</option>
+                    </select>
+                    <div class="mt-2">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img id="ProfileImage" class="rounded-circle" src="https://lh3.googleusercontent.com/a/ACg8ocKNDpazWZLozszDFrXiDYK9kq_gpCt6Nq8V_-B2kKcQ0waB4dY=s96-c" style="height:50px;width:50px;">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <div id="pnlProfile">
+	
+                                            <span class="dropdown-item">Name:
+                                                <span id="lblName" style="font-weight:bold;">NHU QUANG ANH (K18 QN)</span>
+                                            </span>
+                                            <span class="dropdown-item">
+                                                <div id="pnlEmail">
+		
+                                                    Email:
+                                                        <span id="lblEmail" style="font-weight:bold;">anhnqqe180005@fpt.edu.vn</span>
+                                                
+	</div>
+                                            </span>
+                                            <span class="dropdown-item">User's role:
+                                                   <span id="lblRole" style="font-weight:bold;">Student</span>
+                                            </span>
+                                            <span class="dropdown-item">Education level:
+                                                <span id="lblEduLevel" style="font-weight:bold;">FPTU</span>
+                                            </span>
+                                            <div class="dropdown-item">
+                                                
+                                            </div>
+                                          
+                                            <div class="dropdown-item ">
+                                                <a id="lbtnSignOut" href="javascript:__doPostBack('ctl00$lbtnSignOut','')" style="display:inline-block;width:100%;">Sign out FLM</a>
+                                            </div>
+                                        
+</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="wrapper">
+            
+            <div id="content" class="p-4">
+
+                <div class="mx-3 ">
+                    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'form2', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+                    
+    <link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../Content/font-face.css" rel="stylesheet">
+    <link href="../../../Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../Content/common.css" rel="stylesheet">
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+
+        .auto-style2 {
+            height: 24px;
+        }
+
+        .auto-style3 {
+            height: 24px;
+            width: 155px;
+        }
+
+        .auto-style4 {
+            width: 155px;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        /*Table*/
+        #gvSubs,
+        #gvPLO,
+        #table-detail {
+            border: 1px solid rgba(0, 0, 0, .05);
+        }
+
+            #gvSubs th {
+                font-weight: bold;
+                background-color: #F2994A;
+                color: white;
+            }
+
+            #gvPLO th {
+                font-weight: bold;
+                background-color: #F2994A;
+                color: white;
+            }
+
+        .table-detail tr td {
+            padding: 6px 10px 6px 10px;
+        }
+
+        .plo,
+        table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            .plo td,
+            #customers th {
+                border: 1px solid rgba(0, 0, 0, .05);
+                padding: 8px;
+            }
+
+            .plo tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .plo tr:hover {
+                background-color: #ddd;
+            }
+
+            .plo th {
+                border: 1px solid rgba(0, 0, 0, .05);
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 6px;
+                padding-right: 6px;
+                text-align: center;
+                background-color: #F2994A;
+                color: white;
+                font-weight: bold;
+            }
+
+            .plo td {
+                text-align: center;
+            }
+
+        .textRedBold {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+
+    <h1 class="mb-4">
+        Curriculum Details
+    </h1>
+    
+    <table id="table-detail" class="table-detail" cellspacing="0" rules="all" border="1" style="border-collapse: collapse; width: 100%;">
+        
+        <tbody><tr>
+            <td class="auto-style3 text-right">CurriculumCode:</td>
+            <td>
+                <span id="txtCurriculumCode">BGD</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style3 text-right">Name:</td>
+            <td>
+                <span id="lblName">Graphic Design-Thiết kế đồ họa</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style3 text-right">English Name:</td>
+            <td>
+                <span id="lblEnglishName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6 text-right">Description:</td>
+            <td class="auto-style7">
+                <span id="lblDescription">Free Elective 1 &amp; 2  
+<br>
+<br>ADI201  Thiết kế thương hiệu(Brand Identity Design) 
+<br>ADB201  Thiết kế sách(Book Design) 
+<br>ADP201  Thiết kế bao bì(Packaging Design) 
+<br>DGP201  Vẽ kỹ thuật số(Digital Painting)</span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="auto-style6 text-right">DecisionNo MM/dd/yyyy:</td>
+            <td class="auto-style7">
+                <span id="lblDecisionNo"></span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="auto-style6"></td>
+            <td class="auto-style7">
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/PO/Index?id=6">View PO</a>
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/Compo/ViewComBo?cur_id=6">View Combo</a>
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/Elective/ViewElective?cur_id=6">View
+                                                        Elective</a>
+            </td>
+        </tr>
+    </tbody></table>
+    <br>
+    <span id="lblMessagePLO" style="color:#23AC68;">0 PLO(s) found</span>
+
+    <div>
+
+</div>
+    <br>
+    <!-- 
+        </tbody>
+    </table> -->
+    <br>
+    <span id="lblTotalCredit" style="color:#23AC68;">49 subjects, 139 credits</span>
+    <div>
+	<table class="table table-striped" cellspacing="0" rules="all" border="1" id="gvSubs" style="border-collapse:collapse;">
+		<tbody><tr>
+			<th scope="col">SubjectCode</th><th scope="col">Subject Name</th><th scope="col">Semester</th><th scope="col">NoCredit</th><th scope="col">PreRequisite</th>
+		</tr><tr>
+			<td style="width:10%;">ENT104</td><td><a href="Syllabuses.aspx?subCode=ENT104&amp;curriculumID=6">English 2 (Top Notch 1)_Tiếng Anh 2</a></td><td style="width:7%;">-2</td><td style="width:7%;">0</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">ENT203</td><td><a href="Syllabuses.aspx?subCode=ENT203&amp;curriculumID=6">English 3 (Top Notch 2)_Tiếng Anh 3</a></td><td style="width:7%;">-1</td><td style="width:7%;">0</td><td style="width:51%;">Passed ENT10x or equivalent</td>
+		</tr><tr>
+			<td style="width:10%;">ENT303</td><td><a href="Syllabuses.aspx?subCode=ENT303&amp;curriculumID=6">English 4 (Top Notch 3)_Tiếng Anh 4</a></td><td style="width:7%;">-1</td><td style="width:7%;">0</td><td style="width:51%;">Passed ENT203 or equivalent</td>
+		</tr><tr>
+			<td style="width:10%;">ENT403</td><td><a href="Syllabuses.aspx?subCode=ENT403&amp;curriculumID=6">English 5 (Summit 1)_Tiếng Anh 5</a></td><td style="width:7%;">0</td><td style="width:7%;">0</td><td style="width:51%;">Passed ENT303 or equivalent</td>
+		</tr><tr>
+			<td style="width:10%;">ENT503</td><td><a href="Syllabuses.aspx?subCode=ENT503&amp;curriculumID=6">English 6 (Summit 2)_Tiếng Anh 6</a></td><td style="width:7%;">0</td><td style="width:7%;">0</td><td style="width:51%;">Passed ENT403 or equivalent</td>
+		</tr><tr>
+			<td style="width:10%;">DRP101</td><td><a href="Syllabuses.aspx?subCode=DRP101&amp;curriculumID=6">Drawing plaster stature - portrait_Hình họa - Vẽ đầu tượng, chân dung</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">DRS10x</td>
+		</tr><tr>
+			<td style="width:10%;">DRS101</td><td><a href="Syllabuses.aspx?subCode=DRS101&amp;curriculumID=6">Drawing - Form, Still-life</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">DTG102</td><td><a href="Syllabuses.aspx?subCode=DTG102&amp;curriculumID=6">Visual Design Tools_Công cụ thiết kế trực quan</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">PST201</td><td><a href="Syllabuses.aspx?subCode=PST201&amp;curriculumID=6">Perspective</a></td><td style="width:7%;">1</td><td style="width:7%;">2</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">VNC101</td><td><a href="Syllabuses.aspx?subCode=VNC101&amp;curriculumID=6">Vietnamese Cultural</a></td><td style="width:7%;">1</td><td style="width:7%;">2</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">VOV114</td><td><a href="Syllabuses.aspx?subCode=VOV114&amp;curriculumID=6">Vovinam 1</a></td><td style="width:7%;">1</td><td style="width:7%;">2</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">AFA201</td><td><a href="Syllabuses.aspx?subCode=AFA201&amp;curriculumID=6">Human Anatomy for Artis_Giải phẫu tạo hình</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">DRP101</td>
+		</tr><tr>
+			<td style="width:10%;">CAD201</td><td><a href="Syllabuses.aspx?subCode=CAD201&amp;curriculumID=6">Water Color_Vẽ màu nước</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">DRS10x</td>
+		</tr><tr>
+			<td style="width:10%;">DRD201</td><td><a href="Syllabuses.aspx?subCode=DRD201&amp;curriculumID=6">Drawing - Speed drawing</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">AFA201</td>
+		</tr><tr>
+			<td style="width:10%;">GDF101</td><td><a href="Syllabuses.aspx?subCode=GDF101&amp;curriculumID=6">Fundamental of Graphic Design</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">SSG101</td><td><a href="Syllabuses.aspx?subCode=SSG101&amp;curriculumID=6">Working in Group Skills</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">VCM201</td><td><a href="Syllabuses.aspx?subCode=VCM201&amp;curriculumID=6">Visual Communication</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">Nil</td>
+		</tr><tr>
+			<td style="width:10%;">VOV124</td><td><a href="Syllabuses.aspx?subCode=VOV124&amp;curriculumID=6">Vovinam 2</a></td><td style="width:7%;">2</td><td style="width:7%;">2</td><td style="width:51%;">Passed VOV114 or VOV113</td>
+		</tr><tr>
+			<td style="width:10%;">ANC301</td><td><a href="Syllabuses.aspx?subCode=ANC301&amp;curriculumID=6">Character Development_Tạo hình nhân vật hoạt hình</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">DRD20x or IPD201</td>
+		</tr><tr>
+			<td style="width:10%;">ANT401</td><td><a href="Syllabuses.aspx?subCode=ANT401&amp;curriculumID=6">Traditional Animation Principles_Thiết kế chuyển động hoạt hình</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">ANS301</td>
+		</tr><tr>
+			<td style="width:10%;">DTG301</td><td><a href="Syllabuses.aspx?subCode=DTG301&amp;curriculumID=6">Digital Tool - Interactive</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">WMT201</td>
+		</tr><tr>
+			<td style="width:10%;">HOA101</td><td><a href="Syllabuses.aspx?subCode=HOA101&amp;curriculumID=6">Art History</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">TPG202</td><td><a href="Syllabuses.aspx?subCode=TPG202&amp;curriculumID=6">Typography 1</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">VOV134</td><td><a href="Syllabuses.aspx?subCode=VOV134&amp;curriculumID=6">Vovinam 3</a></td><td style="width:7%;">3</td><td style="width:7%;">2</td><td style="width:51%;">Passed VOV124 or VOV123</td>
+		</tr><tr>
+			<td style="width:10%;">ANB401</td><td><a href="Syllabuses.aspx?subCode=ANB401&amp;curriculumID=6">Background Painting for Animation _ Thiết kế phông nền hoạt hình</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">ANS301</td>
+		</tr><tr>
+			<td style="width:10%;">ANS301</td><td><a href="Syllabuses.aspx?subCode=ANS301&amp;curriculumID=6">Storyboarding_Thiết kế kịch bản phân cảnh hình ảnh</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">ANC301</td>
+		</tr><tr>
+			<td style="width:10%;">FE-000001</td><td><a href="Syllabuses.aspx?subCode=FE-000001&amp;curriculumID=6">Free Elective_Lựa chọn tự do</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">PFD201</td><td><a href="Syllabuses.aspx?subCode=PFD201&amp;curriculumID=6">Photography for Designer_Nhiếp ảnh</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">TPG301</td><td><a href="Syllabuses.aspx?subCode=TPG301&amp;curriculumID=6">Typography 2</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">TPG202</td>
+		</tr><tr>
+			<td style="width:10%;">ANA401</td><td><a href="Syllabuses.aspx?subCode=ANA401&amp;curriculumID=6">3D Character Animation_Tạo chuyển động trong môi trường 3D</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">Passed ANR401 or passed AMR401</td>
+		</tr><tr>
+			<td style="width:10%;">ANM301</td><td><a href="Syllabuses.aspx?subCode=ANM301&amp;curriculumID=6">3D Modeling &amp; Texturing (Maya)</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">ANR401</td><td><a href="Syllabuses.aspx?subCode=ANR401&amp;curriculumID=6">Introduction to Rigging _Tạo khung xương và bộ điều khiển cho nhân vật</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">CAA201</td><td><a href="Syllabuses.aspx?subCode=CAA201&amp;curriculumID=6">Communications and advertising_Nguyên lý truyền thông và quảng cáo</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">WDU201</td><td><a href="Syllabuses.aspx?subCode=WDU201&amp;curriculumID=6">Principles of UX</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">OJB211</td><td><a href="Syllabuses.aspx?subCode=OJB211&amp;curriculumID=6">On the job training</a></td><td style="width:7%;">6</td><td style="width:7%;">10</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">AET101</td><td><a href="Syllabuses.aspx?subCode=AET101&amp;curriculumID=6">Aesthetic</a></td><td style="width:7%;">7</td><td style="width:7%;">2</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">FE-000002</td><td><a href="Syllabuses.aspx?subCode=FE-000002&amp;curriculumID=6">Free Elective 2</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">HOD101</td><td><a href="Syllabuses.aspx?subCode=HOD101&amp;curriculumID=6">Design History</a></td><td style="width:7%;">7</td><td style="width:7%;">2</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">PFL401</td><td><a href="Syllabuses.aspx?subCode=PFL401&amp;curriculumID=6">Portfolio Design_Thiết kế hồ sơ cá nhân</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">1 of 6 sets of courses: 
+1/ Combo 1: ANT401; 
+2/ Combo 2: ANM322 and ANR401; 
+3/ Combo 3: WDT401 and WIR201;
+4/ Combo 4: ADI201 and ADB201 
+5/ Combo 5: ANO301 and ANT401</td>
+		</tr><tr>
+			<td style="width:10%;">WDL301</td><td><a href="Syllabuses.aspx?subCode=WDL301&amp;curriculumID=6">Web Design 1</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">WDU201 or WMT201</td>
+		</tr><tr>
+			<td style="width:10%;">WDT401</td><td><a href="Syllabuses.aspx?subCode=WDT401&amp;curriculumID=6">Web Design_Thiết kế Web</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">WDL301 or WDL202</td>
+		</tr><tr>
+			<td style="width:10%;">ADH301</td><td><a href="Syllabuses.aspx?subCode=ADH301&amp;curriculumID=6">Mobility Applications Design 1 _Thiết kế ứng dụng cho các thiết bị di động 1</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">WDU201 or WMT201 or WDU202c</td>
+		</tr><tr>
+			<td style="width:10%;">ADT401</td><td><a href="Syllabuses.aspx?subCode=ADT401&amp;curriculumID=6">Mobility Applications Design 2 _ Thiết kế ứng dụng cho các thiết bị di động 2</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">ADH301</td>
+		</tr><tr>
+			<td style="width:10%;">IPR121</td><td><a href="Syllabuses.aspx?subCode=IPR121&amp;curriculumID=6">Intellectual Property Rights</a></td><td style="width:7%;">8</td><td style="width:7%;">2</td><td style="width:51%;">Upper-intermediate level of English</td>
+		</tr><tr>
+			<td style="width:10%;">MLN101</td><td><a href="Syllabuses.aspx?subCode=MLN101&amp;curriculumID=6">Principles of Marxism - Leninism</a></td><td style="width:7%;">8</td><td style="width:7%;">5</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">SSC102</td><td><a href="Syllabuses.aspx?subCode=SSC102&amp;curriculumID=6">Business Communication_Kỹ năng giao tiếp</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">ENT503 or equivalent English qualification.</td>
+		</tr><tr>
+			<td style="width:10%;">GDP491</td><td><a href="Syllabuses.aspx?subCode=GDP491&amp;curriculumID=6">Capstone Project Graphic Design_Đồ án tốt nghiệp Thiết kế mỹ thuật số</a></td><td style="width:7%;">9</td><td style="width:7%;">10</td><td style="width:51%;">1. Passed on the job training (OJT). 
+2. Pass 80% of total credits (PHE_COM* and  OJT excluded)
+3. • Completed 3/4 subjects: GDS301, GDG401, GDW401, GDA401 or Completed 6/8 subjects: ANS301; ANT401; ANR401; ANA401; WDL301; WDT401; ADH301; ADT401.
+
+• For K9 students: in order to choose Branding or Packaging as specialized graduated courses, the pre-requisite is Book and Packaging Design - ADG301</td>
+		</tr><tr>
+			<td style="width:10%;">HCM201</td><td><a href="Syllabuses.aspx?subCode=HCM201&amp;curriculumID=6">Ho Chi Minh Ideology</a></td><td style="width:7%;">9</td><td style="width:7%;">2</td><td style="width:51%;">MLN101</td>
+		</tr><tr>
+			<td style="width:10%;">VNR201</td><td><a href="Syllabuses.aspx?subCode=VNR201&amp;curriculumID=6">Revolutionary line of CPV</a></td><td style="width:7%;">9</td><td style="width:7%;">3</td><td style="width:51%;">MLN101 và studied HCM201 (attend at least 80% of sessions)</td>
+		</tr>
+	</tbody></table>
+</div>
+    <div style="padding: 24px;">
+        <a href="/PLOMapping/View?curriculumID=6" target="_blank">View mapping subjects of the Curriculum
+                                BGD to program learning
+                                    outcomes
+        </a>
+    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('sb-active');
+            });
+            var lang = 'en';
+            $('#language').val(lang);
+            $('#language').change(function () {
+                $.ajax({
+
+                    url: '/Language', // comma here instead of semicolon  
+                    data: { language: $(this).val() },
+                    success: function () {
+                        window.location.reload();
+                    }
+
+                });
+            })
+
+            toastr.options = {
+                "closeButton": true,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            if (window.localStorage.getItem('typeToast') == 1) {
+                toastr.success(window.localStorage.getItem('messToast'));
+                window.localStorage.setItem('typeToast', 0);
+            }
+            if (window.localStorage.getItem('typeToast') == 2) {
+                toastr.error(window.localStorage.getItem('messToast'));
+                window.localStorage.setItem('typeToast', 0);
+            }
+        });
+        function showToastRedirectPage(type, mess) {
+            window.localStorage.setItem('typeToast', type);
+            window.localStorage.setItem('messToast', mess);
+        }
+    </script>
+
+
+
+</body></html>

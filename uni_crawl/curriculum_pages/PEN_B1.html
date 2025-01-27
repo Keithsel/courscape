@@ -1,0 +1,591 @@
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/Content/css?v=5SsskdAh3ChL4quPJSdTqyWDt4Uye5HAhSRdbwb5Vwg1" rel="stylesheet">
+<link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet"><link href="../../../Content/font-face.css" rel="stylesheet"><link href="../../../Content/bootstrap.min.css" rel="stylesheet"><link href="../../../Content/common.css" rel="stylesheet"><link href="../../../bundles/customcss" rel="stylesheet"><link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet"><link href="../../../fonts/css/Bootstrap-select-v1.13.14.css" rel="stylesheet"><link href="../../../Content/toastr.min.css" rel="stylesheet">
+    <style>
+        h1 {
+            font-size: 2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        * {
+            font-family: 'Roboto';
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5em;
+        }
+
+        body {
+            background: #fafafa;
+            padding: 0;
+        }
+
+        nav-bar {
+            position: fixed;
+            width: 100%
+        }
+
+        #sidebar a,
+        #sidebar a:hover,
+        #sidebar a:focus {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        /* Side Bar*/
+
+
+
+        #sidebar.sb-active {
+            margin-left: -300px;
+        }
+
+        .wrapper {
+            display: flex;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+
+        input, select {
+            font-size: inherit !important;
+            /*height: 33.5px !important;*/
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0 0.8em;
+        }
+
+        .tbl-data {
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+            .tbl-data th {
+                font-weight: bold;
+                background-color: #F2994A !important;
+                color: white;
+            }
+
+            .tbl-data input[type=checkbox] {
+                width: 20px;
+            }
+
+        .tbl-detail tr td {
+            padding: 4px 5px 4px 5px;
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+        .tbl-checkbox label {
+            position: relative;
+            top: -11px;
+            left: 2px;
+        }
+
+        .max-with-fit {
+            max-width: fit-content;
+        }
+
+        textarea {
+            font-size: inherit !important;
+        }
+
+        #sidebar {
+            min-width: 300px;
+            max-width: 300px;
+            margin-top: 10px;
+            margin-left: 10px;
+            color: #fff;
+            transition: all 0.3s;
+            overflow-y: scroll;
+            height: 800px;
+            border-radius: 5px;
+            background-color: #F2994A;
+        }
+
+            #sidebar::-webkit-scrollbar {
+                width: 0;
+            }
+
+            #sidebar p {
+                padding: 15px;
+                background: #F2994A;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            #sidebar ul.components {
+                padding: 20px 0;
+            }
+
+
+            #sidebar ul li a {
+                padding: 10px;
+                font-size: 1em;
+                display: block;
+                background-color: #f4a158;
+            }
+
+                #sidebar ul li a:hover {
+                    background: #d06e17;
+                }
+
+            #sidebar ul li.sb-active > a,
+            a[aria-expanded="true"] {
+                color: #fff;
+            }
+
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+
+        #navbarSupportedContent .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: -15%;
+            transform: translateY(-50%);
+        }
+
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 7%;
+            transform: translateY(-50%);
+        }
+
+        #sidebar ul ul a {
+            font-size: 0.9em !important;
+            padding-left: 30px !important;
+            background: #d29a68;
+        }
+
+        #content {
+            height: calc(100vh - 97px);
+            width: 100%;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        #ui-datepicker-div {
+            width: fit-content;
+        }
+
+        .menu-btn {
+            border: none;
+            background-color: #F2994A;
+        }
+
+            .menu-btn:focus {
+                outline: none;
+                box-shadow: none;
+            }
+
+        .btn-green:hover {
+            background-color: #009900;
+        }
+
+        .btn-success {
+            width: 70px;
+            height: 40px;
+            font-weight: bold;
+        }
+
+        #btn-home {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+        }
+
+            #btn-home:hover {
+                color: white;
+            }
+
+            #btn-home span {
+                position: relative;
+                top: 2px;
+                font-size: 15px;
+            }
+
+            #btn-home i {
+                position: relative;
+                top: 2px;
+            }
+
+        .btn-light {
+            border: 1px solid #d9cfcf;
+        }
+
+        #showModelNeed {
+            height: 33.5px;
+        }
+    </style>
+<title>
+	FPT University Learning Materials
+</title></head>
+
+<body style="">
+    <form method="post" action="./CurriculumDetails?curid=1666" id="form2">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form2'];
+if (!theForm) {
+    theForm = document.form2;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZMrpL97guh2x_lfUiu-1_hlzlbl--S7Vc8swdj3bZMABH4j1Fn0pmI18V554x5p3Bw2&amp;t=638562813717896622" type="text/javascript"></script>
+
+
+<script src="../../../Scripts/WebForms/MsAjax/MicrosoftAjax.js" type="text/javascript"></script>
+<script src="../../../Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/popper.js" type="text/javascript"></script>
+<script src="../../../Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/Bootstrap-select-v1.13.14.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/custom.js" type="text/javascript"></script>
+<script src="../../../Scripts/toastr.min.js" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7E46DEE6">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="EVASGnoVv648Z42oLtBO1DE6LJNP/l46SHNoNXcBwhdm8j/uKgw7YuozJcIjHm6Q+AKDAe91YlvrylXF4X5tllGx1IBiInHsYwJM4f6vjgdCbJwl4WgSejhh4WQvu4kq">
+</div>
+        <nav class="navbar navbar-expand-lg px-0 pb-2 m-0" style="background-color: #F2994A; color: white;">
+            <div class="container-fluid p-0">
+                
+                
+                <a id="btn-home" class="btn btn-lg ml-3" href="/gui/Home.aspx">
+                    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                    <span style="font-weight: bold;">Home</span>
+                </a>
+                
+                <h1 class="text-center" style="position: absolute; left: 24%">FPT University Learning Materials</h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-right-style" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item sb-active">
+                            <span class="sr-only">(current)</span>
+                        </li>
+                    </ul>
+                    <select id="language" style="z-index: 1; width: 130px" class="form-control">
+                        <option value="en">English</option>
+                        <option value="vi">Vietnamese</option>
+                    </select>
+                    <div class="mt-2">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img id="ProfileImage" class="rounded-circle" src="https://lh3.googleusercontent.com/a/ACg8ocKNDpazWZLozszDFrXiDYK9kq_gpCt6Nq8V_-B2kKcQ0waB4dY=s96-c" style="height:50px;width:50px;">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <div id="pnlProfile">
+	
+                                            <span class="dropdown-item">Name:
+                                                <span id="lblName" style="font-weight:bold;">NHU QUANG ANH (K18 QN)</span>
+                                            </span>
+                                            <span class="dropdown-item">
+                                                <div id="pnlEmail">
+		
+                                                    Email:
+                                                        <span id="lblEmail" style="font-weight:bold;">anhnqqe180005@fpt.edu.vn</span>
+                                                
+	</div>
+                                            </span>
+                                            <span class="dropdown-item">User's role:
+                                                   <span id="lblRole" style="font-weight:bold;">Student</span>
+                                            </span>
+                                            <span class="dropdown-item">Education level:
+                                                <span id="lblEduLevel" style="font-weight:bold;">FPTU</span>
+                                            </span>
+                                            <div class="dropdown-item">
+                                                
+                                            </div>
+                                          
+                                            <div class="dropdown-item ">
+                                                <a id="lbtnSignOut" href="javascript:__doPostBack('ctl00$lbtnSignOut','')" style="display:inline-block;width:100%;">Sign out FLM</a>
+                                            </div>
+                                        
+</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="wrapper">
+            
+            <div id="content" class="p-4">
+
+                <div class="mx-3 ">
+                    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'form2', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+                    
+    <link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../Content/font-face.css" rel="stylesheet">
+    <link href="../../../Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../Content/common.css" rel="stylesheet">
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+
+        .auto-style2 {
+            height: 24px;
+        }
+
+        .auto-style3 {
+            height: 24px;
+            width: 155px;
+        }
+
+        .auto-style4 {
+            width: 155px;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        /*Table*/
+        #gvSubs,
+        #gvPLO,
+        #table-detail {
+            border: 1px solid rgba(0, 0, 0, .05);
+        }
+
+            #gvSubs th {
+                font-weight: bold;
+                background-color: #F2994A;
+                color: white;
+            }
+
+            #gvPLO th {
+                font-weight: bold;
+                background-color: #F2994A;
+                color: white;
+            }
+
+        .table-detail tr td {
+            padding: 6px 10px 6px 10px;
+        }
+
+        .plo,
+        table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            .plo td,
+            #customers th {
+                border: 1px solid rgba(0, 0, 0, .05);
+                padding: 8px;
+            }
+
+            .plo tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .plo tr:hover {
+                background-color: #ddd;
+            }
+
+            .plo th {
+                border: 1px solid rgba(0, 0, 0, .05);
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 6px;
+                padding-right: 6px;
+                text-align: center;
+                background-color: #F2994A;
+                color: white;
+                font-weight: bold;
+            }
+
+            .plo td {
+                text-align: center;
+            }
+
+        .textRedBold {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+
+    <h1 class="mb-4">
+        Curriculum Details
+    </h1>
+    
+    <table id="table-detail" class="table-detail" cellspacing="0" rules="all" border="1" style="border-collapse: collapse; width: 100%;">
+        
+        <tbody><tr>
+            <td class="auto-style3 text-right">CurriculumCode:</td>
+            <td>
+                <span id="txtCurriculumCode">PEN_B1</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style3 text-right">Name:</td>
+            <td>
+                <span id="lblName">Preparation English_Tiếng Anh chuẩn bị</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style3 text-right">English Name:</td>
+            <td>
+                <span id="lblEnglishName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6 text-right">Description:</td>
+            <td class="auto-style7">
+                <span id="lblDescription">The preparation phase involves a 5-week Orientation and General Training program (OTP) and the English Preparation courses (PEN) which could last from 2 months to 1 year. The OTP includes 3 parts: 1) Orientation; 2) Military training; and 3) Experience, aiming at introducing students to community engagement, sustainable development, and military training. Students may have to attend PEN only if they fail to meet the entrance language requirement. PEN is classified into 6 levels ranging from A0 to B2 and each level of PEN is taught in 2 months. PEN could take place before or simultaneously with the OTP.</span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="auto-style6 text-right">DecisionNo MM/dd/yyyy:</td>
+            <td class="auto-style7">
+                <span id="lblDecisionNo">495/QĐ-ĐHFPT dated 05/16/2023</span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="auto-style6"></td>
+            <td class="auto-style7">
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/PO/Index?id=1666">View PO</a>
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/Compo/ViewComBo?cur_id=1666">View Combo</a>
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/Elective/ViewElective?cur_id=1666">View
+                                                        Elective</a>
+            </td>
+        </tr>
+    </tbody></table>
+    <br>
+    <span id="lblMessagePLO" style="color:#23AC68;">0 PLO(s) found</span>
+
+    <div>
+
+</div>
+    <br>
+    <!-- 
+        </tbody>
+    </table> -->
+    <br>
+    <span id="lblTotalCredit" style="color:#23AC68;">5 subjects, 5 credits</span>
+    <div>
+	<table class="table table-striped" cellspacing="0" rules="all" border="1" id="gvSubs" style="border-collapse:collapse;">
+		<tbody><tr>
+			<th scope="col">SubjectCode</th><th scope="col">Subject Name</th><th scope="col">Semester</th><th scope="col">NoCredit</th><th scope="col">PreRequisite</th>
+		</tr><tr>
+			<td style="width:10%;">OTP101</td><td><a href="Syllabuses.aspx?subCode=OTP101&amp;curriculumID=1666">Orientation and General Training Program_Định hướng và Rèn luyện tập trung</a></td><td style="width:7%;">-1</td><td style="width:7%;">0</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">PEN_COM*5</td><td><a href="Syllabuses.aspx?subCode=PEN_COM*5&amp;curriculumID=1666">English Level 5</a></td><td style="width:7%;">-1</td><td style="width:7%;">0</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">PHE_COM*1</td><td><a href="Syllabuses.aspx?subCode=PHE_COM*1&amp;curriculumID=1666">Physical Education 1_Giáo dục thể chất 1</a></td><td style="width:7%;">-1</td><td style="width:7%;">2</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">PEN_COM*6</td><td><a href="Syllabuses.aspx?subCode=PEN_COM*6&amp;curriculumID=1666">English Level 6</a></td><td style="width:7%;">0</td><td style="width:7%;">0</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">TMI_ELE</td><td><a href="Syllabuses.aspx?subCode=TMI_ELE&amp;curriculumID=1666">Traditional musical instrument_Nhạc cụ truyền thống</a></td><td style="width:7%;">0</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr>
+	</tbody></table>
+</div>
+    <div style="padding: 24px;">
+        <a href="/PLOMapping/View?curriculumID=1666" target="_blank">View mapping subjects of the Curriculum
+                                PEN_B1 to program learning
+                                    outcomes
+        </a>
+    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('sb-active');
+            });
+            var lang = 'en';
+            $('#language').val(lang);
+            $('#language').change(function () {
+                $.ajax({
+
+                    url: '/Language', // comma here instead of semicolon  
+                    data: { language: $(this).val() },
+                    success: function () {
+                        window.location.reload();
+                    }
+
+                });
+            })
+
+            toastr.options = {
+                "closeButton": true,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            if (window.localStorage.getItem('typeToast') == 1) {
+                toastr.success(window.localStorage.getItem('messToast'));
+                window.localStorage.setItem('typeToast', 0);
+            }
+            if (window.localStorage.getItem('typeToast') == 2) {
+                toastr.error(window.localStorage.getItem('messToast'));
+                window.localStorage.setItem('typeToast', 0);
+            }
+        });
+        function showToastRedirectPage(type, mess) {
+            window.localStorage.setItem('typeToast', type);
+            window.localStorage.setItem('messToast', mess);
+        }
+    </script>
+
+
+
+</body></html>

@@ -1,0 +1,2837 @@
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/Content/css?v=5SsskdAh3ChL4quPJSdTqyWDt4Uye5HAhSRdbwb5Vwg1" rel="stylesheet">
+<link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet"><link href="../../../Content/font-face.css" rel="stylesheet"><link href="../../../Content/bootstrap.min.css" rel="stylesheet"><link href="../../../Content/common.css" rel="stylesheet"><link href="../../../bundles/customcss" rel="stylesheet"><link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet"><link href="../../../fonts/css/Bootstrap-select-v1.13.14.css" rel="stylesheet"><link href="../../../Content/toastr.min.css" rel="stylesheet">
+    <style>
+        h1 {
+            font-size: 2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        * {
+            font-family: 'Roboto';
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5em;
+        }
+
+        body {
+            background: #fafafa;
+            padding: 0;
+        }
+
+        nav-bar {
+            position: fixed;
+            width: 100%
+        }
+
+        #sidebar a,
+        #sidebar a:hover,
+        #sidebar a:focus {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        /* Side Bar*/
+
+
+
+        #sidebar.sb-active {
+            margin-left: -300px;
+        }
+
+        .wrapper {
+            display: flex;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+
+        input, select {
+            font-size: inherit !important;
+            /*height: 33.5px !important;*/
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0 0.8em;
+        }
+
+        .tbl-data {
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+            .tbl-data th {
+                font-weight: bold;
+                background-color: #F2994A !important;
+                color: white;
+            }
+
+            .tbl-data input[type=checkbox] {
+                width: 20px;
+            }
+
+        .tbl-detail tr td {
+            padding: 4px 5px 4px 5px;
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+        .tbl-checkbox label {
+            position: relative;
+            top: -11px;
+            left: 2px;
+        }
+
+        .max-with-fit {
+            max-width: fit-content;
+        }
+
+        textarea {
+            font-size: inherit !important;
+        }
+
+        #sidebar {
+            min-width: 300px;
+            max-width: 300px;
+            margin-top: 10px;
+            margin-left: 10px;
+            color: #fff;
+            transition: all 0.3s;
+            overflow-y: scroll;
+            height: 800px;
+            border-radius: 5px;
+            background-color: #F2994A;
+        }
+
+            #sidebar::-webkit-scrollbar {
+                width: 0;
+            }
+
+            #sidebar p {
+                padding: 15px;
+                background: #F2994A;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            #sidebar ul.components {
+                padding: 20px 0;
+            }
+
+
+            #sidebar ul li a {
+                padding: 10px;
+                font-size: 1em;
+                display: block;
+                background-color: #f4a158;
+            }
+
+                #sidebar ul li a:hover {
+                    background: #d06e17;
+                }
+
+            #sidebar ul li.sb-active > a,
+            a[aria-expanded="true"] {
+                color: #fff;
+            }
+
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+
+        #navbarSupportedContent .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: -15%;
+            transform: translateY(-50%);
+        }
+
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 7%;
+            transform: translateY(-50%);
+        }
+
+        #sidebar ul ul a {
+            font-size: 0.9em !important;
+            padding-left: 30px !important;
+            background: #d29a68;
+        }
+
+        #content {
+            height: calc(100vh - 97px);
+            width: 100%;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        #ui-datepicker-div {
+            width: fit-content;
+        }
+
+        .menu-btn {
+            border: none;
+            background-color: #F2994A;
+        }
+
+            .menu-btn:focus {
+                outline: none;
+                box-shadow: none;
+            }
+
+        .btn-green:hover {
+            background-color: #009900;
+        }
+
+        .btn-success {
+            width: 70px;
+            height: 40px;
+            font-weight: bold;
+        }
+
+        #btn-home {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+        }
+
+            #btn-home:hover {
+                color: white;
+            }
+
+            #btn-home span {
+                position: relative;
+                top: 2px;
+                font-size: 15px;
+            }
+
+            #btn-home i {
+                position: relative;
+                top: 2px;
+            }
+
+        .btn-light {
+            border: 1px solid #d9cfcf;
+        }
+
+        #showModelNeed {
+            height: 33.5px;
+        }
+    </style>
+<title>
+	FPT University Learning Materials
+</title></head>
+
+<body style="">
+    <form method="post" action="./CurriculumDetails?curid=401" id="form2">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="oc32Yf5yD7MsozJwrqopofjxgKYec09fU6M/wll984aAJL3amE3ekI3TXapFkcEPFG/InInizR0IsdEdt9ECl4l6dwoR8pdJUZiC1fS8/+XxHlCGgBre85BymF7Kz6lp/ZnxXcUdbsvnv1UCfnMibvdPDT+UrvvL/BZo9/ccTosLLrcKAYpKF+5l6d28GWhkUlqCps3QxnxKu880G5njS+GLipf0MQyh1oP7235qMYWz0lKwI4VQhip+ZWCYKI8OsI349ZyMmnZMJ49JUStG1/Vl4OYfYEZagv3kqzvOqzjWcwreG1nKXH43IEsXi6A3wVuBf30Id3Plv0cS3Bm38/Ro8O5LELlwAMduu1/ZPguMs2WQUpB7n7cfH0eGBtQ+eqz5O63sbouBVOgsHfwWFe3I1V/128ZeWoomxxlZPAE+gEJpkyd0YOh1ughccVmtIQy59wYffdDgRC8WESWGLqeXtksh9qDhEblj7XDnnhpteuNsKoCIwntwtV5IMP+23jbzns2YDFqyJsTht6E92rx7WnuXfCruHQ5DSMnqiQCaAK7EZny1jdTGfoq+DH0wuJbZD5uaTZBxqtUK8sn6TC+2ahpXYiHl6n9Biy7KVdc5+OQEfvQvEhjbcrB6NPbmZZho2wAuO9OqF9lczQS+vw+EgM4UAM9Ce/J2dCxwOhTc726V4z5gB9KWzjW79dEKiKC2KDxaGFJgkMZKd3cQBQ5sZSgIBmpU0YMKdF7XVPUJRe2yYy2hoekpA1Yz1cCyTDQqN8HdFRKi7eHw40zhOCIG4/y3/2E1s7orMv7TR8nuH3cpnH++iLTp6E6N4kDq7lLQSLKOI/CjDNrVIsT6ZeOz6KOQ2E0Xd0nXcm7+0tz2F1OHrVU793bGUCNvrA/kpSutB7EXm2sKn/RXh00ei7NJ3pulLKJfLcLWWTM+lzK3yl4DMLdr0cYZdh+40ILKai9VKHZjlO8a2X9SPWRc11wBqnjIawQOIQfwhvKMBJVUOr/d2ALGMeTSDXlv+2Ft4BW30jwut/a1EpBxCgKqmK4MTZmj4Rd16hRWrXirT3uokKBXxt/PpX8fBiQAjpBTRMM3lOIh4DmHFbfw2xJeREzI4kihdX+PbCazDJL8xm5j3irGX/LqXyenzysse0z9G6sMqj2qY3BsasrfnIuAcl+eVbJDMW6zGMWMddIkF37M6/AxzSA3uhlvz3R9qDAlmtCpZmI93O9auPxnYeqhXaU7ZreOVNj8LGAPs++dDTLyfeqwCne3i1VNzVvH1ECsi5FtWwud2XEFdo30Qunib0xRM9eBKkx2wc1ld3fq5xPiP2eiW7C46vhA+vIIFA0CU3ZGpChNhVGSHOxS16LVntW0rE0o3oEEiVRJBs6ukqN1UDgQxbCdoGKij9MBDVpkuFBq0YVe4bLKNMqB6Av6TJTDgSsXXhVl9RcccKFTudskz4+NdZtJEfENAE2WyYR/4Sv1iUULx/cAJu4caF6j7YroPIK1xh4p2SCXsH83rEiyj1uK28YAb2AzgYZe9iyQHfbutHHv7Z1jA24b3kQ1aTCIUHgWRRdUDMcMl7MWT37S0RKYFPd0hvj9TFrmJ7HKMEd0T2b1K972yw+1M5CHQmONNftRwh4iSoAr73nmybScHn1KtaBvvNWyMHBOv9+WW8q6RrpTNu93Y0FdBmVvyalUNOPsPVcfgKbSO46BB7pHPyubWM/vjFwcaeG/zLYn0hRA0CSSsjFC6dVxO82/ajQFIbHcD7DU5iEZiIkkcGk+IJe+fSin9gP8SQGtPMllqDowcHvtmsbdw5wHD9x7E8edVm/D2BRPkDARiTIwzNJ8OPSYYvT2cCIPy66AtLtmJrZ0cUiuJQCgID+dZWBcsqFVjZ4n96sk8VPfXCNbJWajqRKci2VFXZh6vi6PCpkPLTdWjY5yOMkrDzCJwtkax0tzz7FC8CgRypqJGbREZaFOHqgwEj46HNP9crZuvvQkyGMLzvV3zXYSP7AmWnpiFH2h3jTZBV0GEo0vMOqruRGsbmnC8B0TkWNOqXiMvVbsHQuiVTq1weHqPpQewLcKq/ZVNLxYaq2Bwk9PVWQa/Cc01qD98YukHL906RicSDFEBC2IfjhcPOmsmfkdsetsGfbOmpe+240JCDjvUOUpEvaZI1ljc0v7LFtLLgfpf4pjJVe/lLECk7AspAHIZMdGqns0dNt5hhpXd1+/BDnA2l1JN3oFtrkm4bzyHXCrebfonKdp8PYhIrsTXlIjUxmhGzfpKahFdHZIUe3+BEP58ZFc/x74B0rbta1R4TBGdlBmOH/VnHUIqV1oq7z7X72wrhOT1Zz0hWtUfA6hnTg932KdHLY5igWdKKXGi6aw8qVUsB8CAht9JtgOJeX8US/IL7/v5vP1vPP33jRDjna3bHzUXeatiNU3UNIk7ylbHj35ZQSZp7/RspVCerXZYFkip7ACAX73wg644usWtdrk9HN+qXttNoISgHtvxJf0sl3qxKpfEVn3NXxRgTvKgGBYFsX5uSuILQO9ZFshHRmCDwGkbaDrnp14gWeHxNQkkBN7lYjHbX45OaH3TYjCfr6J0jB3UAwjInHKznqbXxMUKtwa3QoyApCkH/tcemyv1fL9qDQ8br4Y4mT32gokCNDoBU0zD5XTQTjfdFrHZRSnvamaLNylRAL8FcDIPcMHC6YOBH8j95Si4D+LCgemWp3fjZXfuxAVnB+CDSEPQhbpRGCjsCZY4Qu+K0TFR0QNX7kYAUzXsI9SVWfcRFTvRjJISYRIIqolY9T7O68DreojYTJJMA9b/QQVznBHFCoB5/iSgF2mm2N8eJZkdFRqdZocn2XCKyAkCLLxv3xDr3u4orfBgqrGDM9Q4p0DKZpEGATmbniItqc7pgEJZBA8zGiedaFixmQ1SEa511NX1EhJpoGhoitW9+t+sp/pkq9LeKJaOk0WIFMkfRTArmTQDPXOZ+JIKZJz1Jj9GvPzM/oIyIWOpDQRIrDs7sMpXp/qVfBnhS5UrkXMIF7x1dYrds0niXgryoPNAzm1YsxP9Rh+xuXMZ17Ezx+h9O7z9j328GotzGTfu4z4nQ625avs/NIEaO8dWnCcDGreGcyBNs0YVFiWixi/h+KNFiVTEOWzk10u3waOvt7Wj4aGG2wrCYHokcTgZLwWYUN29hygMl0NsV+BhRrBn/sSRoYuhINzMglUJGr0BTXm2bGsrjCzaUzYKk3rLaq3+MUUeDvzi2l06tq/aKgyYCkfytenumcofv1gCHRwguzoitEpYS+9it14W/l408KwsxvJqJKU4ucFexsjViqZ8xanVNGmcUgEunOxI6o0jtAD4n/Ut8mu7Gyi23/JokF/4hwnhwDtdg2sy+NUBxUkQt1Huvwt0obJO9elfFApvPpWqRLXRUyuZzUdYZMWVz4SPhrljR1KuMk+wl9G0Fq5trsjnGxPkkSYa3oZeUKJOGs7rXpxiLdzjRD+hR8axLNZrvE3v6sNwNS8WzQv+dhxPvu/+3Sn63TQMl12ALkrRJ0ttzWG1zTcLcFHaVl4yjfbpricR548U5DE1H1S/o1XwmgJpnRwVJEf591Hh8cRGhQ91AEsiy7id9Y+AD4HqD4OrvcBUUcjXI7rZSANuY3Zrrd9SyydA7tTo+cuP3eo4GzEmP6O4yOvp2NxIJgpyC9k5JhUP1ACBYJQWVvlefpoQZwpaXuBFkouDoK5wfxLL2eH4cuBzPzVV7bKzuVLP0L5iut/D1ZOR6R6ufxLL8zIiZSH20R8ijeUZ170KJ5ksDJWcLHRRUdJPb67gNtFe53ZBoAguB3GMY3CIbrRDMDxFWzGV8bMjFyiGpVOtVXYMU43KOxycRvpfsilBKXNA1x/ql1lFnFJ2g2I7zdJCZqsEQHIoLcBsxsUh7tqgdUgqm8TN+7d5RQMnp76SpgdrJRy/sMod2zltlD4esE/iqofeibzOWB+AxO7ebUOV9qMR+6uglCu4nPqFzmFkCNOclj6H0VmVVriu/fWAqtk4liXuLDyYuqhqQe9BjJ/OnULXPmeCcQDfHhw0QRuUsdUMRC2gwhurFeNnT+b8fKRz4o2rK4ijWKSzcyYlKsFvRwHWXgxJXUpXbv4vAqhX8BZCHtsoz3vviWdiVC8+YhJa0mTnPRGptG7Gle9/6BSX5L1K2v6MhbstYehcGkQF0sLiv8qp1/qIwLzWeYhIAya5mKqAnoONwKjLEN7r9spcbz6X5JoOXVcYFDhlqaWebVvdAaqakUKI59B2aON01zHxTGCKzyAH5hnto7wO/719Dp79I18gm5ANj36bAiwXJeDKZfW4rAGn0e9oV5XPQNYWypfsalpS28/ZC8d7tY256RKWGj1b+VU+7FOWW7xNNR/4nLfDoXkw7q+1ZVWfG6dQuuXT6f45wzjP8ak7zmUVRpWw1lVTDvpvnLl+pv9fWOdj0LlS3y/iEAHuo0z5z5+loLUEDs/Zsrx1Zr+Xnnub2XCj9XtQy8ec8DExaPiIXqHzq/HB6jdbv9T5fN+3X/XwUvxTFU+redWG+48XT14d8qBnMWMSJHxjW0rUZexxk4Rb8SNB1fRL4XGE/NES+hfjMFfSu4CsXiwZsz8Rrlk/MdVTL7j5PdX75kER8XQX3JV8ULg6C/xtEDaeF/asxiNaIxoL4mCVGiChnr8qpIMSRLzSlUxnzYgPMdgztnQflB4N3S7x+LO7qFHx3x6XJuUypodn2rrNes3/aXz9cFGXtAmEMkJf6EkG+obBCDetekSvKf8n9KeKO0TXIU7qMHblwLKCQbnQagZcDsjgjkf2nXQ6I7dKXrBtm+/FGy+xLG6vLr9W/4lfDwHrGVVdqpPvIMsiRbdNBX/BJSnjis7G1ky6CkTBBRVE0ztqW9XGwE3LeBmDK+C2rF/RYudmPE0Ew8SXfM3PB0KBZIU4zkXaafwt3N7wrAzYnCaxWEb83EvAgBRcuMbJttJNbHeSQ5wFnrz0qeToatmlMFycmu4BN5MzK6vEJTtZKlINv2U16JdgsiRlRuY0NuN6zdmFh57g6YrhJND+poABIBiPlQ7X3uqQKm4M2S1IS1VNMqPvD+DrHGFQpLg3K6K0PkzdhvyviOuwvBBlKBiAmOen2IG5HOW0oSG7M2VIsxrEx11zvX3+8nztiNscfDoaVx3jXZ3TDUVgDZRuU4qaCU0xbZEwcN/7DwnfMuatdn9/LYvxLvEkXCggesww7X1PBEOqoiCP/H/88g9xaKoaG4K8y+ROmRGbLe/G6XSeh1dSZb3tgt5Xs7tPWcYzt4SWTGpEasJu6G58VYzeLmc9bw+o5mVUADyk4LhHEQ/C/2ny4GLCDtjPw5hfRevdPy9GsX1P0Ak/24DM6HKcx5pB4nW/6Ftaudb9SGJo7LG5J4Ism4Ru82J0PZRG9sYY1N5s1huGTi7K2kwdIT1ZNWMk1DhuRCH68uZiQGtPXLU3e+0hhv44mefouF/zYfxBmqJIZLGeTejfFJLiE24WwlHyCN4hqXngL5ELrIL7ivhYbZa1zGO23d/TPYX7IOsBBk7cQOoTOQ/xhqmS2szh0bGwH+TjpczaURubH6eirkK4SJEEfU/anZ67plVX+jVpaCKPiMezchTBS7TcX8gOuoRPKnnJ/W1ziXpV+MqLVwY4Lre+Rea5Y5Qf4r63iEENAddjGRDe6iD+Z1/7yuBjL65Dpuni5rmIRHXqy+GLL8HGKQZ2qmoRREi+Cv2tLYZfgNYAFO4+Lu/jeqC2Cu48vOfHiPAJ9gUuE+h4rEzwaqNEFQ7a1ixbQs1JBXQDeJAWV34weOV2B5mZ2xKW0NqJcid423Td8ADMHGJNbguJ7kDgLl+9TXiFLwt3+aKx8fJZy2qajxyyBmNYSltnJQaVkXsawJO3Yr16kZ6XDnZvRySr3m2rBcIzRnmA+crJJUJIGgNdZWo8CyPUBorRXyTm53ponWkVtvttBUtR3khU8dIhkXiUlZF6o+b0UbzMtLgRD3GsJ8FfoBJ3PPLLxUfFGmYhwIxtl0LXRzRXWq45paImdtaST8qqyEV7di0123ghPe3Sr8M/YPsfayTyDsWqX5kQlxuGBrIopKVvHB4rc4nnSpEt++7VoyfRFabBsJTuidVft5Iv+A2FduomG4tgAocuezWcgvVDxUpWNtTtvL5bu7TrfN+Rq3j2Y5N4eWdVrTH1eH0W+OIGtB4u/fTKwdr2QnAw58r7Y47FicMiV0kdGMcIWUPIwAzJ9wcLTEFWyYzVh9lRaLX6PktObNSUWS3r/DFTBaiRtmVkQT2W4iwMZWgZI6iQJyntCgXWR2d2gUw5c2ZBmq4AYxvsMQWuclfJdQJj8h6RERR8XXLTvT42FlHsJ/E37ir0NkNcba2i2qbEZBzyY75n/jadMjK+kxgC/bnLHv3zyLmx6z1DfQY9Bfw4Mm91pApbJ99c6WY+90r1LswIWtT0EH6vFri0e6Aws/Xsx//MtZnfLYYWg+Kb+kIHKQol5FpAk40LYQV+ifbNQ/40TCM5MAo4RE4UQp+xW8e6DhGrIh7F1a024LmqbQdITEqEC+W7sOjXuzpdWk1CQV4WK2xqwMqoAIhA/MP0uzVkSWjtnJVKOOgYSblPbATrru2AsYcOkgwh9aKw6iYE6SuUL/vsJwmBjtgZ7W3qo7oDBaGQZLWGShF+zh9kEUboL8Uz1bCN6lD6ZlJlGkKMb9D+ekEQrJyQCXFkWNRgWttK6P/Tg/1Zr/HSmjti+w4oH9TB4ys851QoxbPjOKugMb858rMw/3puKtKP2yB7LTgnzhbDarCBPG9OBx8grAeKFIqlGyGupw5r+5gf3/oW36ZZe8WOn0W1JFbdnwxmXGcOqef2++wl/Xj0P/kqKK+CqWUhlSsd5/oYip/0N5mS0JSSUsEaxLVQuv5quvZPKaOyUFHgGNQoRaS0aamcYJbymaTCEXUjxDfv5TdQdhef2eyt6eZqIoGhQb5AKfZCuodMopo8xF3MAtLkwGEqr/YFiA1FoK/wRE3XTGAoQU2sHXvQ3gDyYlE/XEu0Rl04HyNDR8ZNQsXgme9NW0gcgEGEV5rPlUlWNZHyzKx0tmXN88xtaBJn69zd6FH1tFG6K2aqlq9IXPwn+5t6VBxOh6oxCqM+z7r0n8WD4eJ/Ex1DPnbplV9Zcg8qPtBpmr7kl84zqXPNGvRJV89f8odI5vS935X9uGIVqoHsrDfd4aj1/owVY42L8al7HpbFugDUuYlAG7woSZzlvaQZ3p4yKVYad3PY7ErTA7VInt3qpuMhmSa8e9VIgAdnRr6jGpi2sIKl4nlD+m2OhBkYjFwKbjRQcgxS3aYCOCtyq/PMf+n2QUeZkCEi4Kp07aXIUtoDvq9xNBY+aJJO9EREXupvpzSUc5XEFZM5blUmE0EoRqUbU8TDBuA6j0nMBFy4mex9CDn+P0vl8zFZaSHNjokmTqxdAerXEE1+V2dBIupZlM5KJcA+BlsSw3RqpRbl79tU9CZUIXFcVfhpH5lwdCwSr8z03RtZjY5yucef4pUk3PREECKsldbM7ZDxyHUsFiAHhPZe4fH4obr+VtozdY5YhWMRzLQpt89rxhKnAHt5SSfLGd4UOj0NBgpVfhC7SM0FsUQA9eIJJBaTSat4R51mXDJkEVoil4AM7yt7i8/O7JsxLpeuzoVWgLK6k7gaMCXB0OuoWEbljqS518ArJ5tAc+gGuzxnlcJhv/zoZqBX5dP/rp1WAC8qNF6hH8IMR8KeLkLkdWGXNPFmWyJhYsBnGmCCnGFNReMnYkOXU/S8wa4/lFlc/R0WF4BcjLsZRr+RBv0gIo0H7AmDDSszHGB21dXPnRl/buYWY8Q01d3m9Zy65jFyRjlLsXcvAl/HUS65PvjaH82PP3TvDdOW1ZLlXlL811iS4xKqz5vKSnSB9BmigVF1n8+FRvcqQCh6+0QRDtnLjQt06xZttQXBau5BP0IyCftMfk8mMlembvlf9VIUdNtZrxCQHnBdpax+4KDGhz4HiUxqnTVs7Y2ytUJ5e31r8h7Uj/UeQZ34MuuiIylR0fcvG+Hu+aJJlOTKXAilEpoeQ1jyAHLI30hqKeIs07MfaphwdFZGtoOzsKyQeGVPPnqb7pN2A8wqGABjYEwhJtNp6yPj8cnCLZ1yhG3AdqUyzxeEqLs8+61RoY4l4Ok+KA0RDj5gBIPwRbpNe6D4bf37IID/4wx8kHxDWrtdT68Kp4gCGtNLcKxJdlU0HYNeJ2kJyBxfP6hoJYyCrh3hbhpv6+g5rsoSOlE2Wp5lkFDjP8LPRV+c7aHo4kZ5bQr8mohwJ/WyZV3LPibes79te8w6dNvdivaUFC5WPMFT8cgfcafxbScM8KRSRWABAQ+7b1HgbqMcf5FTaAUXkTLjP7E4SpePg70JjgUPdPYwbiOjUPLAYrPFOWigZ24Yy9rUydfA829kiFcUjlGfAiTc7QpGK8ZN+mHwj5qhHigxBv/KMZY5uIJdF8gHtoNkPRZfeggpCzVwDviJ6YobrZy6WyztvRd+Sq1KVr7XG7lupMLrHmL+Mekt7gSYW/qNbs3LRWCH+gFrryxkJDGn/gPze3IVHtbd5kMo+QnUv6YdWJcXUYi+XGZNK183wRMfXkvfx0zQak9x1MSbtlHkOYrFFZHhP7c1SlWUSuDgKlhhX4bJYggY1ARe4N6EGhxXrwMraq2ydRM2tuwMqrtTO1o/rmoQLrFWMm2ZhiAUGY25Hif+J+vvVY1vOef5AbzISm0vGJzYedWV5S5BldFrqxvGvjGxizNpg/6Mt66wnziinEJfcNg5eGHgbPhf6nSyK5HgCQ8U9TZNV9LE2sXJXKJIJcuSGBWxLtjyFNNE4Vfc0atzEtcRgURtIkO37Iag7I3oiu2GW6f9DPeYLbzhDR+/oUh2nZIdOpbxIUA+H4orkFIHQUYq8vrbfCYm+T3WPur0J1IaC4Qj+/APlQzLjnw/TFhZNWUv4npyCYuMXhqPPtTiyfrNXqO59MfU7J+AkXPUfybb1jXEhhGbltqTiT9zt3mujcNwD48TYxRlwfePYGUNDxnVlGKreoZe5Vw+/M4hM/AgTy0RT07GtcsDKGmFmZpbm8SFK7raJqquLSbnv8W/+MjjC7/Q/Bso6bR1VTW4Gr/wTAUjmqo8YbtYUFXsdmAlp3MJ7IN3d+pK7AjjaMAJ7G9kU92o6LgOogoivdhN667Idh2qzPkh6OS4JtDmGq8XmT5+++NqzcnXBQXj3HPKvjoWVxh0CETWGxRtWWDyK3ndjpT6HzRvw5M4+7qzE5C4sPJvSigmIo150HTVlUT3scY/TlnQsct4fJsLqLaYaZcYmuGUSfWrQxsQxlukfEN7XDFxQPtaAp9uDHIkWifxixSV8EmXY1P7LaDP5a6mzEGYe1OXco5i5dbxb0L96AJRWW0sRnM+nRi1srohp8jSErXP8HbDurN/HuUJgpqCGJxp5/tgKKWnJYVM6qi0/9UHd9ZIjueWEEtH0hWT7HnIGvTRFJw6DJSgvPK495PED+zOBKz/wdafkFgyglK4gCyzG0D9+HvbTz3lVX9WMPAm0EKpuKt9G3Q/2eiJTr9Dt7Y0kB19rnVurZj2MygV3RXjh4whRTh81WqZbIJzzYjWJexKBMYILec/+jhQlA44Q8WWjOzu/YuRTEhLwAnwpbPIEnpJAyrAu/lFHlrLUW8ODhLcvmDiZT2OBHE3nA5QSvOGu3/RjWFyhB6OH24Ab2RIARUa3cWJx9jIIH08dmvOM/BWAVkgxNaGkx1AXz4KnVjsS2K7W0FHaRg+gNwIDrH8jnz1HRT0sgYhH+TsOu6G7Qv4c/SWrPtbKQo7G6qY/3AgMxpYPS5/nqWPqIro5YyPz5LYvsF75TW2Z/EM+Vu0475rGRTunUKtb25kmFNfiWDkN05jZaKkf+h4HIKunUPkwj0/t3NebDRYA+GAPHoxasNNLtjheCUGChqw5rmGEEWpm0utRxaJVzPZSMknK2IJ9evdVsVzv7VDX/CnSlyysTVuqvymCYPdlL13ezEQHaHW0Quo/LTH+9BoFX/K+ac4wltd3xa91hUmGnL2AxT3+pGUXkmTR+857C4ZGZGaBrbzO6YRxscpCqAEEwjp1KCLVO1lkuRZNrXXW7O8qqxYraNtbEsoDG4gCdCiOJMLxZJw+qrYZlnRvt2/Pmqexjsy13F7NvQQ06n816HG+C7pW8rALIzWGrHw3hXT8FPeAJKYDZ8JH50QPmtGXx4nlHzHVj/Zbak8IzwmqQ24NqIlSrXdjfsbTsQ7qW0vxKajOMOeXUTCQPmXeZSx+rMRF4Ahy5Y3CaiL/JjmsOp8Tz3a7IGJZ2NfPUmB/oEN0Lt5Bn7mBF4euXtODpiIt7lgiwoPrpXXVWc8Re7B1++SyCrf+nmEc47GbwY4OC7VBaVT4UIU2nVYn26kJHjGI+1maheHrshCcVqug42PG5FgcB0On9VJZt5XX/zLUB5YOt9P5jOgmXyYnC/hd+TffjUgDuzTfsdY1/hzP77pOUjCP0tE/Oyz598fp+2x+7KEl0Ka0090Haf6QiJYn3LS8p4BkRoecsodum3ws9pGctEN+gVtQ773E9Zmw+qksTv85Mh77uBs6gkhfBuvx576XX+9jNs3MICLVQsFDh7sy99B/7X2SoEzU263DS8KdcP0udhZww/0wa1KltzPg5om8tzgG1AX1cBLP+4sWqhcPdDGeVz00lDx0+CbjdT7IxIBlmIlrIaDHxqLzOgYglhedpgYngFjJtgqyFbfqB4KM1SSbCYOHVVQuEsbyVTLjqgeI9es5ABwluMkq9znxcc0EKgNiDVoK2S5gviHccuyqpLr4w8gLZkEvcdCHSv3gzVg68P9hamwV51ZHrEwNqRsnFJM3NGrU7J5fe91pNiq0SDU2un4b13C/DLpfkzxUU/rV9fG953yKNYuc7Alp9ELojr9WH60E9ocUAuPehPxJzbdoBUIKjN0YE/AVlxl0jXzyN6PgLVwr8BLmaWLYOW79V1zZ3CoZNnc3N4B7+h0kI9yZRI9HgKC9tTLEBU6AyYhgOirpI8TVaykuPkM3Qn42KP7fxf9bgA0z1kLgEahIn36JHWDkfAZhZ4hZ5FXedsfLM3mo0dRlttkiNKQEy7KQwq/L/CqL0cL3P2UcBNqS+KLnIl17uVMbX41RDAo2CApVfu9/dX/5wHeumKkmR7MIuedWOmcQbPsm+wq3T7J3RZWsLBbymaKmYkj/LecXvdxS99WtRLxzkq7PTLuOA9TJGL/ZJvZq1ssALIfOMTP/dFv8LG3h6i2iz0sr87978FYuJMAKNvOk13MGKfwIlSWDK7Z1bKZ/DVewdVcGTyISdQme43UYZxThYNWF7vZ9WgPIDmqe546wGIuUUhqN/Rs9nFNrucUaK/GqVPLkDap1K1rfnx1fWpXF1Ga3cLsMabYyuvswT7a9ju/tpiY492OfbDlhlHQ6Lf0FYU9F5ETcBvFaa7NNOFluVfuSh1UEHjOyDPIISwcLUSOGSAuKya/v85quQcAnj7TmpIecH/9vGC7D+Re8x2Prtu0nTmS7a/STaiqNJzX1RM9u77E+z1ashSn5r4Q2Uvb2WKqJNJX+RLpqoitan3rtAugfYeiMRmPkFTNgIfMfXQ2PmYnkMxvEik7iTJpzxFqXGApxrvFeMrgSYp8OHG9XySJxeiL3D700Jbkkj0fF+ijrc27+lMyxxpj45bEfStWf4XiejdFTuc/4YUiZDZr1irXMHbZe/x9Ppm9k9jBy/FJbT9Bkyc/0pJ/wOhCZM7K7C99fdE9YN1//ZBH2lsoPNXaEmaedOmnJxuC+9xZM6uJb5tDRHNyCWdvC5iQFXIv3ldY/6ctFZnjEcm/vEi+iuR/qMuLon1wSr5OtIoDYvYW9MFKnNA4971vBPfbRcsUTAFIvHCmw2VF+W/2A79ou6GwX+y2m8ULfjAvyleXmyhA4rr2u1qvOoF5JReTY2x1FNWxmmsGXHwAOzKvSBDqC88oZ8MqRMqmDPuxc8SHIdhDrTGTNxlsiiLFgzxSIrVgDHMDHdG+lqIxtS8TYh96Zpw9DPQzYZ3dfXlwlXUsTywmzgsZ8h5+19ZbIac0e5XVBWHiN/HGz0l1iY04EF2M8WR7C+72D4+P5Z2vZrw8QAq4kI5/qe3NmLjaSi2mrY1pq5Eonyw5A1Kk2cbO47lultceY45KG8MrGnOAZ41boC9hTcXA4TrJNVxsKjht8OQvXZaTH/vwMKpd3zAoL7P0Ic1yc3IHLAGP65AQpx14udS5CO+nasAnsWFJt1i7UNQLeDYAPYAorDFkicCZH7xsvK3TAZQueXD2pbjC3l6VF0F4AvprNOLURpLrgx2+G6/7hFtR45uXWKHpF2r/3Gxkhkiupl4u1NnXNyMilNISDK5AXrv9V0VWdXiK/6lRVimpjp+N+qrMVOG8s8vzF2nzU/XcK776dKnpFiWemT4bZkfpu9/ZnzJWF4gFGrYElfgtLE73r3Xy7pjuTAk5sUrq8mob/DV9ldeHMU8JF0xU21pbDkJrRKGYO/5/oBmB1KvNJmp9Mw8YaWcgywaM3rvJE0FlAKnI+/bwf/XMURKGe2Rj2U5j+Sg4gXmcfhMSEFrI+qC4fzeeDpgh1M1OXlifOHaXU9Qfx2LdwWv3C92NOyTaNyf9WqWFjkIK4KPJVuR7Smd8FbAvaWZ8y0PbuJKUONfAVQkc3vDRAFjbIaT1VgjvRLX/cqsXR59juTq6sKS7Y8HMGApaajtaCW/m8sB1X2kYl0mt6wnJtXJJTiDXRr1yKLasK9ioc9fmrVX8Re3JQ12G3o6fP2zo6CfzBSyLvcK6LCqek9OyVT0a5dr/Z+giVRSsoOXCydsBdOzh1Ujq99zHM5EYxtS9RXr0zknz4+n+e9EpFYxYVqaeya5v3+PJTcvgjtwnRJNWzrpWRLXzrSZBymMOXjDVzfyjjpXkot9XbZsZxVYkVepqMPNTNn4CAJ6dZyxk72fjhCIJ2tjwOq3L0Ffjsx9TomiyAAeTcP/F79mtfbFzqmMZjjfbPW9efu6pAoDyUZiR6lV/F8K0YSCqr6dm0+iZYYXTfC99DWZTWAjtYwHmoX6YVilDj58jIhdzr1VuWewtmaqelrFwj8rk9hlp3DwgTVZlU/phv/8MEpDc5A8yz9oj6QHMAtfDapqVZ0Qga+O41OPD6/C+ae9SvIzz8ymPDuBgUNXXzDZptNA5s52lAOIth7kT9tBefZZUTljCw6PQ0+LXEezdHkMS6TsLeJkPA07zee+ZgPBJCOtaEtCwTmn7sVyFl2dGoCbwBLlL13CskgohuznZGlLSjFOUo30NdwtqGLWvTAbP9IFPnwtOUylROaFDmISDGrdC4z5Xj+DuCCtmSDGaKb06gBr9YojDnk2ORdNnZyY6zKHQQGmlVK8LFkJwiEMLEzM8JUltkSuAekP09pXUmvpnb7qZHSLGYxdXZcUBlSdCamuTWgGsT+DTukKMrp8lIk6xvwu3X5JK26+vgmfK9WSIq7tm9Umnkjvdx50ScrH1yAr9fKM1Wiqfk8N54Ci2WsVojDNU+v0jlCV4GWu741Cl9AGxNB2nK0Ztk5/mWV6c7S4ynVVe/X7XKBypbwPnnyktgytrIfAjaJoEGVxBxuagfpwQPmaLLxxKcVEXmnfmDnMq3M0j3PGIUxJhbVfiSuLps5U1vJvv82u+oaUnrVD7bRMeEGsmKWbZVOslHdwr6nqSoH70VWC/SLvqyiWBbnxVBFy1ANl4g5v65zsfvsbYv7G8tqHsc0Fg9pZGdMo3nH543gL2lT0SkZ6SmRiQkyqGQ6z7O6qYXRdctUcJbIzq6mertw1jDq/XtICGckIK/Kaw+m3QJyty017sMBZh1FjSHY3FKj3+AkKAPOy6omkNpjSSdTHvxZbqBNDyp8szJUH8cEh97u/PJl3W7kFe9H+0j0HJd8+2BXE+xmdd3WetS+c1Hpe1Dr2X6B/yHHCz5fmbL4/ZJOF5fmE1hxHUqVva4UPQ3Z/8J/nHByHHkjbpznMTdau/IGCI9Cr7HyEo2xg/TRHtay0EVyTs2Cm6egA6T6c4ugAtliNvVRadxBYRASHzlme45cZBBGIbL62umsJ6ZFsZDyBtQpNSfT2h71uYODq/O18FV98Vgm/IPfvhrux/XwU9/tRu0EL8SfsYAXDmAeA1yxPlh/jbnsbzqZ/HF6v+0hyu+kY9ybUFXsOV9CncK4EpXyGg0RAMWx9zdZdt43HDxG81v++hIlyiAxdnTTG+UC3XFY0jGcATKjAlpJSCZWsqikMdVmOqWSDs2kagervkGHI57GJYlpkyPhxkazNwTzNKdxlKn8YDwJoBaesSSTCISpn4GLzryul8FKa521bBQja55cIGJ509ph4sCF4iAji/yHM7NpLlzvheOVRQaQVXZvWMCOyRzi7SYPK3nv9rHhvvSzqOnXIdxjb9wT/yFIUJLDg0DsesSIUV9Xt06zE8HnrUOeRoOmLWGfcGhGGmAcJTbxMNoLWw43RFt5xt7ysgmIGN1c9TD7CxOCERgW0ISP+hKx4YoKAjCdzs45OrWmWHvjEcaEvAXd+Ll1YsACQsAYHmKCyCpmYi//ADsD25guXS/vGiHgYGeK95oVj3dc2tcuQzbjKho1LO46F6IXA7ryYzgqrf9pXeDb6HfC/7WWwd++c36FdEpcALzfvWIeeqvPVs5JmLabc9LH79Jv7G+SWXkgOmr49qFfPjBd0sdaUsuEXQ/6ky/POMVWDi2DNrkZ+ZYoTKIyko/eGd4tuddJEYZG/d/cVym2tMHe7RxG/P55YeseC7Bs+NpOUNUYLOPAg+PEGENvST70IAJ/CrkuRKaDAPxf9Wwz7MM3d6GbTpw6MGaB8CAoJ5E2QfdDA6tTM7OXwprU8pk8Xx80QAvn4BelHBK0krQv3LvThXF5tcwVbNxDd5rpzH+SVEGueNNJlDc1TOZIdcQQqHG+WVApeYpJ/bTIizzIQwIpcxRsPJLbaan1Znwx/nHqfP6/yckj28himg3QzJmE6OBatNMnc2zRr7SHHvwET4qqHFyKqN1VPeSHsPfIn/skMDiMrEmbCP6lo2VkkRspJ1VHP2aZHxkAE03uF5yFUkr2MIQj7NgpA6shGTNhtiotto8i51xfWLPcluZWEbqnDYf7J96nwQKM9HLacBg7hZKmq+fN1Ft5QTJAW+k1/uVP34X1XjQ0SI5/SMjGA3LurUDzIsVTNppQePBq8VkSNow0B7xT8T/FisXaZVgOhltDumCwJI7WlAmLeqhBavod/Juc3BT0T1Y1ruz8P5BkvqiqyNeD2ClRYG0pRbzlxc3/u+z2igzPhL1RCGep4dvZgjnc0hyl10HZZ0IlDlx1Q0XUZxd60NoXSw5OXikeq1z9+NBlA5YCUhxDSjQAaoAFwtpPb1Yj+LDcVMDTOlMXT8vk4RAEzL6QI4hjidAxjn83HvmP6LJ9byC+/YfM132ZXVVQZGhkpzxKKcnJBBRFys+FEmVwR99RqGiZM6pKbA5gXR1YZ56O46QY9PXEovnsJ9WT2Suk2aUUkqHX5CbhbniIBfuF97zaDesXbbfqr/Cy9aRdLNBe2KdSEnl2RY+mXc+d0GAMXV3EJkZKVdjbvZdGOSLcjFQ+fSIXNW+5k0E+xpMNjPhFXErlH1GuIO8Og/wfEnzJlVLgJH8iE12B1WWWBkzEx7d1gGIniG1J9a8zyH2G1s6M4hLKrFoxs4Et6KmtfZQxPvG6Cu15T0/LSUUVau9wKFszYQgKKeYkNRp5b5NNxO3PWUWUSmwu7oTKZOdIwy8yMWFhbUrskJgD2FS6/JcLbmfj1Lt5eXUvArQ0kI67et6z0KS3MGiBbkS/cSzLsgVjjMKuJE5l+l42YT86Ndd/4ztCouVALXyqKKXmoLakU7YCIlUDrcqXmktrBo81N0KIy0LPVt0jPJMYFZzI8dPGLk5UqCu/zq9xlRe1ZdGBcPtB2DtLcDxf63vmNzG2xnv4kerGRkkdGus1Qm/ceRz5tjiomXkF4K6v+sQpiTt4OaVzF9SpvU/9g8EoMP/gZibfjIJ0TPgCghbtPZP4JTd8dVqUhZu2d9osItZDo/DLIuPyxiXqAg+nTTFd+Ew0jjhISjK5uLxKgAGAiiausYvO3wAUSdpt81hHOxfBmE4EtKqi6AXinK24vpp3vS2MSu9cnGgUx9PmzIDFrNBs3/i8nbTo78wdtaDaJT+ZlOtajpzYtVGVwqQ3aV/2PLJDiWAiYPPsnQ4lGbttiTSSG7PnkZTNCxiXV8yF2YZX1u7lhncOZaC1UJVRTIgqgnLyPPd+pmD6lj+ASjqJJFdSIOKBRG8Ek/QFlOmKmjDhbaaD0xaQE3ZNrNpL4wKyVYkoBdk/QCCKUd7eIk4CXJrGe1wlezex3EJU0jJR5gCGWQq5Vn3H6hxbzgkVx9CLLhgip9ueBGf1F7pNoKHYbDniCSnGcwcT7kYC8WHwpmg1Hdt/3j1/DpkrB1O+7FoMfKH0zij7dVg2ioBrE3+WztlStfCKUSVgprJIrpCRBd94kVDonWiS/o1AyRicOPhcDpNCokBxILGMqTQHPJJ4mo4mDUxN8y3xrIvboBQvNVF1wH8rzc3U5INopVsZHr97ncfshKkKabRLPasnMM6lyI8SxkdjagjEeMEzUx7oJjy75W2Q44vDlx97P4ifhptQoS1mGvaVjDVevTVOcPcjkFPDaYDkQssaSRvvpnKTkqaex/emZxeKFgn9DQNPBZ0jyJxwbL1GZTtY9fa02mOFFpCbqK9QjduexWT3cNPFg9o+IsJSYd1bt+BXWYO+tgI4DJwvlseRSoOdIsGaGppbzoNfppkAdtz7cNaKJ6S8Z6L0MsWAAl3B6qHWYZ3jbFCxZ+fdShKVb1rIdAE4bFEWEzlh++U83opp/0oc1QxNU1Aw7EoZfXNz0SHjJeYwRN++yj6+qjUupUF0UHA4ismq91ldf1gAx69GXiBa25eNm8biGFzTx+btEo0YF7hy0ZXBdZ0XDdXnVPL7gFC6FUwinurQGMBxQhuJCHWla0otwf+hs2I6B0bx2Wh149iDaUC/e8+9kugVof/c985gvN93JOwM2MC7KtW8jMcwSDKeOCK+OS4kwGhJnajyTlwlRzvkOH7RL4SwK8BWr7Hy+QxiP7xowUrRBUK2HL75M1FAHpPU7xSzfMhq5/5AOssDcJfZYGIi1ZwgwWClMf3ccauqA6g95IISjoKzQNIdITGmwOx5ANXaA5/SBdA+5W1d310BbBkXquu7yofFZJvmzN6FZnksT7ue5uj/bmJUgtbfGq1SqQg+9CvC3RPrNmADC2ZmOC05TTqEtOaqecEVl3BdtxYJVZA+YyWvVofsmA7wUaGRyu8D/eIVg9CzRRiiDzdP1j39/c1Nyhzsz2kmD81pTUNVTBNRBni22YK1B9KnvK0dTxX4AKO7zKj5VxawkpXk7GJRJmeHOTz0LuMvXFSC5WfxfLBBEACQnmdVW35zFba6wm82QUPu/UQo9k4MaP/4IY3viqflSUa6h+6Rm+FIMex5Z2v+LuJlAFzp2tDrwgysfQAwhXaWZ/w5seFRm8QYSQi70xxY+Md1NU4q5pYaLF+meD7OIolO10yiWTBkiSv6Q+dG9ZX8bFBJfvgwKJG1zpTW0vvtQrqL6byKluWEw8iKTM0kWj9iXQiinMhmDxeo2j1dJWArS3l+1Ve/GZJ4m0hgXB7ODgjuEl9z6XRCcveZXOqYW558ds+J4tUDGye5IJ0h6MUzluSPdGBMYofMPVp+IPlfsbWDxcCiZBpolRo6D5tdwpleTcZCSxayF/gDveixjH/yUhS0bK/gMVCZLvyEs50WRoLdG+mSaiRWXXb0k3W4hIojhTxGSyRahXwfg/eQYmz6oj5n2Hoph6Od9IooDCwf7rJ6LMzbdUmMSbQ21SwHKtGR4OWwtZDDiwaQ1rBTAusG4Ehq0Y9XrLMHUz8VAzN2fAvYh8P+EjqXBW97719hiyY/SndNQDSPAj8SLNUZgBx8o/8S9EvXwV7eq1/wlgWTXOTNj2KGR6+yC+c1dZALA4AXJOqCBbhQfMtRqftd731mP83qt/+qAT8MF3kyPXEy7niytlqhwyKwABIshE8Avou57Q4ok9wsl4XzWXZTZiMSgM/XsReocZCI3j8pSpfAy2JkoNfm43yHaWQbY8Ww06ebXZee83KnOwgGdtxYqSWFNy4Hy7vrtqrWM/AMPLauvtX4mwpdTLKUQ/rUY7cYiUAVCQ9YL6c3rpIOsOdMIoiHfEw+K8GUPlbHCSwnbf1ZLgH1+q4TBFCQBsY36oaN8pgrc0Be2mlk1rdTwqRoAeDpvrO0PsqnsNFXS+96PPWrOdbCmhgnm4IrpcFhyHMBmKcfgmPuqwQ1cZNPTX0ciGC+9Fdtz2agEa375XpEqhUjzSLKyfoCVDeHIP6Zmg4n8Gw4QRL3HnJgMXTCVQ08vFPhIWXEbPW+/+E6liPro4Jboontd4hA5keibNpEknNFGgnOLH7efAlDx1KjhKlZqjqI4gMqhRCe1aOlolaxup6QGsishndbkEoMqGXmn7UdVrz9J6VtONFwyKmIXygtZd9uUNgXBdR9TNe+8/bJoMfgubLrib9lxm4FSDHjkyitZ58k0BhCkCzNbjsPbH6MMzZ7KbENsw/qDlHwE5/47VOsLT0ii9BKDMB2hHovQbwren5KUmUWrWPhDagcOuiQ+7LzS5TgFBuP6dXIoga4pVtb6uSLo50w8Qd978p2YlbKtnEKXJ6hdPO8oor/BguOypMJSLw9KBBCS2Ci9OXPq1yCCol83vLb9ylGjVQVO52isRB2tQfEdRJknKWU5jF+/T4PRdRT6KCnklBPJrX1IkezA6ilV8slZ5MOgsaY2NrkteA9n2BPg1UAq5SC8ioiTkIuKYK+rQmO1ChSvefhjGFsBsHuEf2N5jKRHjvdA8VleN30g4ek7WZdBwB/krbKnDX2qkp8ylWsmFjIj7yDi8gYMgr8gFZitVG1eWx8IEXXxAsDVVsPUCNP79gWql6cPuECzBRNmD0Ak/aoQv1HWTywPCgCMzETGDAY8rOLDKZwlLFU2eTf8J4BskE1hPDmd9wKGazdzpRm8NZdkCTP6d9jE8d8H0/R5MzXaWSaSYlvGbf4EdoG0SmWv1q0pV7DsUHoL0pLItAhOavUPwHVySYiOcL0Px78qamKcwUhLvnW9PLkn9qQ1xJf5xxF+T12xBOpvJ5y92jWtAKWUfnp7tbMPMih5EzusLjAi4tRaBK3FZwZoNapG15ntPP7sppLWg+CYqySQND1JI4MD/meQ8HyC3pvBLgt/mDHlCNU3wWIFCKb5ogXYmiA2VbsU0SJpg1sK+HAUcQxmPLiMiPdFDNTNg+bp4hLkVTqGXQ04txgi4zHnt6aEOZfpaw/I2pkH6xDze2ueF3e+pzaT17KPmMD5WYPr1/2BsoMUCxoTTWT4IhHdgzxDzeKs0h7+FFqqQMp4MKny5ymF6yTo/fgzWp/IYP/GCkxidz9LoqEMqvD0OAJ6YNbLw31849aehGVKfQMNVvbd6ljd+bOvr+4Ypg71Mpzsbvch/OnFoFFyVpuIh4B5zDK4y4+TQ1c2t2fR+dZ8ZAl+BJx9F6lLvFB/+ivt6KlWmO/VMmnpoXtdxoWFdT5CgazkwBnxFdMYZqgJxLX5jVqqp5FjrjeA20kTl0NOys/ZAhWW4/qYjkmZQSKaYmd16Gkde/aA3PGEnaK24wl6aP3Wyd9btorC25b3XCP7C7dfm5CJgS4wy6BZ5fqIRN9mpDzryN8JXeimJp6SsQ+9h9VNz3A6bgidqtmes/1TNsBM/kHa4IOY1NTYnPi3dgT6bw2+HVC99LQL/Iz4jMMT9GVsXdHYQQQ+3CpLrLAXEauWtjHSS9E5UGewTHKHBqr3BwGd73rBUt8xlGKpWZyoYEBdBvu1eGJn56DahjAv3v75h9BVFD6lyRhKUGWQOTjnNJ7RzBZtKKqNvqVqCL0SJB1BE++NLU+RnDQfQx8HM+7n+EE62XImYXDpVch6t9naijebfF9jZVf6fpJkQvvCq+HcQ3XED8P0bc6iKg0nhPlOxnPwUhyUVlcQqN+zH8MazSm7hLhsb2oCmGqlJhFpM5+4f/4qo4y6M2dvfkRYOgJcqMqQwL3PYqx//qPiwYwDYjKAUhq5ptD9vmEAIx0hbpgFHOl7KTon9J9sY0a3a+obik7RtmDo/F62SjyLlMn4AZkY7Dkp/OBngD9GQGkzmMjZF/E29189Z0j8GNKz9g00aBKJp0sW9ZotVhdDujt4UxwqodFEZ57h+0vspNpgKONtwn1JiTqepCbcBMr1b/ZfQye+fBc9cARo7rSHbgvE1rxksSn2xBk6myUwenIAC846xr6ifS1XqSprwWUbkLaUBfy5nk8u/ClBPP0y7vnXvHfMmaxLE8cblrILSv66nTqC5qn6RyXUt7+ZLua6MkArCBGMJVLSwfJuZc7Hi1kZ+769hTUeDAG71Ji2oip0g52d0EGS75JnXHff9PhONmaGAzdnfKAnmmrE28cc1QTNZ9idfDXyu3//GKUaFk5h4Ig2HU688cxEeeZgAEL1mcNpCugKa7lMQTXviH90iIOR9ns5hhDXPHxCSmsMbqPSqBExTjogxtlYbEewrRFKVq1EZzFC8gE+BC598mhiHJT/qcNGT4GEZ0lIrmdpOvYSMOj5RnbuJENWL/2FyVHCZspKw1P1S0edt7QXF9mx/cAENVhipSQL1ZTS69hdqydXKykQSdy7M0BJrWE/Xt58qfZ43uCeYPJx1OvEqZfCxF3cW7jKF2K5pBTCUToX7fXjIglnI5o97Ud8qa+vJGM5UOFTzPa6RxyGI5h1NqOg1kXgV4jwfwqDtdrGlWgAuFryNmc7Eis/tjBv6OH3wlT1PY56mKBuubKaoDWnUrbEyHFTZIEj6BBh91GQ6zF5/x6n3nMI669yHSGE3KvC1qmS5K1JxU09VzxjKZPSxWfJ/FoyiGp01gRz1wf7YGZuhzrZohD5z8G8mwBuC4F+lHpSfLWaji/0Q4DmMsqIiqh5a5ZAA6eduzb7ECMoqOs6vSZfFCkhddwmnaEUa4Kblq0TorhqqOEZnhNHk9d85iD+6qrULN+Kh3x0TFA39n/c8XeFwntO3JKIkkfM1kueMT5gpBXu6IQYk8cdrnQc7SXaGoA1qCvK17h4QIEc1lrosxMdEgcYJj6U7q4k78O7SG9NaVdaj7UkIJmEFrjQruerjkoTIVNnNKpTTunW+zsFB2EKOLFZMo87+1tF3nesn7/CJyhHM6CO/jrXZI9ESNCPt+f6ZaALiezL4arWR4YIQQlWA1PAm720tlGVcGeGzfIzeI1WSVbGVVHbYIyT4VP4wLIZMTKXoFDP+C950MsYhY+J0QNjhkSKOORrhB++prnsMnLSIN/mZyHIgWxA2dYS7+LbK3e3a5SvhwhLhK4hZHtqg2ZF2/s1bQewU2HXrRl40BfYKQQ02WLy//Bx9GV9CJTsnoy4grq7gfREVjnPSYPTL6H4i9cm9ZTQA7Qc2Of/I5ZITCbPWzt2NLbmZhzYlZhGIz9HwJ+eZZxDZFvuWKb71otxMSqoorc41BFmuuQTwW+/zuEplel5NoMU9QLgLaQw9nsqoeaOT5V5EVkZrzk6r3++WRbfHlkSbOXb+CqEImDIAPDj+Dh5xBIByQMRiRm8hnHjWJl7upjvVrNadQgIIJx4nOsrpLiG23VHHDqmWtnSt+abTnrEXenKu4xUch12FnM5wQ0ptvEvjHkP7cbqnNmW9b/gfmCN0Cij0qX+4y150O3P1Bzkd0BRB7sz4jJ6qm1qhf8L587MXQxIzIAZLgVznTAcf5Em8NLX7tkMROks+QZdXGL+7bg/JXWeDi4FLSVaC9IbwQXwKGaORgrpzfSwQxbsyFT6HUOF6eCukN/JOP9DQXbBh0YCpoxXH/L+1DjaxG0d/nGqOGFo9pT4g6vMjC2yaPi+iUYYm9A6/uvwG0kPGbQN+AZlWIw2QlZRb8MAGjvrAlEZjvvg7ratk2Uf5yQ4UArGgnI4i31a7CS/wkqhk5WAx5ZNrcgjmdo8GDrYTWDcEleEnBlPgHyNYcy71kDrqtVqKd0yHmnm9nTECxxUjMgdIDt4oKLJQIkcXJm1kZzDTxamFajx0MmOxA6DYXR8AYLncTHdEb68tWmuO00QMWrxRUR+mEV/6fCVS5b67rS4g6f7Ao6yKHr7+1NncR3hir83inaJKeSJ++kNHEaMF3G0v+0sIHUtV1hV3Xvw3wqg3dpDhzHDuPmo182AOVAks0KKwLqxFyKCu6nXrby+IwhsoGwPnXeFswIZnZQBQXNnsoHWLSaQXVmIUIAEdDGEydniSXRM65dX++xN4zOLKXWLYEHPaGQgGNn8FzLE5QxMQ884XNEp+92gavNIfJkkQwxHAhDW4ulnk5TG1r7TndIs5xfz34ZGHAg/wN5JoyaitaQqtlr5j03D7n0r0FhpCDk9Juyk7m2rX86uJsJUMbc/Jz5iXUSdcqTnuQ16V+n9IK3hRyjKcimzKM+/f/bmwSqiR7XrfWHOtv1S+jgjAScq/WqQxbk31ki0axuxwByH5Rq8jqSNLGZuEWTVDs/dWD15f5a26PAEksuDN6XqOWm+U+jTBg3TvDvAfm+/r+FFgf2traycxxL+I6tXM/dL+iNcDqRCzuD4a63x8ETkko/g66st7D0haXgZKeW/RmfSyQJUjS7M7uMm3GzO+aRY3tPG52rCqOlAb8yhToq665FZc1FENEPIkbsemRwDyKTlEK/ReU5a5nGpKpnnp79uMfBsMo5T6M4A2n3jMClqce9kNRbPX57Gs8M4wsIVMhQncDOqFBcOgm/fjHcC8WJrJjTwfzuw3EMyg/4UsOr+94yMAVQoqNxg262dEoUiEabzuHfS5TY0ya6/jroVndt8QJrkHEKvHY85jRzf0l+JW4cIxUE7BwMgkba9qkporSEKuRYbTmDnlButHAy2irQwA10ZEibN8AbVafJvmN2VAtV7/4okx32mBE/nHp3kQqYBKlJwNbQL6o8SZzQjqpyNt1WUhMw5R0H7VU4mpN2GYANtluuJJkhLl1LZ1Rc6FL1bASRzOu29SFdW0N4/quz9Ia279XAkA6Cud0TM9iaoEehq+XivNEZjWC0X6QbzhWw6PGhj7m4jXk7+MFdbM5LCl3yRfa21rh8u/ppyMxf/LSt2lk1hltqLCEOAZjeMaDA3xDkytOdWo754u4cha8N+jiK+v/G5FtIbTHVfEfF2rJwJ+1/3qmUkI61wwZ8CFyPzgY/ItivjCvh3d6GeEhIhrxCQY23iPATE+PfTpnLHKRw4s5sCZwDvZCmjnNpkwjWLUmyqht2qERTTFxpYDSdPehrEjZsHhcahiYx1/0kC8DVPNjqQkGXxtErOAj2FoUD/HOIZsP3Tp0LK+31lWcNFqpCuhJ6RshLHqemKdLlkX33lV8Kido9qKE7f7f6ogjTjfRN03LhbqXzxCXolmDXkPjWtmkn9BO1B5MCUo+AMfcD4zw6Ygs6hbTi711kmf35KEasND3guk8tj0lX8JEe1JlnqRW259/6v2/uQjNuQVBbY+M6PjK2+zK1OweS3dNTpShpe6HvcnKuym4Fbzywjqcx71J14Xxa06zU2etFEAmwF069YGh//T+J5/FNUjlYlsNd84qYs+PWIQWsYvNPNGeqRKVh2HhEgGD1xvC+VJo4hNspDvKJXduzRP8uKDx6qkXTjA0cyDHp11FLWZuSBdTNgCLunnMHBI0Aeg42dXJ2FffVX2kMnuWZkrjX5tV0KDDh8LpKLibfHcIWT1YT/2mr0rG3ttLxmYabxvK0Gxep9WCgp2RUicr3E13IdB8feriXYYnr8XbChqSMKYUlg/p7fnQAVAlxTs+63CYNGgSiechW77cTm/Rp4A3RUnd+b4ciJGmXbstHc19J8WH0PRW9/Kh10c4BL6XUlv10z7jUh352TU+rdYG450cetseYKKb3npIsZqGPkJaQNHOJc32B6rv4xZ+J6rJOB554hL+wNMFGovR/DTqjskr5AP0Bn7Yltf5qYH8NPkBbLCeh9x4ZMsjZ7xbpCNz86+uCPIvB4rleI7IA/pMspEAJyZAMB9+trcZYkBXzcvj361tl33ao4vBmCdctCXEeFUI0/PdBA4l4PT97lmpN9hrjYzZsCh2ZFDvUFNzDjBYTYQ+gm6Ixh96FpODz+AenJ4aMmk6qQonWQpz+nOi4RLW2hqEflEjVb/wJ19pLlPn5z6BmKfavqwwMD78JWIQBHrjtnVn4otTaX/3v7LCs3WD9bl7NoCM3ojDMX0RwsKePhe6J9QNYPH1HhO4QoP8JnifS/wazl3BoBJjN6nl5Dc8uYW1cacjtAwRSIOhFxXWndv6h3qwBWBkvmGKF8/l94QSDZQYm05XxyCCjombvlrKV9yoJ9x/w/9WuRC8z9cHAsa6I3nnDQq8D7Qz1MRdpy4AJfMR/iyCfphMbEhNNAvSrwjCa/r+Qm2cE0+saf3ZzUJNWfETxTCt73DefhM5LAYV1eqE0bBkPvM131D1A8VHv2cUtKb5szXHKwwPzpu0rPEvd4Bid/LOtykrDFtV6+I/Z8GA/Tl3aEGsXaEKtkQCSJ5n1lMbyEkwW3Myuclk/FD1DBWv6KZ1FRdteaAauGlM8arOREiNSfcszHD3Rq6gIH2Zn1lEQw7TijVCF3yMTFg8CzbXB5wC2G71mn68akg/Fv/3KP8Mtz4tzXKAbrgpl62um9PvBm5EvoGbutcSyyBVv4LqBdP1i5bDDuee37PQ8TVPoXEZr8oUoiRlD39aFPaWx81sr59gAR63ddvdMqXjaC39HQISX7bWeacEOc50CDxCIXfkCiYS54hzjVZsQAftJOxrQD/LnYrehOh2uSwmcNDe7CU2WfT/30r+Q3+htJYq+HwSP25aV0fTM0SzkrE7s4rf3+5eESD1d6ulPmDsbKvEzY8a4qqRTRGmGW71Ru2LY2ftq9+bdDzYx2ef8pUMLCLfnWtIIYt+XnTe6wwEzG11y/Hrn0h+eStOJLGTRMHQ4dWMqJfiBLOn4DAPjzrgdYVDVJ5Wv1wcpYBeF/gUo2cIzSYC/geCrS5Jm9r1J8bMv2q0phavJ9uWmmsuK5HbfNEMQjA9JFxrvS0VCMtzJEW37lXQJMw5n2qPSGhugUL4DzjDDhjv0rLNu6vhkZbEQpxmQqe2AJ7UtTAZ3tXvFwZCJEt0WWUqGppQs5VP28aBXc4oUUJqxBfgeBhsSh04WF7pFpw9T6cq3ciMsctWvBfcrbjjXlXkSzyVbixg594NliCMvTrO7EwBpaTk9lM5G0q/qIMTjzQvfZYQGwEXv8hwNYfHpxm4E4LatzQKnnYgaqJd+ABF5pXXvIvysHrhILnK4I+JKpjvwLKtl1XhtFUnxpq7lokwNIb5HgR5uBucYdI84EE8HHZKLBVvU9iH2lsJ2Zjk/2LnNtYsglZR75DzLGR/dBL0QSbm4OO/3k7QleWIsSKKiPItJuHu5/t1dKzHrqjMSOKImnXwkq5dhFWlgfKuu1qo6Y5AnFRksIWxat0/E/r9sWcQnGjBNInHzVDFAeNr7CPHxK1yZ9Thnqs2h1xJrd9pen8mBzN/7rkZcLEHt5tiuBfekjGyN7DW67FKv97JS2b9iMSA5+tj3FOX+EI69TSM5zuNUTm2SC4XExLsYVk+q+/XtDDJ8jTzdjBWF+ENk1el7P2aP3BIgFhkl1Rg2h2WClu9Z4xODQv2vRkBW/+lCsWc0bW63zwdaViDqa4yyYqik5ceyRSOVB2JnmrNVvgBGcsexiah9uLCLHmYJMkk8nbxN6gi9RJ5tah9yI//fNnDdCtZXfWj8xdv/qgZUycxPHUWUhOTLTuYeMhtySG6IfFro3Vabxrqt+5lAjRTve+3VkoM+kNIAzWmPie0VkpuLBMSeQZEOVFFvL7ytWbC/OJA2LUVWWJpLe7M6O7w7oDEgXH3fQEp4oeEjjDFpPc3jdDjkpHQQ2bmNUS+N0+o2VjuwZ9kXS4YYFadFZpmtsbJCVtjCwBZOP4VFmSwt+N2OsWztOVO+afzoDZ0DUJhAxs4W8Jnx9fDt92l1VsHyOzbGdTW9gWXyOg90ydjRz5K8wh6U/laUmFfJW9T440SnJJqpZT0rSwyuSSEIrISmh0S46HsKUKMZ0XNHtPP9IpSz1Sd21seWNjtFWZ66w08B5iLO1LzYqGsMPKniqSC48XlAfgV3odEQGQaH7nEQgJIiFXNZdnZnThsNAFuACn6lwOViGJhBZw1CBLBeOTm0koxsL/e47NqiMldKDl7z4R4CVLfEXBDeSBn+HTyR2DnbmFf7o5d1RYo4tCpqTRrXiVu43jQGfUaQfLjSH0RrXR1CbmDZgefjzjo9aWteQChoQeqVxlJn/Hs8VcNpn30S68IgKYbJ1K9N0h0ofDA/JVNwd5hZ1W0DSC/HSGewbXYul63wfSts+XOEAIQU169p7wsB0Ei2mFld77fpaot6Z/Kex2wUp9ZFWUlQ0tsKTWABMAYvvsPdLRrrId0Ph77lDmjhyUPh3Ht9SPP4EMaSD7LZ6xlUPKwXZlv7HYQSW9aDhCX/uVJJHuGqI9vb8HiWgijCwSQQDvqb1CRU39+39FZmBCfWR92sqHgRgfMi0h2uUoKH2fncLpoi5q80A4CEvTJmxRWOvtWCjpiuFP13CiQeIV/8yhlLlikm6pIDKqBhKPdKQCIIOZEP+ttVbYUn85NoQWwtqqg/FNUd/qGB7HKyZna6OUmDWvRIu/HvxHo0WZo4hjI6cPaGa+eWa+ssKjCniXoKacpG8CajAOjEK2nvXhz2LH8ddsbD/4+CbtRUlCBSekgC7IT5I5r9he4xbjfYT8kcISjyeopl/j37CyFrIHf7TAJaWmCBbHlomvoTqYZyAZKqFHTt8GrHygdH3MCZK12w1mdztxVkKxObIJp6sJ6S8EHGksnYVOzXqPgh149Jq+f2bNPvDkNMeYt71Zm4qaySowyMsx8YyPe9zds5mapk1Dh22plTI+bOOMMyZop+wSdAZnxUsmLM3YUuluBVbRQ77vES7TPYVUqpeK5FKbhqxZ/52mcsUXu2h6vgjoeQFzDIdLW2401sXbSRlFFIHcHPWWShWB1rO7k06zIftejiB/UeYYK1XdTLYj2j+BduZ2YgLQS4j5Z6SA/3xTGLB5SefWa+4UO371W1SM/igppdnQB6nVdMBwCQ0adO7fQr7AkRJDXgHk9nt9Q3Wtc4JoSsbPGWVG+MmfSc0at50O4aMTLSwFozRoE3l2d5gRNp21ma5fQ8U4/YDIa/e7shDYztCe95KbMy141tuipGANpY/QO410zr7VBaoyC+TDGmc+gEcLkwiWIQYq0DpVWgmkq8W/0GAIF2MP7J0OPYLlHI8pt/XwjrelVX4pwyc0a5XVpeLZJjEvJiAacHD10BrDJ6VdR7n3kkQ7VTCieZjzCRE4xlJpKxxu6cOesss4GvVyP2rN6bxf1ZC0foAzWJ/HcUY8FF1vd4XsqAwZVktMTpIHWn7xsalqCk1TvdEL5wns7d/xQB3unykzaanEcSNOatN8j1Hc5GvVQOmmMFJ2ldK0FWiGZ4gDf8XKNbihpxwoRO9tVSPpeJ1C2abYl7D8aIkXQIbskTaLLjZFeBGqALvCeq+Nc2lgZh37k73A4o1wgilPl8BWzsH1wpSNZVjOf9TvJg2H6qMtRXzRFJ+uedFOeGAl/R3vySVGE5hIEMJrqT3AazaKCEOfiz1R8rpQUK49IbxEInf5ZDg9zuhCw8QzEu3Wkx0xFzEs/FWCfP9d+9dIzwubMQRenxcKqkFsJ4j2eLSmKKWR2/AXVECMn8qlwjE0oWWYkxX5C1geUnVhyAN475jtKTM7algh2LL8QCa4DlRYNErhyP5lAoKP1D4wu6IkLVTC7v2DlcAcQ4ApXyxccwbhHkJsunX2vKHOvoCDK7VqFNOooAc/P4IAyWC0SmvbBL+sYowmgOwu2lquR3oDpIrJef+cbire2so9PvOM7KPo15A3F3WaWSRci7yxBLz50gvUsTrVAQSv36v19xHrhWuZQFn2soc6ISKbroW02lmyAq4SXZmSl0+DdK+OlkCtINKC+/pxy6ZuH1BWJoYTY/uWt2AXeQI09qaeUz3ecyGlc8QOC02gqYbw0dyGOd+kdroi13CHCdhrEwNNqT5469DTbja6Nbwni/nfSIpQ/RgmvwKIfIfmaUCWLrGeJWF6fwMLIr/Lw5G3dSJu5DVjgX3iWWAjUwMitFbgEQcjrITptcObf1YLt0gnmhR0YXimWy9V0hl9nFNp4H4YbxjWhHPZ0TOtgThpVlNsZs2Q0LIQEhSyIHCplCi16v5u4Y14E+RDd7t06R+8+hYl6oRhZQBZzDHC1oIbfaoN3Qqu9tmmx7mTC6gaxPpZSyktaEAaRkxr2SxKdRg7QZdDzSK39ddovvfVDk+DifgLGMUviXD5CKcetUlwklmhwLf6g38mRrsq9azb9CaOXO4bZ4flipRfD+CDumzaO91lNUH4GA8vcZG/81BiaAWNppEmuswPIKurfscodvsrVmlhteHjwfEy4Bi6XfVpKq/MNfDRWivFeSjqtL557mfPlLMyEGZiSB6LfTN6vlck6sad5rJEhhnhiWitMKTQLlng/s6MvnM4S2TR4EIxD4qgZNcBBKm5llg4nwS0fWFLkeYU8ugqvHoPNo8zc9l70bc5XE0X2dPlzMje5T2V7iaRfdY8ExU/Llxpee+puw5Kb4WUzQiG89z2JonQ4gBZPVfVtDivO7TYBudYN8D+tARaaXBijQLk6WX7p3SpC9j26WC4s1x6U/FtPfC7djCHuKC/SZ7UYh6WF7qW6kGaYK0wKbvaIiws3OAuEel/8ppQ4JJoHiAe6zlYDCa7Ys7o9PZ5g+eWgCqyRCZaE5F6aiPzUfRtxJofH6t36LCg6TYfOvMbhAU9VQSkJJFq6VehxVMZmtMCICWyuenyuStiOzUeCB5yN8ZJnsLfFoqDGGeSRLzlbHVenwiTiiL21YOXmixq3cEi9henGrtjP3XTNkaLQ++c9/P5DnZR5mNG7Pf1MCqBPf6ahklQcjmuvUCHih6zJ4QudiP0su9vRi17EDaF41bDO4TdmQUjgbBwEMXHYcCt3b5NaCtoeULCYhxUAID8o5C/rjr5gy1oWBK+OYPli2y+/B3lqbm1Au6Dllba13rDrLsLneHGYeRobo5TH3HxmO/DReallnuIkGeA/gUtCsdIZDxxibWTnhyzn1OyO60QDn53BR/i20LDPMXqTlaTpZ3yxnS5w4LesEs06EvjHys5SKcDp1tes89lxettlnJYOq5vqJl1SMdiXWh1r+p14Oi/nFVgXYBulWODeaBMSWDtn1KLqwJ03cAwNn29XcpEyOgiXjXG+gUWIAM/CMOy3E9XV9n9keqc6Hvj1LPwwmdqF0j8HlXpdsbjZ/e3VoDQUTZ6MDgbqt13bvAeI4Jpj8oG5DLBFJw2DctBTvFtpTvlfBMPSLbVrXMEVcdIK/Pi28H6tn7FT04R7IKf+HOOvIXaSuWT+G8/uphOEhMDqD46EbiFBhMxHUGvKq0bIwCpNI/INbBW1HsS9jWRpoyBtUAEI0aOR6CZncTs0T3puBp50zEieT+kEUO+AQtESWmCNmpggmqDLVp5D83lfueu7XQAUnr866M0UYxGG9nUmLE10a2S7UR0pMa2tWbvW0G2Uf4N8yWq+aj1lNJDMPI7g1mIb+TkEAsrjrgH3ED6MAEQmmA3R+KFS6bBLigZzzUiKHJ8CE2xOHZYxcwYrd2r9tCW7zpsGx8dSNK28iQBVSv2PDQa+PCHHMDDKVfWTw2pQsBmAUQnMP8YMvDgzLrsV3psunvF/wnEkGejyxp6q78Qi4RSHN+GdpQnSugSr0qQ7xjmOeR15fQCzptQ/4LoTDEgMVEzVK0wfuibf2zKl8Uuu4BzNAzSuz0a2CxiHF05rOnZ8Cfb9J3x12o2Ny88qsi7c+yC00w1TiwRr64qbhFGfjZh4oWlW0tACKT0s+0/waORylcvLL0s7OnIZVXUuBP/zzYwUVlRaxtQlgWfytwGcn5TGi0ENuFmzNvtfeu0HiAG+qzfxBhH8zAMQjLLGlTKVLIfYN3Nqbp4pBwgjEiUJ7epAz1oTYQcHvq74ZUd9+bfB7jgVBkYDWKgkJsRb582hbcMPPnWUwnGlAUiCJQ+msHMOqYNtABCehaQFdOb2Dz5R4gfQz+nGaif7nf4c/LZDRYRYtL1rF9eHLlI/bEaDAzRaNmZoAmLHad2u/Iv099w/s16eu+S8i4lJgPcjk47b4gNQR1QZbdCr32qWKm+B7U+8UQ1D413G17EZa8ZurC0Va1ORCBSozOeZmKpZnS3y8lr0lGjviFdryJdoijZ5srfRlDpj6fS65mbmlkiylv8SiKjOXY5Mk3LQYZMFCq1jcsLauvtTHJAclb/1JZ6hhna4afQhYlnwy2zWio65PdmpJNacjQrK0Udq9xZiC4gfs8lOKwsmQnFSnmUnXZ+euQxvO5ZTREGubRdBbi/w==">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form2'];
+if (!theForm) {
+    theForm = document.form2;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZMrpL97guh2x_lfUiu-1_hlzlbl--S7Vc8swdj3bZMABH4j1Fn0pmI18V554x5p3Bw2&amp;t=638562813717896622" type="text/javascript"></script>
+
+
+<script src="../../../Scripts/WebForms/MsAjax/MicrosoftAjax.js" type="text/javascript"></script>
+<script src="../../../Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/popper.js" type="text/javascript"></script>
+<script src="../../../Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/Bootstrap-select-v1.13.14.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/custom.js" type="text/javascript"></script>
+<script src="../../../Scripts/toastr.min.js" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7E46DEE6">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="yWl2hHWZwre/Q1xqaZwXzGe6QxBkf8/ocwcfoNvX6IGMES7TMmNOO1mJ9f0JvAgUJzHifDm7h3nRnYjAJzyLiX1RHefzlZzVVzC9OfDwEHk+bmFQ76EgKSmAR2PJO0FM">
+</div>
+        <nav class="navbar navbar-expand-lg px-0 pb-2 m-0" style="background-color: #F2994A; color: white;">
+            <div class="container-fluid p-0">
+                
+                
+                <a id="btn-home" class="btn btn-lg ml-3" href="/gui/Home.aspx">
+                    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                    <span style="font-weight: bold;">Home</span>
+                </a>
+                
+                <h1 class="text-center" style="position: absolute; left: 24%">FPT University Learning Materials</h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-right-style" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item sb-active">
+                            <span class="sr-only">(current)</span>
+                        </li>
+                    </ul>
+                    <select id="language" style="z-index: 1; width: 130px" class="form-control">
+                        <option value="en">English</option>
+                        <option value="vi">Vietnamese</option>
+                    </select>
+                    <div class="mt-2">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img id="ProfileImage" class="rounded-circle" src="https://lh3.googleusercontent.com/a/ACg8ocKNDpazWZLozszDFrXiDYK9kq_gpCt6Nq8V_-B2kKcQ0waB4dY=s96-c" style="height:50px;width:50px;">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <div id="pnlProfile">
+	
+                                            <span class="dropdown-item">Name:
+                                                <span id="lblName" style="font-weight:bold;">NHU QUANG ANH (K18 QN)</span>
+                                            </span>
+                                            <span class="dropdown-item">
+                                                <div id="pnlEmail">
+		
+                                                    Email:
+                                                        <span id="lblEmail" style="font-weight:bold;">anhnqqe180005@fpt.edu.vn</span>
+                                                
+	</div>
+                                            </span>
+                                            <span class="dropdown-item">User's role:
+                                                   <span id="lblRole" style="font-weight:bold;">Student</span>
+                                            </span>
+                                            <span class="dropdown-item">Education level:
+                                                <span id="lblEduLevel" style="font-weight:bold;">FPTU</span>
+                                            </span>
+                                            <div class="dropdown-item">
+                                                
+                                            </div>
+                                          
+                                            <div class="dropdown-item ">
+                                                <a id="lbtnSignOut" href="javascript:__doPostBack('ctl00$lbtnSignOut','')" style="display:inline-block;width:100%;">Sign out FLM</a>
+                                            </div>
+                                        
+</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="wrapper">
+            
+            <div id="content" class="p-4">
+
+                <div class="mx-3 ">
+                    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'form2', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+                    
+    <link href="../../../fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../Content/font-face.css" rel="stylesheet">
+    <link href="../../../Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../Content/common.css" rel="stylesheet">
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+
+        .auto-style2 {
+            height: 24px;
+        }
+
+        .auto-style3 {
+            height: 24px;
+            width: 155px;
+        }
+
+        .auto-style4 {
+            width: 155px;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        /*Table*/
+        #gvSubs,
+        #gvPLO,
+        #table-detail {
+            border: 1px solid rgba(0, 0, 0, .05);
+        }
+
+            #gvSubs th {
+                font-weight: bold;
+                background-color: #F2994A;
+                color: white;
+            }
+
+            #gvPLO th {
+                font-weight: bold;
+                background-color: #F2994A;
+                color: white;
+            }
+
+        .table-detail tr td {
+            padding: 6px 10px 6px 10px;
+        }
+
+        .plo,
+        table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            .plo td,
+            #customers th {
+                border: 1px solid rgba(0, 0, 0, .05);
+                padding: 8px;
+            }
+
+            .plo tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .plo tr:hover {
+                background-color: #ddd;
+            }
+
+            .plo th {
+                border: 1px solid rgba(0, 0, 0, .05);
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 6px;
+                padding-right: 6px;
+                text-align: center;
+                background-color: #F2994A;
+                color: white;
+                font-weight: bold;
+            }
+
+            .plo td {
+                text-align: center;
+            }
+
+        .textRedBold {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+
+    <h1 class="mb-4">
+        Curriculum Details
+    </h1>
+    
+    <table id="table-detail" class="table-detail" cellspacing="0" rules="all" border="1" style="border-collapse: collapse; width: 100%;">
+        
+        <tbody><tr>
+            <td class="auto-style3 text-right">CurriculumCode:</td>
+            <td>
+                <span id="txtCurriculumCode">BIT_AI_K15B</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style3 text-right">Name:</td>
+            <td>
+                <span id="lblName">Bachelor Program of Information Technology, Artificial Intelligence Major (Chương trình cử nhân ngành CNTT, chuyên ngành Trí tuệ nhân tạo)</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style3 text-right">English Name:</td>
+            <td>
+                <span id="lblEnglishName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6 text-right">Description:</td>
+            <td class="auto-style7">
+                <span id="lblDescription">1. TRAINING OBJECTIVES
+<br>
+<br>1.1. General objectives:
+<br>
+<br>Training Information Technology (IT)/ Information Assurance (IA) engineers with personality and capacity to meet the needs of society, mastering professional knowledge and practice, being able to organize, implement and promote the creativity in jobs related to the trained specialties.
+<br>The training program aims to:
+<br>a) To equip students with fundamental knowledge of the IT industry together with fundamental and specialized methodologies, technologies related to the trained specialties;
+<br>b) Train students the necessary virtues and skills in the professional working environment, know how to apply fundamental knowledge and specialized knowledge into practical work;
+<br>c) Provide students with a strong foundation in foreign languages, science, culture and society, promoting their autonomy and creativity in study, work and life.
+<br>
+<br>1.2 Specific objectives:
+<br>Graduates of the IT training program/AI specialty must demonstrate the following:
+<br>PO1. Having basic knowledge of social sciences, politics and law, security and defense, foundational knowledge of the IT industry &amp; in-depth knowledge of the specialized training: techniques, methods, technologies, in-depth application areas; development trends in the world; at the same time understand the overall market, context, functions and tasks of the professions in the specialized training.
+<br>
+<br>PO2. Be able to work as a full member of a professional team in the field of training: participate in designing, selecting techniques and technologies in line with development trends, solving technical problems; understand technology trends and user requirements; can do the complete solution development plan; performance management and change management in his or her part of the job; understand state policies in specialized fields.
+<br>
+<br>PO3. Mastering professional skills and soft skills of 21st century citizens (thinking skills, work skills, skills in using work tools, life skills in a global society);
+<br>
+<br>PO4. Can use English well in study and work and a second foreign language in normal communication.
+<br>
+<br>PO5. Honesty, high discipline in study and work, know how to work effectively in groups; know how to behave culturally at work and in society; dynamic, creative and willing to learn constantly. Demonstrate professional attitude and behavior with the ability to conceive of ideas, design, implement and operate systems in the context of corporation and society.
+<br>
+<br>- Job placement after graduation:
+<br>Engineers graduating IA specialty have diverse employment opportunities with a number of typical positions such as:
+<br>✔ Network and database security administrators;
+<br>✔ Engineers in testing and evaluating information assurance for networks and systems;
+<br>✔ Engineers in reviewing vulnerabilities, weaknesses and handling information assurance incidents;
+<br>✔ Developer in programming and developing applications to ensure information assurance;
+<br>✔ Counselor in analyzing, consulting, designing safety information systems.
+<br>
+<br>2. PROGRAM LEARNING OUTCOMES
+<br>
+<br>3. VOLUME OF LEARNING OF THE COURSE: 145 credits, excluding Preparation English, Military Training, compulsory and elective training activities.
+<br>
+<br>4. ENROLLMENT OBJECT
+<br>✔ In accordance with regulations on formal university enrollment; college enrollment of the Ministry of Education and Training.
+<br>✔ In accordance with regulations on enrollment of FPT university.
+<br>
+<br>5. TRAINING PROCESS, GRADUATING CONDITIONS
+<br>✔ In accordance with regulations on formal university and college training of the Ministry of Education and Training.
+<br>✔ In accordance with regulations on training of FPT University.
+<br>
+<br>6. EVALUATION METHOD
+<br>✔ In accordance with regulations on examination and assessment in the training regulations of FPT University.
+<br>
+<br>1. MỤC TIÊU ĐÀO TẠO
+<br>
+<br>1.1 Mục tiêu chung:
+<br>
+<br>Đào tạo kỹ sư ngành Công nghệ thông tin (CNTT) có nhân cách và năng lực đáp ứng nhu cầu thực tế của xã hội, nắm vững kiến thức chuyên môn và thực hành, có khả năng tổ chức, thực hiện và phát huy sáng tạo trong các công việc liên quan đến các chuyên ngành được đào tạo.
+<br>Chương trình đào tạo nhằm:
+<br>a) Trang bị cho sinh viên kiến thức cơ bản của ngành CNTT cùng các phương pháp luận, công nghệ nền tảng và chuyên sâu của chuyên ngành;
+<br>b) Rèn luyện cho sinh viên những đức tính, kỹ năng cần thiết qua môi trường làm việc chuyên nghiệp, biết vận dụng các kiến thức ngành CNTT và các kiến thức chuyên ngành vào công việc thực tế;
+<br>c) Cung cấp cho sinh viên một nền tảng vững chắc về ngoại ngữ, khoa học, văn hóa, xã hội, phát huy tính chủ động, sáng tạo trong học tập, công việc và cuộc sống.
+<br>
+<br>1.2 Mục tiêu cụ thể:
+<br>
+<br>Sinh viên tốt nghiệp chương trình đào tạo CNTT phải thể hiện được những điều sau đây:
+<br>
+<br>PO1. Có kiến thức cơ bản về khoa học xã hội, chính trị pháp luật, an ninh quốc phòng, kiến thức nền tảng của ngành CNTT &amp; kiến thức chuyên sâu của chuyên ngành được đào tạo: kỹ thuật, phương pháp, công nghệ, các lĩnh vực ứng dụng chuyên sâu; xu hướng phát triển trên thế giới; đồng thời hiểu biết tổng thể thị trường, bối cảnh, chức năng, nhiệm vụ của các ngành nghề thuộc chuyên ngành được đào tạo.
+<br>PO2. Có thể làm việc được như một thành viên chính thức trong nhóm chuyên môn thuộc chuyên ngành được đào tạo: tham gia thiết kế, lựa chọn kỹ thuật và công nghệ phù hợp với xu hướng phát triển, giải quyết các vấn đề kỹ thuật; nắm được xu hướng công nghệ và yêu cầu người dùng; có thể làm kế hoạch phát triển hoàn thiện giải pháp; quản lý thực hiện và quản lý thay đổi trong phần công việc của mình; hiểu được các chính sách nhà nước về lĩnh vực chuyên ngành.
+<br>PO3. Thành thạo được các kỹ năng nghề nghiệp và các kỹ năng mềm của công dân thế kỷ 21 (kỹ năng tư duy, kỹ năng làm việc, kỹ năng sử dụng các công cụ làm việc, kỹ năng sống trong xã hội toàn cầu);
+<br>PO4. Sử dụng được tốt tiếng Anh trong học tập và công việc và một ngoại ngữ thứ hai trong giao tiếp thông thường.
+<br>PO5. Trung thực, kỷ luật cao trong học tập và công việc, biết làm việc nhóm một cách hiệu quả; biết ứng xử văn hóa trong công việc và xã hội; năng động, sáng tạo và có ý chí học tập không ngừng. Thể hiện thái độ và hành vi chuyên nghiệp với năng lực hình thành ý tưởng, thiết kế, thực hiện và vận hành hệ thống trong bối cảnh doanh nghiệp và xã hội.
+<br>
+<br>- Vị trí việc làm sau khi tốt nghiệp:
+<br>Sinh viên tốt nghiệp chuyên ngành Trí tuệ nhân tạo có cơ hội việc làm đa dạng với một số vị trí điển hình như:
+<br>✔ Chuyên viên quản trị an ninh mạng, cơ sở dữ liệu;
+<br>✔ Chuyên viên kiểm tra, đánh giá an toàn thông tin cho mạng và hệ thống;
+<br>✔ Chuyên gia rà soát lỗ hổng, điểm yếu và xử lý sự cố an toàn thông tin;
+<br>✔ Chuyên gia lập trình và phát triển ứng dụng đảm bảo an toàn thông tin;
+<br>✔ Chuyên viên phân tích, tư vấn, thiết kế hệ thống thông tin đảm bảo an toàn.
+<br>
+<br>
+<br>2. CHUẨN ĐẦU RA
+<br>
+<br>3. KHỐI LƯỢNG KIẾN THỨC TOÀN KHOÁ: 145 tín chỉ, chưa kể Tiếng Anh chuẩn bị, Giáo dục Quốc phòng, các hoạt động rèn luyện bắt buộc và tự chọn.
+<br>
+<br>4. ĐỐI TƯỢNG TUYỂN SINH
+<br>
+<br>✔ Theo quy chế tuyển sinh đại học, cao đẳng hệ chính quy của Bộ Giáo dục và Đào tạo.
+<br>✔ Theo quy chế tuyển sinh của trường Đại học FPT.
+<br>
+<br>5. QUY TRÌNH ĐÀO TẠO, ĐIỀU KIỆN TỐT NGHIỆP
+<br>
+<br>✔ Thực hiện theo quy chế đào tạo đại học, cao đẳng hệ chính quy của Bộ Giáo dục và Đào tạo.
+<br>✔ Theo quy chế đào tạo của trường Đại học FPT.
+<br>
+<br>6. CÁCH THỨC ĐÁNH GIÁ
+<br>
+<br>✔ Theo quy định về kiểm tra và đánh giá học phần trong quy chế đào tạo của trường Đại học FPT.</span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="auto-style6 text-right">DecisionNo MM/dd/yyyy:</td>
+            <td class="auto-style7">
+                <span id="lblDecisionNo">973/QĐ-ĐHFPT dated 10/26/2022</span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="auto-style6"></td>
+            <td class="auto-style7">
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/PO/Index?id=401">View PO</a>
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/Compo/ViewComBo?cur_id=401">View Combo</a>
+                <a class="btn btn-warning btn-normal mr-2 fs-inherit" style="font-size: medium" href="/Elective/ViewElective?cur_id=401">View
+                                                        Elective</a>
+            </td>
+        </tr>
+    </tbody></table>
+    <br>
+    <span id="lblMessagePLO" style="color:#23AC68;">18 PLO(s) found</span>
+
+    <div>
+	<table class="table table-striped" cellspacing="0" rules="all" border="1" id="gvPLO" style="border-collapse:collapse;">
+		<tbody><tr>
+			<th scope="col">&nbsp;</th><th scope="col">PLO Name</th><th scope="col">PLO Description</th>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    1
+                </td><td style="width:20%;">PLO1</td><td style="width:70%;">Demonstrate basic knowledge of social sciences, politics and law, national security and defense, contributing to the formation of worldview and scientific methodology.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    2
+                </td><td style="width:20%;">PLO2</td><td style="width:70%;">Demonstrate an entrepreneurial, creative, critical, and problem-solving mindset.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    3
+                </td><td style="width:20%;">PLO3</td><td style="width:70%;">Communicating and working in groups effectively in academic and practical environments.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    4
+                </td><td style="width:20%;">PLO4</td><td style="width:70%;">Use English proficiently in communication and learning (equivalent to level 4 according to the 6-level Foreign Language Proficiency Framework for Vietnam, IELTS 6.0 or TOEFL (paper) 575-600 or TOEFL (iBT) 90 -100); and be able to communicate simply in Japanese.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    5
+                </td><td style="width:20%;">PLO5</td><td style="width:70%;">Demonstrate professional behaviors, morality, social responsibilities and a sense of dedication to community.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    6
+                </td><td style="width:20%;">PLO6</td><td style="width:70%;">Be mentally and physically strong, be capable of expressing national identity and integrating confidently into the world.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    7
+                </td><td style="width:20%;">PLO7</td><td style="width:70%;">Develop self-study and lifelong learning spirit and capabilities to adapt to the constant change of technology and society.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    8
+                </td><td style="width:20%;">PLO8</td><td style="width:70%;">Be able to explain and apply essential mathematical knowledge related to information technology: Calculus, discrete math, linear algebra.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    9
+                </td><td style="width:20%;">PLO9</td><td style="width:70%;">Be able to explain at a basic level the concepts related to computer architecture, operating systems, computer networks, databases…</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    10
+                </td><td style="width:20%;">PLO10</td><td style="width:70%;">Be able to apply knowledge of programming, software development (including data structures and algorithms, programming techniques, object-oriented programming…) to develop applications</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    11
+                </td><td style="width:20%;">PLO11</td><td style="width:70%;">Be able to explain different viewpoints on professional ethics, the role of careers in the IT field and related skills to choose the right major in the later stage.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    12
+                </td><td style="width:20%;">PLO12</td><td style="width:70%;">Be able to apply knowledge of business, society, knowledge of management (especially project management) in professional work.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    13
+                </td><td style="width:20%;">POL13</td><td style="width:70%;">Be able to explain the roles and responsibilities of a AI specialist.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    14
+                </td><td style="width:20%;">PLO14</td><td style="width:70%;">Be able to apply mathematics (optimization theory, statistical probability, linear algebra), advanced algorithms, digital signal processing... to AI problems.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    15
+                </td><td style="width:20%;">PLO15</td><td style="width:70%;">Be able to apply knowledge of AI, AI programming, machine learning... to build intelligent systems such as decision support systems, forecasting systems, identification systems, etc.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    16
+                </td><td style="width:20%;">PLO16</td><td style="width:70%;">Be able to evaluate techniques and technologies related to AI, highlighting strengths and weaknesses of techniques and technologies.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    17
+                </td><td style="width:20%;">PLO17</td><td style="width:70%;">Be able to update and utilize advanced tools and techniques in the field of AI in particular and IT in general.</td>
+		</tr><tr>
+			<td align="center" style="width:5%;">
+                    18
+                </td><td style="width:20%;">PLO18</td><td style="width:70%;">Have in-depth knowledge and skills in the persuited major or extensive knowledge and skills in the major close to the persuited major.</td>
+		</tr>
+	</tbody></table>
+</div>
+    <br>
+    <!-- 
+
+    <table class="plo">
+        <thead>
+            <th colspan="21" style="font-size: large">Mapping subjects of the Curriculum BIT_AI_K15B to program learning outcomes </th>
+        </thead>
+        <thead>
+            <th colspan="3">Subject Code</th>
+            
+            <th>PLO1</th>
+            
+            <th>PLO2</th>
+            
+            <th>PLO3</th>
+            
+            <th>PLO4</th>
+            
+            <th>PLO5</th>
+            
+            <th>PLO6</th>
+            
+            <th>PLO7</th>
+            
+            <th>PLO8</th>
+            
+            <th>PLO9</th>
+            
+            <th>PLO10</th>
+            
+            <th>PLO11</th>
+            
+            <th>PLO12</th>
+            
+            <th>POL13</th>
+            
+            <th>PLO14</th>
+            
+            <th>PLO15</th>
+            
+            <th>PLO16</th>
+            
+            <th>PLO17</th>
+            
+            <th>PLO18</th>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td colspan="21" class="textRedBold">General knowledge and skills_Khối Kiến thức chung</td>
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=OTP101&curriculumID=401">OTP101</a></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=PEN&curriculumID=401">PEN</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=PHE_COM&curriculumID=401">PHE_COM</a></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=TMI_ELE&curriculumID=401">TMI_ELE</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=MLN111&curriculumID=401">MLN111</a></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=MLN122&curriculumID=401">MLN122</a></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=MLN131&curriculumID=401">MLN131</a></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=HCM202&curriculumID=401">HCM202</a></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=VNR202&curriculumID=401">VNR202</a></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=SYB302c&curriculumID=401">SYB302c</a></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=SSG103&curriculumID=401">SSG103</a></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=SSL101&curriculumID=401">SSL101</a></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=ENW492c&curriculumID=401">ENW492c</a></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=JPD113&curriculumID=401">JPD113</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=JPD123&curriculumID=401">JPD123</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="21" class="textRedBold">Major knowledge and skills_Khối kiến thức ngành</td>
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=MAE101&curriculumID=401">MAE101</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=MAD101&curriculumID=401">MAD101</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=MAS291&curriculumID=401">MAS291</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=CSI104&curriculumID=401">CSI104</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=CEA201&curriculumID=401">CEA201</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=PRF192&curriculumID=401">PRF192</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=PRO192&curriculumID=401">PRO192</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=CSD201&curriculumID=401">CSD201</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=OSG202&curriculumID=401">OSG202</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=NWC203c&curriculumID=401">NWC203c</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=DBI202&curriculumID=401">DBI202</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=LAB211&curriculumID=401">LAB211</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=PMG202c&curriculumID=401">PMG202c</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=ITE302c&curriculumID=401">ITE302c</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=OJT202&curriculumID=401">OJT202</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="21" class="textRedBold">Specialized knowledge and skills _Khối kiến thức chuyên ngành</td>
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=DGT301&curriculumID=401">DGT301</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=PRP201c&curriculumID=401">PRP201c</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=AIP391&curriculumID=401">AIP391</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=CSD301&curriculumID=401">CSD301</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=MAI391&curriculumID=401">MAI391</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=IMP301&curriculumID=401">IMP301</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=AIG201c&curriculumID=401">AIG201c</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=AIL302m&curriculumID=401">AIL302m</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=NLP301c&curriculumID=401">NLP301c</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td></td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=IOT102&curriculumID=401">IOT102</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="21" class="textRedBold">Elective combo knowledge and skills_Khối kiến thức combo lựa chọn</td>
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=DBM301&curriculumID=401">DBM301</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=BDI301c&curriculumID=401">BDI301c</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=DBP391&curriculumID=401">DBP391</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=DPL301m&curriculumID=401">DPL301m</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=PRJ301&curriculumID=401">PRJ301</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=PRM392&curriculumID=401">PRM392</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+            </tr>
+            
+            <tr>
+                <td colspan="3"><a href="/gui/role/student/Syllabuses?subCode=PRC391c&curriculumID=401">PRC391c</a></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td></td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+                <td style="font-weight: bolder">✓</td>
+                
+            </tr>
+            
+        </tbody>
+    </table> -->
+    <br>
+    <span id="lblTotalCredit" style="color:#23AC68;">48 subjects, 145 credits</span>
+    <div>
+	<table class="table table-striped" cellspacing="0" rules="all" border="1" id="gvSubs" style="border-collapse:collapse;">
+		<tbody><tr>
+			<th scope="col">SubjectCode</th><th scope="col">Subject Name</th><th scope="col">Semester</th><th scope="col">NoCredit</th><th scope="col">PreRequisite</th>
+		</tr><tr>
+			<td style="width:10%;">OTP101</td><td><a href="Syllabuses.aspx?subCode=OTP101&amp;curriculumID=401">Orientation and General Training Program_Định hướng và Rèn luyện tập trung</a></td><td style="width:7%;">0</td><td style="width:7%;">0</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">PEN</td><td><a href="Syllabuses.aspx?subCode=PEN&amp;curriculumID=401">Preparation English_Tiếng Anh chuẩn bị</a></td><td style="width:7%;">0</td><td style="width:7%;">0</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">PHE_COM*1</td><td><a href="Syllabuses.aspx?subCode=PHE_COM*1&amp;curriculumID=401">Physical Education 1_Giáo dục thể chất 1</a></td><td style="width:7%;">0</td><td style="width:7%;">2</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">TMI_ELE</td><td><a href="Syllabuses.aspx?subCode=TMI_ELE&amp;curriculumID=401">Traditional musical instrument_Nhạc cụ truyền thống</a></td><td style="width:7%;">0</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">CEA201</td><td><a href="Syllabuses.aspx?subCode=CEA201&amp;curriculumID=401">Computer Organization and Architecture_Tổ chức và Kiến trúc máy tính</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">CSI104</td><td><a href="Syllabuses.aspx?subCode=CSI104&amp;curriculumID=401">Introduction to Computer_Nhập môn khoa học máy tính</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MAE101</td><td><a href="Syllabuses.aspx?subCode=MAE101&amp;curriculumID=401">Mathematics for Engineering_Toán cho ngành kỹ thuật</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">PHE_COM*2</td><td><a href="Syllabuses.aspx?subCode=PHE_COM*2&amp;curriculumID=401">Physical Education 2_Giáo dục thể chất 2</a></td><td style="width:7%;">1</td><td style="width:7%;">2</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">PRF192</td><td><a href="Syllabuses.aspx?subCode=PRF192&amp;curriculumID=401">Programming Fundamentals_Cơ sở lập trình</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">SSL101</td><td><a href="Syllabuses.aspx?subCode=SSL101&amp;curriculumID=401">Academic Skills for University Success_Kỹ năng học tập đại học</a></td><td style="width:7%;">1</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MAD101</td><td><a href="Syllabuses.aspx?subCode=MAD101&amp;curriculumID=401">Discrete mathematics_Toán rời rạc</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">NWC203c</td><td><a href="Syllabuses.aspx?subCode=NWC203c&amp;curriculumID=401">Computer Networking_Mạng máy tính</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">OSG202</td><td><a href="Syllabuses.aspx?subCode=OSG202&amp;curriculumID=401">Operating Systems_Hệ điều hành</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">PHE_COM*3</td><td><a href="Syllabuses.aspx?subCode=PHE_COM*3&amp;curriculumID=401">Physical Education 3_Giáo dục thể chất 3</a></td><td style="width:7%;">2</td><td style="width:7%;">2</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">PRO192</td><td><a href="Syllabuses.aspx?subCode=PRO192&amp;curriculumID=401">Object-Oriented Programming_Lập trình hướng đối tượng</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">Pass PRF192</td>
+		</tr><tr>
+			<td style="width:10%;">SSG103</td><td><a href="Syllabuses.aspx?subCode=SSG103&amp;curriculumID=401">Communication and In-Group Working Skills_Kỹ năng giao tiếp và cộng tác</a></td><td style="width:7%;">2</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">CSD201</td><td><a href="Syllabuses.aspx?subCode=CSD201&amp;curriculumID=401">Data Structures and Algorithms_Cấu trúc dữ liệu và giải thuật</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">PRO192</td>
+		</tr><tr>
+			<td style="width:10%;">DBI202</td><td><a href="Syllabuses.aspx?subCode=DBI202&amp;curriculumID=401">Introduction to Databases_Các hệ cơ sở dữ liệu</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">JPD113</td><td><a href="Syllabuses.aspx?subCode=JPD113&amp;curriculumID=401">Elementary Japanese 1- A1.1_Tiếng Nhật sơ cấp 1-A1.1 </a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">Không</td>
+		</tr><tr>
+			<td style="width:10%;">LAB211</td><td><a href="Syllabuses.aspx?subCode=LAB211&amp;curriculumID=401">OOP with Java Lab_Thực hành OOP với Java</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">PRO192</td>
+		</tr><tr>
+			<td style="width:10%;">PRP201c</td><td><a href="Syllabuses.aspx?subCode=PRP201c&amp;curriculumID=401">Python Programming_Lập trình Python</a></td><td style="width:7%;">3</td><td style="width:7%;">3</td><td style="width:51%;">Recommend to have knowledge of basic programming in advance</td>
+		</tr><tr>
+			<td style="width:10%;">AIG201c</td><td><a href="Syllabuses.aspx?subCode=AIG201c&amp;curriculumID=401">Artificial Intelligence_Trí tuệ nhân tạo</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">IOT102</td><td><a href="Syllabuses.aspx?subCode=IOT102&amp;curriculumID=401">Internet of Things_Internet vạn vật</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">JPD123</td><td><a href="Syllabuses.aspx?subCode=JPD123&amp;curriculumID=401">Elementary Japanese 1-A1.2_Tiếng Nhật sơ cấp 1-A1.2 </a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">JPD113</td>
+		</tr><tr>
+			<td style="width:10%;">MAI391</td><td><a href="Syllabuses.aspx?subCode=MAI391&amp;curriculumID=401">Mathematics for Machine Learning_Toán cho học máy</a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">MAE101</td>
+		</tr><tr>
+			<td style="width:10%;">MAS291</td><td><a href="Syllabuses.aspx?subCode=MAS291&amp;curriculumID=401">Statistics &amp; Probability_Xác suất thống kê </a></td><td style="width:7%;">4</td><td style="width:7%;">3</td><td style="width:51%;">MAE101 or MAC101</td>
+		</tr><tr>
+			<td style="width:10%;">AIL302m</td><td><a href="Syllabuses.aspx?subCode=AIL302m&amp;curriculumID=401">Machine Learning_Học máy</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">MAS291</td>
+		</tr><tr>
+			<td style="width:10%;">AIP391</td><td><a href="Syllabuses.aspx?subCode=AIP391&amp;curriculumID=401">AI programming project_Dự án lập trình TTNT</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">AIG201c, PRP201c</td>
+		</tr><tr>
+			<td style="width:10%;">CSD301</td><td><a href="Syllabuses.aspx?subCode=CSD301&amp;curriculumID=401">Advanced Algorithms_Giải thuật nâng cao</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">CSD202</td>
+		</tr><tr>
+			<td style="width:10%;">DGT301</td><td><a href="Syllabuses.aspx?subCode=DGT301&amp;curriculumID=401">Digital Signal Processing_Xử lý tín hiệu số</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">ITE302c</td><td><a href="Syllabuses.aspx?subCode=ITE302c&amp;curriculumID=401">Ethics in IT_Đạo đức trong CNTT</a></td><td style="width:7%;">5</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">OJT202</td><td><a href="Syllabuses.aspx?subCode=OJT202&amp;curriculumID=401">On-The-Job Training_Đào tạo trong môi trường thực tế</a></td><td style="width:7%;">6</td><td style="width:7%;">10</td><td style="width:51%;">Students attain 90% of the total credits from term 1-term 5 (excluding Physical Education and OTP Programs)
+Students choosing JS combo (Japanese Bridge Engineer) have to pass JPD123</td>
+		</tr><tr>
+			<td style="width:10%;">SYB302c</td><td><a href="Syllabuses.aspx?subCode=SYB302c&amp;curriculumID=401">Entrepreneurship_Khởi sự doanh nghiệp</a></td><td style="width:7%;">6</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">AI_COM*1</td><td><a href="Syllabuses.aspx?subCode=AI_COM*1&amp;curriculumID=401">Subject 1 of Combo*_Học phần 1 của combo*</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">AI_COM*2</td><td><a href="Syllabuses.aspx?subCode=AI_COM*2&amp;curriculumID=401">Subject 2 of Combo*_Học phần 2 của combo*</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">AI_COM*3</td><td><a href="Syllabuses.aspx?subCode=AI_COM*3&amp;curriculumID=401">Subject 3 of Combo*_Học phần 3 của combo*</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">ENW492c</td><td><a href="Syllabuses.aspx?subCode=ENW492c&amp;curriculumID=401">Academic Writing Skills_Kỹ năng viết học thuật</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">IMP301</td><td><a href="Syllabuses.aspx?subCode=IMP301&amp;curriculumID=401">Image Processing_Xử lý ảnh</a></td><td style="width:7%;">7</td><td style="width:7%;">3</td><td style="width:51%;">Recommend to have knowledge of Digital Signal Processing (DGT301) in advance</td>
+		</tr><tr>
+			<td style="width:10%;">AI_COM*4</td><td><a href="Syllabuses.aspx?subCode=AI_COM*4&amp;curriculumID=401">Subject 4 of Combo*_Học phần 4 của combo*</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">AI_COM*5</td><td><a href="Syllabuses.aspx?subCode=AI_COM*5&amp;curriculumID=401">Subject 5 of Combo*_Học phần 5 của combo*</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">MLN111</td><td><a href="Syllabuses.aspx?subCode=MLN111&amp;curriculumID=401">Philosophy of Marxism – Leninism_Triết học Mác - Lê-nin </a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">MLN122</td><td><a href="Syllabuses.aspx?subCode=MLN122&amp;curriculumID=401">Political economics of Marxism – Leninism_Kinh tế chính trị Mác - Lê-nin</a></td><td style="width:7%;">8</td><td style="width:7%;">2</td><td style="width:51%;">None</td>
+		</tr><tr>
+			<td style="width:10%;">NLP301c</td><td><a href="Syllabuses.aspx?subCode=NLP301c&amp;curriculumID=401">Natural Language Processing_Xử lý ngôn ngữ tự nhiên</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">AIL30x and (PRP201c or PFP191)</td>
+		</tr><tr>
+			<td style="width:10%;">PMG202c</td><td><a href="Syllabuses.aspx?subCode=PMG202c&amp;curriculumID=401">Project management_Quản trị dự án</a></td><td style="width:7%;">8</td><td style="width:7%;">3</td><td style="width:51%;">&nbsp;</td>
+		</tr><tr>
+			<td style="width:10%;">AIP490</td><td><a href="Syllabuses.aspx?subCode=AIP490&amp;curriculumID=401">AI Capstone Project_Đồ án tốt nghiệp TTNT</a></td><td style="width:7%;">9</td><td style="width:7%;">10</td><td style="width:51%;">- Student must pass Machine Learning (AIL30x).
+- Pass OJT202
+- Pass 60% of total credits of selected combo
+- Pass 80% of total credits (PHE_COM* and OJT excluded)</td>
+		</tr><tr>
+			<td style="width:10%;">HCM202</td><td><a href="Syllabuses.aspx?subCode=HCM202&amp;curriculumID=401">HCM Ideology_Tư tưởng Hồ Chí Minh </a></td><td style="width:7%;">9</td><td style="width:7%;">2</td><td style="width:51%;">MLN111, MLN122</td>
+		</tr><tr>
+			<td style="width:10%;">MLN131</td><td><a href="Syllabuses.aspx?subCode=MLN131&amp;curriculumID=401">Scientific socialism_Chủ nghĩa xã hội khoa học </a></td><td style="width:7%;">9</td><td style="width:7%;">2</td><td style="width:51%;">MLN111, MLN122</td>
+		</tr><tr>
+			<td style="width:10%;">VNR202</td><td><a href="Syllabuses.aspx?subCode=VNR202&amp;curriculumID=401">History of CPV_Lịch sử Đảng Cộng sản Việt Nam </a></td><td style="width:7%;">9</td><td style="width:7%;">2</td><td style="width:51%;">MLN111, MLN122</td>
+		</tr>
+	</tbody></table>
+</div>
+    <div style="padding: 24px;">
+        <a href="/PLOMapping/View?curriculumID=401" target="_blank">View mapping subjects of the Curriculum
+                                BIT_AI_K15B to program learning
+                                    outcomes
+        </a>
+    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('sb-active');
+            });
+            var lang = 'en';
+            $('#language').val(lang);
+            $('#language').change(function () {
+                $.ajax({
+
+                    url: '/Language', // comma here instead of semicolon  
+                    data: { language: $(this).val() },
+                    success: function () {
+                        window.location.reload();
+                    }
+
+                });
+            })
+
+            toastr.options = {
+                "closeButton": true,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            if (window.localStorage.getItem('typeToast') == 1) {
+                toastr.success(window.localStorage.getItem('messToast'));
+                window.localStorage.setItem('typeToast', 0);
+            }
+            if (window.localStorage.getItem('typeToast') == 2) {
+                toastr.error(window.localStorage.getItem('messToast'));
+                window.localStorage.setItem('typeToast', 0);
+            }
+        });
+        function showToastRedirectPage(type, mess) {
+            window.localStorage.setItem('typeToast', type);
+            window.localStorage.setItem('messToast', mess);
+        }
+    </script>
+
+
+
+</body></html>
