@@ -1,5 +1,7 @@
 # Courscape
 
+[🇻🇳 Đọc hướng dẫn Tiếng Việt](README.vi.md)
+
 A Python tool for automating online course progression with browser automation and API integration.
 
 ## Introduction
@@ -48,7 +50,7 @@ Key features:
 
 3. Configure settings:
    - Make a copy of `.env.example` and rename it to `.env`:
-   - Edit `.env` to set your preferences:
+   - Edit `.env` to set your preferences (credential is optional, if you leave it blank, you will login manually):
 
      ```bash
      # Browser selection
@@ -61,11 +63,11 @@ Key features:
 
 - Specify courses and specializations in `.env` (optional):
 
-   ```bash
-   # Courses and specializations to process
-   COURSES=course1-slug,course2-slug
-   SPECS=spec1-slug,spec2-slug
-   ```
+    ```bash
+    # Courses and specializations to process
+    COURSES=course1-slug,course2-slug
+    SPECS=spec1-slug,spec2-slug
+    ```
 
 4. Run the tool:
 
