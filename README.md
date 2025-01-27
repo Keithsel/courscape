@@ -54,8 +54,8 @@ Key features:
    - **Note:** Remove all comments in the `.env` file as they will be treated as part of the values. Comments should only be kept in `.env.template` for reference.
 
      ```bash
-     # Browser selection
-     DEFAULT_BROWSER=chrome  # or firefox/chromium
+     # Browser selection (chrome, chromium, firefox)
+     DEFAULT_BROWSER=chrome
      
      # Optional: Credentials for auto-login
      ACCOUNT_EMAIL=your.email@example.com
