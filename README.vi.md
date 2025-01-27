@@ -36,7 +36,8 @@
 
 3. Thiết lập ban đầu:
    - Sao chép `.env.example` và đổi tên thành `.env`
-   - Chỉnh sửa `.env` để thiết lập tùy chọn (thông tin đăng nhập là không bắt buộc, nếu để trống bạn sẽ đăng nhập thủ công):
+   - Chỉnh sửa `.env` để thiết lập tùy chọn (thông tin đăng nhập là không bắt buộc, nếu để trống bạn sẽ đăng nhập thủ công)
+   - **Lưu ý:** Xóa tất cả các comment trong file `.env` vì chúng sẽ được coi là một phần của giá trị nhập vào chương trình. Comment chỉ nên được giữ trong `.env.template` để tham khảo.
 
      ```bash
      # Lựa chọn trình duyệt

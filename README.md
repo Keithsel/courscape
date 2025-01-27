@@ -51,6 +51,7 @@ Key features:
 3. Configure settings:
    - Make a copy of `.env.example` and rename it to `.env`:
    - Edit `.env` to set your preferences (credential is optional, if you leave it blank, you will login manually):
+   - **Note:** Remove all comments in the `.env` file as they will be treated as part of the values. Comments should only be kept in `.env.template` for reference.
 
      ```bash
      # Browser selection
