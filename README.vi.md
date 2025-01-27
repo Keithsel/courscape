@@ -67,7 +67,7 @@
    # Nếu muốn đăng nhập thủ công
    python main.py --course course-slug --manual-login
    
-   # Đọc course/specialization từ tệp cấu hình (chỉ khi được chỉ định trong .env)
+   # Đọc course/specialization từ tệp cấu hình (chỉ khi được chỉ định trong .env, dùng tùy chọn này thì không cần --course và --spec nữa)
    python main.py --from-config
    ```
 
@@ -76,7 +76,7 @@
 - `--course`, `-c`: Slug của course cần xử lý (phân cách bằng dấu phẩy)
 - `--spec`, `-s`: Slug của specialization cần xử lý (phân cách bằng dấu phẩy)
 - `--manual-login`, `-m`: Bắt buộc đăng nhập thủ công
-- `--from-config`, `-f`: Đọc course/specialization hóa từ tệp cấu hình. Để sử dụng tùy chọn này, hãy chỉ định course và specialization trong tệp `.env`
+- `--from-config`, `-f`: Đọc course/specialization hóa từ tệp cấu hình. Để sử dụng tùy chọn này, hãy chỉ định course và specialization trong tệp `.env`. Tùy chọn này sẽ bỏ qua các tùy chọn `--course` và `--spec`.
 
 ## Lấy Slug của course/specialization
 

@@ -81,7 +81,7 @@ Key features:
    # Force manual login
    python main.py --course course-slug --manual-login
    
-   # Read course/specialization from config file (only if specified in .env)
+   # Read course/specialization from config file (only if specified in .env, by using this option, you can skip the --course and --spec options)
    python main.py --from-config
    ```
 
@@ -90,7 +90,7 @@ Key features:
 - `--course`, `-c`: Course slug(s) to process (comma-separated)
 - `--spec`, `-s`: Specialization slug(s) to process (comma-separated)
 - `--manual-login`, `-m`: Force manual login
-- `--from-config`, `-f`: Read course/specialization from config file. To use this option, specify the courses and specializations in the `.env` file.
+- `--from-config`, `-f`: Read course/specialization from config file. To use this option, specify the courses and specializations in the `.env` file. Using this option will skip the `--course` and `--spec` options.
 
 ## Getting Course/Specialization Slugs
 
