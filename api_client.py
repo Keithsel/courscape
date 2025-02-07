@@ -200,6 +200,40 @@ class CourseraAPIClient:
             logger.error(f"Error skipping discussion: {str(e)}")
             return False
 
+    def mark_widget_complete(self, user_id, course_id, item_id):
+        """Mark an ungraded widget as complete"""
+        try:
+            # Step 1: Get session ID
+            session_params = {
+                'q': 'getWithoutProgressUpdate',
+                'id': f'{user_id}~{course_id}~{item_id}',
+                'fields': 'session,sessionId'
+            }
+            session_response = self.session.get(
+                f"{self.BASE_URL}onDemandWidgetSessions.v1/",
+                params=session_params
+            )
+            
+            if not session_response.ok:
+                return False
+                
+            session_id = session_response.json()['elements'][0]['sessionId']
+            
+            # Step 2: Mark complete
+            json_data = {
+                'sessionId': session_id,
+                'progressState': 'Completed'
+            }
+            
+            response = self.session.put(
+                f"{self.BASE_URL}onDemandWidgetProgress.v1/{user_id}~{course_id}~{item_id}",
+                json=json_data
+            )
+            return response.status_code == 204
+        except Exception as e:
+            logger.error(f"Error marking widget complete: {str(e)}")
+            return False
+
     def bypass_item(self, item_id, item_type, course_id, course_slug, user_id):
         """Unified method to bypass any item type"""
         try:
@@ -209,6 +243,8 @@ class CourseraAPIClient:
                 return self.skip_discussion(course_id, item_id, user_id)
             elif item_type == "supplement":
                 return self.mark_supplement_complete(course_id, item_id, user_id)
+            elif item_type == "ungradedWidget":
+                return self.mark_widget_complete(user_id, course_id, item_id)
             return False
         except Exception as e:
             logger.error(f"Error bypassing {item_type}: {str(e)}")

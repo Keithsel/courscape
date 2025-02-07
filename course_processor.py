@@ -5,7 +5,7 @@ from api_client import CourseraAPIClient
 class CourseProcessor:
     """Handle course content processing"""
 
-    BYPASS_TYPES = {"lecture", "discussionPrompt", "supplement"}
+    BYPASS_TYPES = {"lecture", "discussionPrompt", "supplement", "ungradedWidget"}
     WORK_LATER_TYPES = {
         "exam",
         "gradedLti",
@@ -13,6 +13,7 @@ class CourseProcessor:
         "peer",
         "phasedPeer",
         "staffGraded",
+        "ungradedAssignment",
         "ungradedLti",
         "ungradedProgramming",
     }
