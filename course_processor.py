@@ -5,7 +5,7 @@ from api_client import CourseraAPIClient
 class CourseProcessor:
     """Handle course content processing"""
 
-    BYPASS_TYPES = {"lecture", "discussionPrompt", "supplement", "ungradedWidget"}
+    BYPASS_TYPES = {"lecture", "supplement", "ungradedWidget"}
     WORK_LATER_TYPES = {
         "exam",
         "gradedLti",
@@ -16,6 +16,7 @@ class CourseProcessor:
         "ungradedAssignment",
         "ungradedLti",
         "ungradedProgramming",
+        "discussionPrompt"
     }
 
     def __init__(self, cookies):
