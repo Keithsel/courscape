@@ -64,6 +64,18 @@ def parse_arguments():
         action="store_true",
         help="Read course/specialization from config file",
     )
+    parser.add_argument(
+        "--reset-progress",
+        "-r",
+        action="store_true",
+        help="Ignore existing progress and start fresh",
+    )
+    parser.add_argument(
+        "--update-types",
+        "-u",
+        action="store_true",
+        help="Update item skippability based on current BYPASS_TYPES configuration",
+    )
     return parser.parse_args()
 
 
@@ -119,7 +131,7 @@ def main():
 
         logger.info("Processing content...")
         if args.from_config:
-            _process_from_config(processor)
+            _process_from_config(processor, args.reset_progress)
         else:
             _process_from_args(processor, args)
 
@@ -129,16 +141,17 @@ def main():
         logger.error(f"Error during processing: {str(e)}")
         sys.exit(1)
     finally:
-        processor.close()
+        if 'processor' in locals():
+            processor.close()
 
 
-def process_content(consumer, args):
+def process_content(processor, args):
     """Process content based on input source"""
     try:
         if args.from_config:
-            _process_from_config(consumer)
+            _process_from_config(processor, args.reset_progress)
         else:
-            _process_from_args(consumer, args)
+            _process_from_args(processor, args)
         logger.success("Content processing completed")
     except Exception as e:
         logger.error(f"Content processing failed: {e}")
@@ -146,7 +159,7 @@ def process_content(consumer, args):
     return True
 
 
-def _process_from_config(consumer):
+def _process_from_config(processor, reset_progress=False):
     """Process content from config file"""
     config = load_config()
     total_processed = 0
@@ -157,7 +170,7 @@ def _process_from_config(consumer):
         logger.info(f"Processing {len(specs)} specializations from config")
         for i, spec in enumerate(specs, 1):
             logger.info(f"Specialization {i}/{len(specs)}: {spec}")
-            if process_specialization(consumer, spec):
+            if process_specialization(processor, spec):
                 total_processed += 1
             else:
                 total_failed += 1
@@ -167,7 +180,7 @@ def _process_from_config(consumer):
         logger.info(f"Processing {len(courses)} courses from config")
         for i, course in enumerate(courses, 1):
             logger.info(f"Course {i}/{len(courses)}: {course}")
-            if process_course(consumer, course):
+            if process_course(processor, course):
                 total_processed += 1
             else:
                 total_failed += 1
@@ -175,16 +188,22 @@ def _process_from_config(consumer):
     logger.info(f"Processed {total_processed} items successfully, {total_failed} failed")
 
 
-def _process_from_args(consumer, args):
+def _process_from_args(processor, args):
     """Process content from command line arguments only"""
     total_processed = 0
     total_failed = 0
 
+    # Handle the update-types flag
+    if args.update_types:
+        logger.info("Updating skippable content types in progress files...")
+        
     if args.spec:
         specs = [s.strip() for s in args.spec.split(',') if s.strip()]
         logger.info(f"Processing {len(specs)} specializations from arguments")
         for spec in specs:
-            if process_specialization(consumer, spec):
+            if args.reset_progress:
+                logger.info(f"Resetting progress for specialization: {spec}")
+            if process_specialization(processor, spec):
                 total_processed += 1
             else:
                 total_failed += 1
@@ -193,7 +212,9 @@ def _process_from_args(consumer, args):
         courses = [c.strip() for c in args.course.split(',') if c.strip()]
         logger.info(f"Processing {len(courses)} courses from arguments")
         for course in courses:
-            if process_course(consumer, course):
+            if args.reset_progress:
+                logger.info(f"Resetting progress for course: {course}")
+            if process_course(processor, course):
                 total_processed += 1
             else:
                 total_failed += 1
