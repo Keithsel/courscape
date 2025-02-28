@@ -4,7 +4,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 import browsers
-from download_webdriver import WebDriverManager
+from seleniumbase_webdriver import SeleniumBaseManager
 from loguru import logger
 import logging
 
@@ -27,15 +27,18 @@ def configure_logging():
 
 
 def test_available_browsers():
-    """Test WebDriver initialization for available browsers."""
+    """Test SeleniumBase initialization for available browsers."""
     browser_types = {browser["browser_type"] for browser in browsers.browsers()}
+    if "chromium" in browser_types:
+        browser_types.remove("chromium")
     logger.info(f"Available browsers: {', '.join(sorted(browser_types))}\n")
+
 
     results = {"pass": 0, "fail": 0}
 
     for browser_type in browser_types:
         try:
-            driver = WebDriverManager(browser=browser_type, headless=True).get_driver()
+            driver = SeleniumBaseManager(browser=browser_type, headless=True).get_driver()
             driver.get("https://www.python.org")
             driver.quit()
             logger.success(f"✓ {browser_type:10} OK")

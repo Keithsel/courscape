@@ -27,7 +27,7 @@ validate_env_values()
 
 # Browser settings
 DEFAULT_BROWSER = os.getenv("DEFAULT_BROWSER", "chrome").lower()
-if DEFAULT_BROWSER not in ["chrome", "chromium", "firefox"]:
+if DEFAULT_BROWSER not in ["chrome", "edge" "firefox"]:
     DEFAULT_BROWSER = "chrome"
 
 # Coursera credentials (optional)
