@@ -76,11 +76,20 @@ def parse_arguments():
         action="store_true",
         help="Update item skippability based on current BYPASS_TYPES configuration",
     )
+    parser.add_argument(
+        "--show-skippable",
+        "-t",
+        action="store_true",
+        help="Show current skippable content types and exit",
+    )
     return parser.parse_args()
 
 
 def validate_args(args):
     """Validate command line arguments"""
+    if args.show_skippable:
+        return True
+        
     if args.from_config:
         if args.course or args.spec:
             logger.error("Cannot use --course or --spec with --from-config. Choose either command line arguments or config file.")
@@ -111,6 +120,12 @@ def main():
     setup_logging()
 
     args = parse_arguments()
+    
+    # Handle show-skippable flag first
+    if args.show_skippable:
+        show_skippable_types()
+        sys.exit(0)
+        
     if not validate_args(args):
         sys.exit(1)
 
@@ -220,6 +235,27 @@ def _process_from_args(processor, args):
                 total_failed += 1
 
     logger.info(f"Processed {total_processed} items successfully, {total_failed} failed")
+
+
+def show_skippable_types():
+    """Display the current skippable content types"""
+    from course_processor import CourseProcessor
+    
+    bypass_types = sorted(list(CourseProcessor.BYPASS_TYPES))
+    work_later_types = sorted(list(CourseProcessor.WORK_LATER_TYPES))
+    
+    logger.info("Current configuration:")
+    logger.info("=====================")
+    logger.info("Skippable content types (will be processed automatically):")
+    for i, content_type in enumerate(bypass_types, 1):
+        logger.info(f"  {i}. {content_type}")
+    
+    logger.info("\nNon-skippable content types (will be marked as 'work later'):")
+    for i, content_type in enumerate(work_later_types, 1):
+        logger.info(f"  {i}. {content_type}")
+    
+    logger.info("\nTo change which types are skippable, modify the BYPASS_TYPES set in course_processor.py")
+    logger.info("After changing BYPASS_TYPES, use the --update-types flag to update existing progress files")
 
 
 if __name__ == "__main__":

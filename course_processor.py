@@ -29,6 +29,14 @@ class CourseProcessor:
         self.skip_list = {"courses": set(), "specializations": set()}
         self.progress_tracker = None
 
+    def get_skippable_types(cls):
+        """Return the current skippable content types"""
+        return cls.BYPASS_TYPES.copy()
+        
+    def get_work_later_types(cls):
+        """Return the current work-later content types"""
+        return cls.WORK_LATER_TYPES.copy()
+
     def setup(self, skip_courses=None, skip_specs=None):
         """Initialize processor"""
         self.user_id = self.api.get_user_id()
